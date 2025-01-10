@@ -1,0 +1,279 @@
+/* Fonts Numan */
+@import url("https://fonts.googleapis.com/css2?family=Numans&display=swap");
+/* Roboto Font */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+body {
+    background: #000;
+}
+header {
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 92px;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+header .logo img {
+    width: 60px;
+    height: 62px;
+}
+header .logo span {
+    font: 400 3rem Numans;
+    letter-spacing: -0.02em;
+    color: #c3c8d4;
+}
+header .btn {
+    background: #9b51e0;
+    border-radius: 4px;
+    color: #fff;
+    width: 77px;
+    height: 32px;
+    border: none;
+    text-transform: capitalize;
+}
+
+/* Main */
+
+/* Section bir Start */
+
+#sec1 {
+    position: relative;
+    height: 100vh;
+    background: url("../images/bgImage.jpeg") center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#sec1::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(#0609083f, #150114b7, #0903027c);
+}
+.sec1-content {
+    text-align: center;
+    color: #fff;
+    z-index: 3;
+}
+.sec1-content h1 {
+    font: 700 3rem Roboto;
+}
+.sec1-content h5 {
+    font: 400 1.5rem Roboto;
+    margin-top: 10px;
+}
+.sec1-content p {
+    font: 400 1.3rem Roboto;
+    margin: 10px 0;
+}
+.sec1-content button {
+    width: 208px;
+    padding: 18px 24px;
+    background: #9b51e0;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+}
+.sec1-content button span {
+    font-size: 16px;
+}
+.sec1-content input {
+    width: 368px;
+    border-radius: 4px;
+    padding: 18px 16px;
+    background: #00000080;
+    border: 1px solid #00000080;
+    outline: none;
+    color: #fff;
+}
+
+/* Section 1 End */
+
+/* Section 2 Start */
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    color: #fff;
+    margin: 40px 0;
+    position: relative;
+}
+.row .col6 {
+    flex: 1;
+}
+.row .col6 {
+    flex: 1;
+}
+
+.row .col6 img {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+#sec2 .col6 h4 {
+    font: 700 3rem Roboto;
+    line-height: 62px;
+}
+
+#sec2 .col6 p {
+    font: 400 1.5rem Roboto;
+    line-height: 30px;
+}
+.row::after {
+    content: "";
+    position: absolute;
+    width: 98vw;
+    transform: translateX(-50%);
+    left: 50%;
+    height: 4px;
+    background-color: #343232;
+    bottom: -10px;
+}
+.input-container {
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+}
+.input-container form {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.input-container form input,
+.input-container form textarea {
+    width: 100%;
+    border: 1px solid #808080;
+    padding: 18px 16px;
+    border-radius: 4px;
+    background: #00000080;
+}
+.input-container form textarea {
+    resize: none;
+}
+.input-container button {
+    font:500 1.5rem Roboto;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 4px;
+    background: #9B51E0;
+
+
+}
+/* FAQ Section */
+#faq {
+    background-color: #000;
+    color: #fff;
+    padding: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 8px;
+    font-family: "Roboto", sans-serif;
+}
+
+#faq h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.faq-item {
+    border: 1px solid #333;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #1a1a1a;
+    cursor: pointer;
+}
+
+.faq-question span {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.toggle-btn.open {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    display: none;
+    background-color: #222;
+    color: #ddd;
+    padding: 15px 20px;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* Footer Start */
+
+#footer {
+    color: #fff;
+    padding: 70px 0;
+    font-family: "Roboto", sans-serif;
+}
+
+.footer-line {
+    height: 2px;
+    background-color: #343232;
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.footer-content ul {
+    min-width: 200px;
+}
+
+.footer-content ul li {
+    margin-bottom: 10px;
+}
+
+.footer-content ul li a {
+    color: #B3B3B3;
+    font: 400 14px Roboto;
+    line-height: 18px;
+    text-decoration-line: underline;
+}
+
+.footer-content ul li a:hover {
+    color: #9b51e0;
+}

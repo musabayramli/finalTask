@@ -1,0 +1,10 @@
+html{
+    font-size: 10px;
+}
+
+/* Container  */
+
+.container{
+    max-width: 1100px;
+    margin: auto;
+}
