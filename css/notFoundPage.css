@@ -8,14 +8,11 @@ body {
    justify-content: center;
 }
 .notfound_container {
-   width: 559px;
-   padding-top: 50px;
    display: flex;
    flex-direction: column;
 	align-items: center;
 
    & > * {
-      margin-top: 20px;
 		font: 400 16px arial;
    }
 	& img {
@@ -28,13 +25,14 @@ body {
 		font: 600 48px arial;
 		color: #EBEEF5;
 	}
-	& span {
+	& p {
 		color: #8E95A9;
+      margin: 15px 0;
 	}
 }
 
 #goHomeBtn {
-   padding: 20px;
+   padding: 18px 20px;
 	margin-top: 20px;
    background-color: #9b51e0;
    border-radius: 12px;
