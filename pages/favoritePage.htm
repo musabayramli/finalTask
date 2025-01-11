@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Reset CSS -->
+    <link rel="stylesheet" href="../css/reset.css" />
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../css/favoritePage.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="../images/logo.png" alt="logo" />
+            </div>
+            <ul>
+                <li><a href="#"><i class="fa-solid fa-house-chimney-window"></i></a></li>
+                <li><a href="#"><i class="fa-solid fa-layer-group"></i></a></li>
+                <li><a href="#"><i class="fa-solid fa-tv"></i></a></li>
+                <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
+            </ul>
+        </nav>
+        <section class="movie-carousel">
+            <h2>Favorite movies <a href="#">&#x276F;</a></h2>
+            <div class="swiper mySwiperComedy">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="../images/img.png" alt="Comedy Movie 1" />
+                        <div class="box">
+                            <span>Comedy</span>
+                            <p>Funny Movie 1</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="../images/img1.png" alt="Comedy Movie 2" />
+                        <div class="box">
+                            <span>Comedy</span>
+                            <p>Funny Movie 2</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="../images/img2.png" alt="Comedy Movie 3" />
+                        <div class="box">
+                            <span>Comedy</span>
+                            <p>Funny Movie 3</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="../images/img3.png" alt="Comedy Movie 4" />
+                        <div class="box">
+                            <span>Comedy</span>
+                            <p>Funny Movie 4</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="../images/img2.png" alt="Comedy Movie 4" />
+                        <div class="box">
+                            <span>Comedy</span>
+                            <p>Funny Movie 4</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="../images/img3.png" alt="Comedy Movie 4" />
+                        <div class="box">
+                            <span>Comedy</span>
+                            <p>Funny Movie 4</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="swiper-button-next swiper-comedy-next"></div>
+                <div class="swiper-button-prev swiper-comedy-prev"></div> -->
+            </div>
+        </section>
+    </header>
+
+
+
+
+    <!-- Swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        var swiperComedy = new Swiper(".mySwiperComedy", {
+            slidesPerView: 1, 
+            loop: true,
+            /* navigation: {
+                nextEl: ".swiper-comedy-next",
+                prevEl: ".swiper-comedy-prev",
+            }, */
+            breakpoints: {
+                320: { 
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                },
+                480: {
+                    slidesPerView: 2,
+                    spaceBetween: 15,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 5,
+                    spaceBetween: 25,
+                },
+                1440: { 
+                    slidesPerView: 6,
+                    spaceBetween: 30,
+                },
+            },
+        });
+
+    </script>
+</body>
+
+</html>
