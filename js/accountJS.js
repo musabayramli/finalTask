@@ -2,12 +2,11 @@ const toggleIcons = document.querySelectorAll(".toggleIcon");
 
 toggleIcons.forEach((icon) => {
   icon.addEventListener("click", () => {
-    // İkona ait olan input'u bul
-    const input = icon.previousElementSibling; // İkona yakın olan input
+    const input = icon.previousElementSibling;
     if (input.type === "password") {
-      input.type = "text"; // Şifreyi görünür yap
+      input.type = "text"; 
     } else {
-      input.type = "password"; // Şifreyi gizle
+      input.type = "password"; 
     }
   });
 });
