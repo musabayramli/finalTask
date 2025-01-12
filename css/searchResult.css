@@ -1,0 +1,61 @@
+body {
+   background-color: #1d1d1d;
+}
+header {
+   overflow: auto;
+}
+nav {
+   background-color: transparent;
+}
+.swiper-wrapper {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 30px;
+
+   .swiper-slide {
+      width: 292px;
+      height: 440px;
+   }
+}
+
+.searchbar {
+   display: flex;
+   justify-content: flex-end;
+	
+	& > div{
+		display: flex;
+		align-items: center;
+	}
+
+   input {
+      width: 281px;
+      height: 48px;
+      border-radius: 4px;
+      border: 1px solid #808080;
+      background-color: black;
+      color: #bcbcbc;
+      padding-left: 20px;
+
+      &::placeholder {
+         font: 500 16px Roboto;
+         color: #bcbcbc;
+      }
+   }
+
+   button {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #808080;
+      background-color: #2a2a2a;
+      color: white;
+      margin-left: 20px;
+      font-size: 25px;
+   }
+}
+
+.mySwiperMovies h3 {
+   font: 500 35px Arial;
+   color: white;
+   margin-bottom: 20px;
+}
