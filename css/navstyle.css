@@ -1,0 +1,18 @@
+nav {
+   display: flex;
+   flex-direction: column;
+   position: relative;
+   left: 1%;
+   top: 3%;
+   width: 50px;
+   height: 90vh;
+   padding: 10px;
+   background-color: #1d1d1d;
+   box-shadow: 5px 10px 30px black;
+
+   img {
+      position: relative;
+      height: 47px;
+      left: -10px;
+   }
+}
