@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Numans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+/* MAIN */
+main {
+  margin-top: 79px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.main-items {
+  width: 234px;
+  height: 203px;
+  background-color: #2d2d2d;
+  border-radius: 30px;
+  padding: 24px;
+  cursor: pointer;
+}
+.large {
+  width: 288px;
+}
+.main-items p {
+  font-weight: 500;
+  font-size: 15px;
+  color: #d7d7d7;
+  padding-bottom: 8px;
+}
+.main-items:hover,
+.lively {
+  background-color: #652f8d;
+}
+.main-items:hover p,
+.lively p {
+  color: white;
+}
+.main-items span {
+  font-weight: 600;
+  font-size: 30px;
+  font-family: "Inter", serif;
+}
