@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../css/general.css" />
+    <link rel="stylesheet" href="../css/users.css" />
+  </head>
+  <body>
+    <!-- LEFT SECTION -->
+    <aside>
+      <div class="tab1">
+        <figure class="logo">
+          <img src="../../images/logo.png" alt="logo" />
+          <span>filmalisa</span>
+        </figure>
+        <div class="menu">
+          <a href="../html/dashboard.html" class="menu-items">
+            <img src="../icons/dashboard.svg" alt="dashboard" />
+            <p>Dashboard</p>
+          </a>
+          <a href="../html/movies.html" class="menu-items">
+            <img src="../icons/movies.svg" alt="movies" />
+            <p>Movies</p>
+          </a>
+          <a href="../html/category.html" class="menu-items">
+            <img src="../icons/categories.svg" alt="categories" />
+            <p>Categories</p>
+          </a>
+          <a href="../html/users.html" class="menu-items active">
+            <img src="../icons/users.svg" alt="users" />
+            <p>Users</p>
+          </a>
+          <a href="../html/comment.html" class="menu-items">
+            <img src="../icons/comments.svg" alt="comments" />
+            <p>Comments</p>
+          </a>
+          <a href="../html/contact.html" class="menu-items">
+            <img src="../icons/contacts.svg" alt="contacts" />
+            <p>Contact us</p>
+          </a>
+          <a href="../html/actor.html" class="menu-items">
+            <img src="../icons/users.svg" alt="actors" />
+            <p>Actors</p>
+          </a>
+        </div>
+      </div>
+      <!-- LOGOUT -->
+      <a href="../html/adminLogin.html" class="tab2">
+        <img src="../icons/logout.svg" alt="logout" />
+        <p>Logout</p>
+      </a>
+    </aside>
+
+    <!-- RIGHT SECTION -->
+    <div class="page-right">
+      <!-- HEADER -->
+      <header>
+        <div>
+          <h1 class="title1">Hi Admin</h1>
+          <h2 class="title2">Users</h2>
+        </div>
+        <div class="profile">
+          <figure class="profile-img">
+            <img src="../icons/adminPage.png" alt="admin" />
+          </figure>
+          <h2>Admin</h2>
+        </div>
+      </header>
+      <!-- MAIN -->
+      <main>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Users</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>user1</td>
+            </tr>
+          </tbody>
+        </table>
+      </main>
+    </div>
+
+    <script src="../js/users.js"></script>
+  </body>
+</html>
