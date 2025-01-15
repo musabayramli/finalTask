@@ -35,6 +35,11 @@ nav ul li a i {
     color: #fff;
 }
 
+nav ul li a:hover i {
+    color: #0feffd;
+}
+
+
 .header-content {
     padding-left: 120px;
     display: flex;
