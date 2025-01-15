@@ -3,7 +3,7 @@
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Home Page</title>
+      <title>Search Result Page</title>
       <!-- Font Awesome -->
       <link
          rel="stylesheet"
@@ -12,17 +12,10 @@
          crossorigin="anonymous"
          referrerpolicy="no-referrer"
       />
-      <!-- Swiper -->
-      <link
-         rel="stylesheet"
-         href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-      />
       <!-- Reset Css -->
       <link rel="stylesheet" href="../css/reset.css" />
       <!-- Qlobal Css -->
       <link rel="stylesheet" href="../css/qlobal.css" />
-      <!-- Main CSS -->
-      <link rel="stylesheet" href="../css/style.css" />
       <!-- Search Page CSS -->
       <link rel="stylesheet" href="../css/searchResult.css" />
    </head>
@@ -50,118 +43,114 @@
                </li>
             </ul>
          </nav>
-         <main>
-            <section class="movie-carousel">
-               <div class="searchbar">
-                  <div>
-                     <input type="text" placeholder="Search....." /><button>
-                        +
-                     </button>
-                  </div>
-               </div>
-
-               <div class="swiper mySwiperMovies">
-                  <div>
-                     <h3>Search Result &#x276F;</h3>
-                  </div>
-                  <div class="swiper-wrapper">
-                     <div class="swiper-slide">
-                        <img src="../images/img.png" alt="Wonder Woman 1984" />
-                        <div class="box">
-                           <span>Fantasy</span>
-                           <p>Wonder Woman 1984</p>
-                        </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <img
-                           src="../images/img1.png"
-                           alt="Zack Snyder's Justice League"
-                        />
-                        <div class="box">
-                           <span>Fantasy</span>
-                           <p>Zack Snyder's Justice League</p>
-                        </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <img src="../images/img2.png" alt="Mortal Kombat" />
-                        <div class="box">
-                           <span>Fantasy</span>
-                           <p>Mortal Kombat</p>
-                        </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <img src="../images/img3.png" alt="The Courier" />
-                        <div class="box">
-                           <span>Drama</span>
-                           <p>The Courier</p>
-                        </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <img src="../images/img.png" alt="Wonder Woman 1984" />
-                        <div class="box">
-                           <span>Fantasy</span>
-                           <p>Wonder Woman 1984</p>
-                        </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <img
-                           src="../images/img1.png"
-                           alt="Zack Snyder's Justice League"
-                        />
-                        <div class="box">
-                           <span>Fantasy</span>
-                           <p>Zack Snyder's Justice League</p>
-                        </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <img src="../images/img2.png" alt="Mortal Kombat" />
-                        <div class="box">
-                           <span>Fantasy</span>
-                           <p>Mortal Kombat</p>
-                        </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <img src="../images/img3.png" alt="The Courier" />
-                        <div class="box">
-                           <span>Drama</span>
-                           <p>The Courier</p>
-                        </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <img src="../images/img.png" alt="Wonder Woman 1984" />
-                        <div class="box">
-                           <span>Fantasy</span>
-                           <p>Wonder Woman 1984</p>
-                        </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <img
-                           src="../images/img1.png"
-                           alt="Zack Snyder's Justice League"
-                        />
-                        <div class="box">
-                           <span>Fantasy</span>
-                           <p>Zack Snyder's Justice League</p>
-                        </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <img src="../images/img2.png" alt="Mortal Kombat" />
-                        <div class="box">
-                           <span>Fantasy</span>
-                           <p>Mortal Kombat</p>
-                        </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <img src="../images/img3.png" alt="The Courier" />
-                        <div class="box">
-                           <span>Drama</span>
-                           <p>The Courier</p>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </section>
-         </main>
       </header>
+		
+      <main>
+         <section class="searchbar">
+				<input type="text" placeholder="Search....." />
+				<button>+</button>
+			</section>
+
+			<section class="moviesContainer">
+				<div>
+					<h3>Search Result &#x276F;</h3>
+				</div>
+				<div class="movies">
+					<div class="movie">
+						<img src="../images/img.png" alt="Wonder Woman 1984" />
+						<div class="movieDescBox">
+							<h4>Fantasy</h4>
+							<p>Wonder Woman 1984</p>
+						</div>
+					</div>
+					<div class="movie">
+						<img
+							src="../images/img1.png"
+							alt="Zack Snyder's Justice League"
+						/>
+						<div class="movieDescBox">
+							<h4>Fantasy</h4>
+							<p>Zack Snyder's Justice League</p>
+						</div>
+					</div>
+					<div class="movie">
+						<img src="../images/img2.png" alt="Mortal Kombat" />
+						<div class="movieDescBox">
+							<h4>Fantasy</h4>
+							<p>Mortal Kombat</p>
+						</div>
+					</div>
+					<div class="movie">
+						<img src="../images/img3.png" alt="The Courier" />
+						<div class="movieDescBox">
+							<h4>Drama</h4>
+							<p>The Courier</p>
+						</div>
+					</div>
+					<div class="movie">
+						<img src="../images/img.png" alt="Wonder Woman 1984" />
+						<div class="movieDescBox">
+							<h4>Fantasy</h4>
+							<p>Wonder Woman 1984</p>
+						</div>
+					</div>
+					<div class="movie">
+						<img
+							src="../images/img1.png"
+							alt="Zack Snyder's Justice League"
+						/>
+						<div class="movieDescBox">
+							<h4>Fantasy</h4>
+							<p>Zack Snyder's Justice League</p>
+						</div>
+					</div>
+					<div class="movie">
+						<img src="../images/img2.png" alt="Mortal Kombat" />
+						<div class="movieDescBox">
+							<h4>Fantasy</h4>
+							<p>Mortal Kombat</p>
+						</div>
+					</div>
+					<div class="movie">
+						<img src="../images/img3.png" alt="The Courier" />
+						<div class="movieDescBox">
+							<h4>Drama</h4>
+							<p>The Courier</p>
+						</div>
+					</div>
+					<div class="movie">
+						<img src="../images/img.png" alt="Wonder Woman 1984" />
+						<div class="movieDescBox">
+							<h4>Fantasy</h4>
+							<p>Wonder Woman 1984</p>
+						</div>
+					</div>
+					<div class="movie">
+						<img
+							src="../images/img1.png"
+							alt="Zack Snyder's Justice League"
+						/>
+						<div class="movieDescBox">
+							<h4>Fantasy</h4>
+							<p>Zack Snyder's Justice League</p>
+						</div>
+					</div>
+					<div class="movie">
+						<img src="../images/img2.png" alt="Mortal Kombat" />
+						<div class="movieDescBox">
+							<h4>Fantasy</h4>
+							<p>Mortal Kombat</p>
+						</div>
+					</div>
+					<div class="movie">
+						<img src="../images/img3.png" alt="The Courier" />
+						<div class="movieDescBox">
+							<h4>Drama</h4>
+							<p>The Courier</p>
+						</div>
+					</div>
+				</div>
+			</section>
+      </main>
    </body>
 </html>
