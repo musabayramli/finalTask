@@ -59,9 +59,7 @@ main {
       justify-content: flex-end;
 
       @media (max-width: 900px) {
-         & {
-            margin-bottom: 30px;
-         }
+         margin-bottom: 30px;
       }
 
       & > div {
@@ -158,12 +156,6 @@ main {
                object-fit: cover;
                object-position: center;
                position: relative;
-
-               @media (min-width: 1440px) {
-                  & {
-                     object-fit: cover;
-                  }
-               }
             }
 
             .movieDescBox {
