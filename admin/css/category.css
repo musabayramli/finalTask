@@ -57,6 +57,12 @@ td {
   font-weight: 400;
   font-size: 14px;
 }
+.editTable{
+  width: 40px;
+}
+.removeTable{
+  width: 100px;
+}
 .action-icons {
   font-size: 16px;
   transition: transform 0.3s ease;

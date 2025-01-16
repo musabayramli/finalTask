@@ -14,11 +14,14 @@ function hideModal() {
   modal.classList.remove("modal-hidden");
   modalOverlay.style.visibility = "hidden";
   pageRight.style.backgroundColor = "#171616";
+  pageRight.style.overflowY = "hidden";
+  window.location.reload()
 }
 
 // EDIT VE REMOVE MODAL
 function editRow() {
   modalShow();
+  document.querySelector(".submit").textContent="Edit"
 }
 
 function removeRow(el) {
@@ -48,4 +51,5 @@ function modalShow() {
   modal.classList.add("modal-hidden");
   modalOverlay.style.visibility = "visible";
   pageRight.style.backgroundColor = "#090909";
+  pageRight.style.overflowY = "auto";
 }

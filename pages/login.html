@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/login.css" />
+  </head>
+  <body>
+    <!-- Left section -->
+    <div class="sidebar">
+        <img class="leftLogo" src="../images/logo.png" alt="logo" />
+        <nav>
+            <a href="#">
+              <img src="../images/homeWhite.png" alt="home" />
+            </a>
+            <a href="#">
+              <img src="../images/Group.png" alt="home" />
+            </a>
+            <a href="#">
+              <img src="../images/TV.png" alt="home" />
+            </a>
+            <a href="#">
+              <img src="../images/Vector.png" alt="home" />
+            </a>
+        </nav>
+      </div>
+
+      <!-- RIght section -->
+    <div class="container">
+      <figure class="logo">
+        <img src="../images/logo.png" alt="logo" />
+      </figure>
+
+      <h1 class="title">filmalisa</h1>
+      <h2 class="titleLogin">login</h2>
+
+      <div class="form">
+        <img src="../admin/icons/username.svg" alt="usernameIcon" required />
+        <input type="email" id="email" placeholder="email" />
+      </div>
+
+      <div class="form">
+        <img src="../admin/icons/password.svg" alt="passwordIcon" />
+        <input type="password" id="password" placeholder="password" required />
+        <img src="../admin/icons/eyes.svg" alt="eyesIcon" id="eyesIcon" />
+      </div>
+      <a class="register" href="../pages/register.html">Register here</a>
+      <button class="login" id="loginBtn">login</button>
+
+      <div class="message" id="message"></div>
+    </div>
+    <script src="../js/login.js"></script>
+  </body>
+</html>
