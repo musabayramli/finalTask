@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Numans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  background-color: #1d1d1d;
+  font-family: "Poppins", serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.sidebar {
+  width: 56px;
+  position: fixed;
+  top: 8px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 64px;
+  backdrop-filter: blur(24px);
+  box-shadow: 0px 40px 40px 8px #00000029;
+  height: 100vh;
+}
+.leftLogo {
+  margin-top: 40px;
+  width: 56px;
+  height: 56px;
+}
+nav {
+  display: flex;
+  gap: 80px;
+  flex-direction: column;
+}
+.container {
+  text-align: center;
+  font-weight: 400;
+  color: white;
+}
+.logo {
+  width: 249px;
+  height: 214px;
+  margin: auto;
+}
+.logo img {
+  width: 100%;
+  height: 100%;
+}
+.title {
+    font-weight: 400;
+  font-size: 70px;
+  padding: 16px 0 10px 0;
+  font-family: "Numans", serif;
+}
+.titleLogin{
+ font-weight: 500;
+ font-size: 40px;
+}
+.form {
+  width: 547px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 16px auto;
+  border-radius: 12px;
+  border: 1px solid #323b54;
+  padding: 12px 16px;
+}
+input {
+  width: 475px;
+  height: 40px;
+  padding: 8px 0;
+  margin: 0 16px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 14px;
+  outline: none;
+}
+input::placeholder {
+  color: #475069;
+}
+.register {
+  display: block;
+  text-decoration: underline;
+  text-align: start;
+  color: #99a3be;
+  font-size: 14px;
+}
+.login {
+  display: inline-block;
+  width: 547px;
+  padding: 16px 32px;
+  margin: 24px 0;
+  border-radius: 12px;
+  border: 2px solid #9b51e0;
+  background-color: #9b51e0;
+  cursor: pointer;
+  font-size: 16px;
+  color: white;
+}
+.login:visited {
+  color: white;
+}
+.login:hover {
+  background-color: #8513f0;
+}
+#message {
+  display: block;
+  color: red; /* Mesajın rəngini test üçün qırmızı edin */
+  font-size: 16px; /* Oxunaqlı ölçü */
+  margin-top: 10px;
+}
