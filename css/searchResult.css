@@ -31,13 +31,20 @@ header {
          gap: 70px;
          font-size: 16px;
 
-         a {
+         li {
+				box-sizing: border-box;
+
+				a {
             color: white;
 
             &:hover {
                color: #0feffd;
+					background-color: grey;
+					padding: 10px;
+					border-radius: 10px;
             }
          }
+			}
       }
    }
 }
