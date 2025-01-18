@@ -1,16 +1,14 @@
 header {
    width: 50px;
-   height: 90vh;
-   margin-top: 30px;
-   margin-left: 20px;
+   height: 100vh;
    padding: 10px;
    background-color: #1d1d1d;
    box-shadow: 5px 10px 30px black;
 
    nav {
       position: relative;
-      left: 1%;
-      top: 3%;
+      left: 0;
+      top: 0;
 
       .logo {
          img {

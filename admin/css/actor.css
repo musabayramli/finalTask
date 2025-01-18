@@ -1,10 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 
+/* Ümumi Stil */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", serif;
+  background-color: #171616;
+  color: white;
+}
 
-.profile{
+.profile {
   margin-right: 116px;
 }
+
 #createBtn,
 .okBtn,
 .cancelBtn {
@@ -20,36 +29,41 @@
   font-size: 14px;
   cursor: pointer;
 }
+
 #createBtn:hover,
 .okBtn:hover,
 .cancelBtn:hover {
   background-color: #58209d;
 }
-/* TABLE */
+
+/* MAIN TABLE */
 main {
   margin-top: 96px;
   margin-right: 75px;
 }
+
 table {
-  width: 40%;
+  width: 100%;
   border-collapse: collapse;
   border-radius: 8px;
   overflow: hidden;
   font-family: "Nunito", serif;
-  cursor: pointer;
 }
+
 thead {
   height: 48px;
   background-color: #1e1e1e;
 }
+
 tbody {
-  height: 48px;
   color: #05111a;
 }
+
 tr td {
   box-shadow: 0px -1px 0px 0px #e6e7e9 inset, 0px 1px 0px 0px #e6e7e9 inset;
   background-color: #ffffff;
 }
+
 th,
 td {
   text-align: center;
@@ -57,17 +71,26 @@ td {
   font-weight: 400;
   font-size: 14px;
 }
+
 .action-icons {
   font-size: 16px;
   transition: transform 0.3s ease;
 }
+
 .remove:hover {
   transform: scale(1.2);
 }
-.remove{
+
+.remove {
   color: red;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
-/* MODAL */
+
+.remove:hover {
+  color: #ff4d4f;
+}
+
+/* MODAL OVERLAY */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -77,44 +100,45 @@ td {
   background: rgba(0, 0, 0, 0.5);
   z-index: 999;
   visibility: hidden;
-  opacity: 1;
+  opacity: 0;
   transition: opacity 0.2s ease, visibility 0.2s ease;
 }
-/* REMOVEMODAL */
-.removeModal {
-  padding: 25px;
-  display: flex;
-  gap: 25px;
-  flex-direction: column;
-  align-items: center;
-}
+
+/* MODAL */
 .modal,
 .removeModal {
   position: fixed;
-  top: 48%;
-  left: 51%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 24px;
-  background-color: #171616;
+  background-color: #1e1e1e;
   visibility: hidden;
+  opacity: 0;
   transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-.removeModal p {
-  text-align: center;
-  font-size: 18px;
-  font-weight: 500;
-}
-.modal-hidden {
+  padding: 25px;
   z-index: 1000;
-  visibility: visible;
 }
+
+.modal-hidden {
+  visibility: visible;
+  opacity: 1;
+}
+
 .modal-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 50px 48px 53px 40px;
 }
-input{
+
+.removeModal p {
+  color: white;
+  font-size: 16px;
+  text-align: center;
+}
+
+input {
   width: 467px;
   height: 56px;
   padding: 0 16px;
@@ -127,9 +151,11 @@ input{
   color: white;
   margin-bottom: 30px;
 }
+
 input::placeholder {
   color: #475069;
 }
+
 .submit {
   width: 464px;
   padding: 16px 32px;
@@ -140,9 +166,38 @@ input::placeholder {
   cursor: pointer;
   line-height: 24px;
   border-radius: 12px;
-  border: 2px solid #9B51E0
+  border: 2px solid #9b51e0;
 }
+
 .submit:hover {
   background-color: #58209d;
 }
 
+/* REMOVE MODAL */
+.removeModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.removeModal p {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+}
+
+.removeModal button {
+  padding: 12px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: #9b51e0;
+  color: white;
+  cursor: pointer;
+}
+
+.removeModal button:hover {
+  background-color: #58209d;
+}

@@ -3,32 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin</title>
+    <title>Admin Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
     <link rel="stylesheet" href="../../css/reset.css" />
     <link rel="stylesheet" href="../css/adminLogin.css" />
   </head>
   <body>
     <div class="container">
+      <!-- Logo -->
       <figure class="logo">
-        <img src="../../images/logo.png" alt="logo" />
+        <img src="../../images/logo.png" alt="Filmalisa Logo" />
       </figure>
 
+      <!-- Başlıq -->
       <h1 class="title">Admin</h1>
 
-      <div class="form">
-        <img src="../icons/username.svg" alt="usernameIcon" required />
-        <input type="email" id="email" placeholder="username" />
-      </div>
+      <!-- Login Formu -->
+      <form id="loginForm">
+        <!-- Email -->
+        <div class="form">
+          <label for="email">
+            <img src="../icons/username.svg" alt="Username Icon" />
+          </label>
+          <input type="email" id="email" placeholder="username" required />
+        </div>
 
-      <div class="form">
-        <img src="../icons/password.svg" alt="passwordIcon" />
-        <input type="password" id="password" placeholder="password" required />
-        <img src="../icons/eyes.svg" alt="eyesIcon" id="eyesIcon" />
-      </div>
+        <!-- Şifrə -->
+        <div class="form">
+          <label for="password">
+            <img src="../icons/password.svg" alt="Password Icon" />
+          </label>
+          <input type="password" id="password" placeholder="password" required />
+          <span id="eyesIcon">
+            <img src="../icons/eyes.svg" alt="Show Password" />
+          </span>
+        </div>
 
-      <button class="login" id="loginBtn">Login</button>
+        <!-- Login Düyməsi -->
+        <button type="submit" class="login" id="loginBtn">Login</button>
+      </form>
 
+      <!-- Mesaj Göstərmək -->
       <div class="message" id="message"></div>
     </div>
 

@@ -78,10 +78,11 @@
         <div class="modal-overlay"></div>
         <div id="modal" class="modal">
           <div class="modal-content">
-              <input type="text" placeholder="category name" />
-              <input type="text" placeholder="category name" />
-              <input type="text" placeholder="category name" />
-              <button class="submit" onclick="hideModal()">Submit</button>
+            <input type="text" id="actorName" placeholder="Actor Name" />
+            <input type="text" id="actorBio" placeholder="Biography" />
+            <input type="text" id="actorImage" placeholder="Image URL" />
+            <button class="submit" >Submit</button>
+              <!-- <button class="submit" onclick="hideModal()">Submit</button> -->
           </div>
         </div>
       </header>
@@ -92,10 +93,11 @@
             <tr>
               <th>ID</th>
               <th>Name</th>
+              <th>İmage</th>
               <th>Remove</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody  id="actorsTable">
             <tr>
               <td>1</td>
               <td>Action</td>
