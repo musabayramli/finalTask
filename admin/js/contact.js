@@ -67,7 +67,7 @@ function modalHide() {
 
 // API -----------------------
 
-async function skeleton() {
+function skeleton() {
 	const tableBody = document.querySelector('tbody');
 
 	document.querySelector('thead').innerHTML = `
@@ -88,6 +88,26 @@ async function skeleton() {
 			<td><div class="skeleton"></div></td>
 			<td><div class="skeleton"></div></td>
 			<td><div class="skeleton"></div></td>
+		</tr>
+	`;
+}
+
+function notDataFound() {
+	const tableBody = document.querySelector('tbody');
+
+	document.querySelector('thead').innerHTML = `
+		<tr class="skeleton-row dark-skeleton">
+			<th>N/A</th>
+			<th>N/A</th>
+			<th>N/A</th>
+			<th>N/A</th>
+			<th>N/A</th>
+			<th>N/A</th>
+		</tr>
+	`;
+	tableBody.innerHTML = `
+		<tr class="skeleton-row">
+			<td colspan="6">Not Contact Found in Database</td>
 		</tr>
 	`;
 }
@@ -134,8 +154,7 @@ const fetchContacts = async () => {
 
 		const { data } = await response.json();
 
-
-		if (data && data.length > 0) {
+		if (data.length > 0) {
 			Toastify({
 				text: "Contact loaded successfully!",
 				className: "info",
@@ -148,6 +167,7 @@ const fetchContacts = async () => {
 			}).showToast();
 
 			displayContacts(data);
+
 		} else {
 			Toastify({
 				text: "Not contact found in database!",
@@ -158,8 +178,11 @@ const fetchContacts = async () => {
 				style: {
 					background: "linear-gradient(to right, red, yellow)",
 				}
-			}).showToast()
-			throw new Error('Contact not full.');
+			}).showToast();
+
+
+			notDataFound();
+			return;
 		}
 	} catch (error) {
 		Toastify({
