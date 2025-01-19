@@ -35,7 +35,7 @@ const fetchUsers = async () => {
 	const apiUrl = 'https://api.sarkhanrahimli.dev/api/filmalisa/admin/users';
 	const accessToken = localStorage.getItem('authToken');
 
-
+	console.log(accessToken);
 	try {
 		if (typeof accessToken === 'undefined') {
 			throw new Error('accessToken is not defined');
@@ -63,9 +63,8 @@ const fetchUsers = async () => {
 		const { data } = await response.json();
 
 		if (data && accessToken) {
-			displayUsers(data);
 			Toastify({
-				text: "Data loaded successfully!",
+				text: "Users loaded successfully!",
 				className: "info",
 				gravity: "top",
 				position: "center",
@@ -73,10 +72,12 @@ const fetchUsers = async () => {
 				style: {
 					background: "linear-gradient(to right, #00b09b, #96c93d)",
 				}
-			}).showToast()
+			}).showToast();
+
+			displayUsers(data);
 		} else {
 			Toastify({
-				text: "Data unloaded!",
+				text: "Users unloaded!",
 				className: "error",
 				gravity: "top",
 				position: "center",
@@ -84,11 +85,9 @@ const fetchUsers = async () => {
 				style: {
 					background: "linear-gradient(to right, red, yellow)",
 				}
-			}).showToast()
-			throw new Error('Datas not full.');
+			}).showToast();
 		}
 	} catch (error) {
-		console.error('Hata:', error.message);
 		Toastify({
 			text: "Some Server Errors!",
 			className: "error",
