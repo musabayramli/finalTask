@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Token yoxdursa, admini login səhifəsinə yönləndiririk
     if (!token) {
-      window.location.href = '../html/adminLogin.html'; // Token yoxdursa, login səhifəsinə yönləndiririk
+      window.location.href = '../html/adminLogin.html'; 
       return;
     }
   
@@ -18,20 +18,19 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch(apiUrl, {
       method: 'GET',
       headers: {
-        'Authorization': `Bearer ${token}`, // Tokeni Authorization başlığına əlavə edirik
+        'Authorization': `Bearer ${token}`, 
       },
     })
     .then(response => {
       if (!response.ok) {
         throw new Error('API cavabı alınmadı');
       }
-      return response.json(); // JSON formatında cavabı alırıq
+      return response.json();
     })
     .then(data => {
       // API cavabının strukturu fərqli ola bilər, onu yoxlamaq lazımdır.
-      // Məsələn, əgər data.users varsa:
       if (data && data.users) {
-        displayUsers(data.users); // İstifadəçi məlumatlarını cədvəldə göstəririk
+        displayUsers(data.users); 
       } else {
         console.error('İstifadəçi məlumatları tapılmadı');
       }
@@ -43,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   function displayUsers(users) {
     const tableBody = document.querySelector('table tbody');
-    tableBody.innerHTML = ''; // Cədvəlin əvvəlki məzmununu təmizləyirik
+    tableBody.innerHTML = ''; 
     
     users.forEach(user => {
       const row = document.createElement('tr'); 
@@ -53,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <td>${user.email}</td>  <!-- E-poçt göstərə bilərsiniz -->
         <td>${user.role}</td>   <!-- İstifadəçinin rolu (Admin, User və s.) -->
       `;
-      tableBody.appendChild(row); // Satırı cədvələ əlavə edirik
+      tableBody.appendChild(row); 
     });
   }
   
