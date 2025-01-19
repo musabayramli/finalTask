@@ -1,19 +1,51 @@
+
+
 document.addEventListener('DOMContentLoaded', () => {
 	fetchUsers();
 });
 
+async function skeleton() {
+	const tableBody = document.querySelector('tbody');
+
+	document.querySelector('thead').innerHTML = `
+		<tr class="skeleton-row dark-skeleton">
+			<th><div class="skeleton dark"></div></th>
+			<th><div class="skeleton dark"></div></th>
+			<th><div class="skeleton dark"></div></th>
+			<th><div class="skeleton dark"></div></th>
+		</tr>
+	`;
+	tableBody.innerHTML += `
+		<tr class="skeleton-row">
+			<td><div class="skeleton"></div></td>
+			<td><div class="skeleton"></div></td>
+			<td><div class="skeleton"></div></td>
+			<td><div class="skeleton"></div></td>
+		</tr>
+		<tr class="skeleton-row">
+			<td><div class="skeleton"></div></td>
+			<td><div class="skeleton"></div></td>
+			<td><div class="skeleton"></div></td>
+			<td><div class="skeleton"></div></td>
+		</tr>
+	`;
+}
 
 const fetchUsers = async () => {
 	const apiUrl = 'https://api.sarkhanrahimli.dev/api/filmalisa/admin/users';
-
-	// localStorage-dan tokeni alırıq
 	const accessToken = localStorage.getItem('authToken');
 
-	// Token yoxdursa, admini login səhifəsinə yönləndiririk
-	if (!accessToken) {
+
+	try {
+		if (typeof accessToken === 'undefined') {
+			throw new Error('accessToken is not defined');
+		}
+	} catch (error) {
 		window.location.href = '../html/adminLogin.html';
 		return;
 	}
+
+	skeleton();
 
 	try {
 		const response = await fetch(apiUrl, {
@@ -29,30 +61,71 @@ const fetchUsers = async () => {
 		}
 
 		const { data } = await response.json();
-		console.log('Yanıt:', data);
 
 		if (data && accessToken) {
 			displayUsers(data);
+			Toastify({
+				text: "Data loaded successfully!",
+				className: "info",
+				gravity: "top",
+				position: "center",
+				duration: 1500,
+				style: {
+					background: "linear-gradient(to right, #00b09b, #96c93d)",
+				}
+			}).showToast()
 		} else {
+			Toastify({
+				text: "Data unloaded!",
+				className: "error",
+				gravity: "top",
+				position: "center",
+				duration: 1500,
+				style: {
+					background: "linear-gradient(to right, red, yellow)",
+				}
+			}).showToast()
 			throw new Error('Datas not full.');
 		}
 	} catch (error) {
 		console.error('Hata:', error.message);
+		Toastify({
+			text: "Some Server Errors!",
+			className: "error",
+			gravity: "top",
+			position: "center",
+			duration: 1500,
+			style: {
+				background: "maroon",
+			}
+		}).showToast()
 	}
 };
 
 function displayUsers(users) {
-	const tableBody = document.querySelector('table tbody');
-	tableBody.innerHTML = ''; // Cədvəlin əvvəlki məzmununu təmizləyirik
+	const tableBody = document.querySelector('table');
+	tableBody.innerHTML = '';
+	tableBody.innerHTML = `
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Full Name</th>
+				<th>Email</th>
+				<th>Created</th>
+			</tr>
+		</thead>
+	`;
 
+	const row = document.createElement('tbody');
 	users.forEach(user => {
-		const row = document.createElement('tr');
-		row.innerHTML = `
-        <td>${user.id}</td>
-        <td>${user.full_name}</td>  <!-- Burada istifadəçi adı göstərilir -->
-        <td>${user.email}</td>  <!-- E-poçt göstərə bilərsiniz -->
-        <td>${new Date(user.created_at).toLocaleDateString()}</td>   <!-- İstifadəçinin rolu (Admin, User və s.) -->
+		row.innerHTML += `
+        <tr>
+				<td>${user.id}</td>
+				<td>${user.full_name}</td>  
+				<td>${user.email}</td>  
+				<td>${new Date(user.created_at).toLocaleDateString()}</td>  
+		  </tr>
       `;
-		tableBody.appendChild(row); // Satırı cədvələ əlavə edirik
+		tableBody.appendChild(row);
 	});
 }
