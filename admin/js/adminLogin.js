@@ -1,6 +1,6 @@
 // Login düyməsi üçün click hadisəsini təyin edirik
 document.getElementById("loginBtn").addEventListener("click", async function (event) {
-  event.preventDefault(); // Formun standart göndərilməsini dayandırırıq
+  event.preventDefault();
 
   // Input dəyərlərini alırıq
   const email = document.getElementById("email").value.trim();

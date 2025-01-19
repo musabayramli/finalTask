@@ -94,6 +94,7 @@
               <th>ID</th>
               <th>Name</th>
               <th>İmage</th>
+              <th>Edit</th>
               <th>Remove</th>
             </tr>
           </thead>
@@ -107,6 +108,7 @@
             </tr>
           </tbody>
         </table>
+        <div id="pagination" class="pagination"></div>
         <!-- Remove Modal -->
         <div class="modal-overlay"></div>
         <div id="removeModal" class="removeModal">
@@ -114,6 +116,12 @@
           <div>
             <button class="okBtn">Yes</button>
             <button class="cancelBtn">No</button>
+          </div>
+        </div>
+        <div id="messageModal" class="message-modal">
+          <div class="message-modal-content">
+            <p id="messageText"></p>
+            <button onclick="hideMessageModal()">OK</button>
           </div>
         </div>
       </main>
