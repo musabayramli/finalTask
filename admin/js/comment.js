@@ -1,17 +1,73 @@
 const pageRight = document.querySelector(".page-right");
-// removeModal.classList.add("modal-hidden");
+
+
 
 //SHOW DETAILS MODAL #################################
-function showRowDetails(el) {
+function showRowDetails({movieId}) {
 	const removeModal = document.querySelector("#detailsModal");
 	const modalOverlay = document.querySelector(".modal-details-overlay");
 	const cancelBtn = document.querySelector("#detailsModal .cancelBtn");
-	const elDesc = el.closest("tr").querySelector('td:nth-child(4)').textContent;
 
 	removeModal.classList.add("modal-hidden");
 	modalOverlay.style.visibility = "visible";
 	pageRight.style.backgroundColor = "#090909";
-	removeModal.querySelector('p').innerHTML = elDesc;
+
+
+	let innerHTMLData = "";
+	fetch(`https://api.sarkhanrahimli.dev/api/filmalisa/admin/movies/${movieId}`, {
+		method: 'GET',
+			headers: {
+				'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+				'Content-Type': 'application/json'
+			}
+	})
+	.then(response => {
+		if (response.ok) {
+			return response.json();
+		}
+		throw new Error('Server Error');
+	})
+	.then(({data}) => {
+		const { title, cover_url, overview, category } = data;
+
+		innerHTMLData = `
+		<div class="table-responsive-md">
+			<table class="table table-striped-columns table-hover table-borderless table-primary align-middle">
+				<thead>
+					<caption>
+						Comment Description
+					</caption>
+	
+					<tr>
+						<th>Movie Name</th>
+						<th>Category</th>
+						<th>Cover Url</th>
+						<th>Overview</th>
+					</tr>
+				</thead>
+				<tbody class="table-group-divider">
+					<tr
+						class="table-primary"
+					>
+						<td scope="row">${title}</td>
+						<td>${category.name}</td>
+						<td><img src="${cover_url}" /></td>
+						<td>${overview.slice(0,20)}</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					
+				</tfoot>
+			</table>
+		</div>
+		`;
+
+		removeModal.querySelector('div:first-child').innerHTML = innerHTMLData;
+	})
+	.catch(error => {
+		console.error('Fetch error:', error);
+	});
+
 
 	cancelBtn.onclick = () => {
 		modalDetailsHide();
@@ -29,30 +85,32 @@ function modalDetailsHide() {
 
 
 //REMOVE MODAL #################################
-function removeRow(el) {
+function removeRow(el, obj) {
 	const removeModal = document.querySelector("#removeModal");
 	const modalOverlay = document.querySelector(".modal-remove-overlay");
 	const cancelBtn = document.querySelector("#removeModal .cancelBtn");
 	const okBtn = document.querySelector("#removeModal .okBtn");
-	const elId = el.closest("tr").querySelector('td:first-child').textContent;
 
 	removeModal.classList.add("modal-hidden");
 	modalOverlay.style.visibility = "visible";
 	pageRight.style.backgroundColor = "#090909";
+
 	okBtn.onclick = () => {
 		modalHide();
 		const row = el.closest("tr");
 		setTimeout(() => {
 			if (row) {
 				row.remove();
-				deleteComments(elId);
+				deleteComments(obj);
 			}
 		}, 300);
 	};
+
 	cancelBtn.onclick = () => {
 		modalHide();
 	};
 }
+
 //HIDE REMOVE MODAL
 function modalHide() {
 	const removeModal = document.querySelector("#removeModal");
@@ -180,8 +238,8 @@ const fetchComments = async () => {
 				}
 			}).showToast();
 
-
 			notDataFound();
+
 			return;
 		}
 	} catch (error) {
@@ -213,20 +271,20 @@ function displayComments(comments) {
 	`;
 
 	const row = document.createElement('tbody');
-	comments.forEach(comment => {
+	comments.forEach(({ comment, movie, created_at, id }) => {
 		row.innerHTML += `
         <tr>
-				<td class="title-cell">${comment.comment}</td>
-				<td>${comment.movie.title}</td>
-				<td>${new Date(comment.created_at).toLocaleDateString()}</td>
+				<td class="title-cell">${comment}</td>
+				<td>${movie.title}</td>
+				<td>${new Date(created_at).toLocaleDateString()}</td>
 				<td class="action-icons">
 					<i
 						class="fas fa-eye"
-						onclick="showRowDetails(this)"
+						onclick="showRowDetails({movieId: ${movie.id}})"
 					></i>
 					<i
 						class="remove fas fa-trash"
-						onclick="removeRow(this)"
+						onclick="removeRow(this, {id:${id}, movieId:${movie.id}})"
 					></i>
 				</td> 
 		  </tr>
@@ -239,8 +297,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	fetchComments();
 });
 
-const deleteComments = async (dataObj) => {
-	const apiUrl = `https://api.sarkhanrahimli.dev/api/filmalisa/admin/movies/${dataObj.movieId}/comment/${dataObj.id}`;
+const deleteComments = async ({ id, movieId }) => {
+	const apiUrl = `https://api.sarkhanrahimli.dev/api/filmalisa/admin/movies/${movieId}/comment/${id}`;
 	const accessToken = localStorage.getItem('authToken');
 
 
