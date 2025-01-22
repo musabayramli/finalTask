@@ -256,41 +256,64 @@ const fetchComments = async () => {
 	}
 };
 
-function displayComments(comments) {
+function displayComments(comments, currentPage = 1, rowsPerPage = 5) {
 	const tableBody = document.querySelector('table');
 	tableBody.innerHTML = '';
 	tableBody.innerHTML = `
-		<thead>
-			<tr>
-				<th class="title-head">Comment</th>
-				<th>Movie</th>
-				<th>Created At</th>
-				<th>Operate</th>
-			</tr>
-		</thead>
+		 <thead>
+			  <tr>
+					<th class="title-head">Comment</th>
+					<th>Movie</th>
+					<th>Created At</th>
+					<th>Operate</th>
+			  </tr>
+		 </thead>
 	`;
 
 	const row = document.createElement('tbody');
-	comments.forEach(({ comment, movie, created_at, id }) => {
-		row.innerHTML += `
-        <tr>
-				<td class="title-cell">${comment}</td>
-				<td>${movie.title}</td>
-				<td>${new Date(created_at).toLocaleDateString()}</td>
-				<td class="action-icons">
-					<i
-						class="fas fa-eye"
-						onclick="showRowDetails({movieId: ${movie.id}})"
-					></i>
-					<i
-						class="remove fas fa-trash"
-						onclick="removeRow(this, {id:${id}, movieId:${movie.id}})"
-					></i>
-				</td> 
-		  </tr>
-      `;
-		tableBody.appendChild(row);
+	const start = (currentPage - 1) * rowsPerPage;
+	const end = start + rowsPerPage;
+	const paginatedComments = comments.slice(start, end);
+
+	paginatedComments.forEach(({ comment, movie, created_at, id }) => {
+		 row.innerHTML += `
+			  <tr>
+					<td class="title-cell">${comment}</td>
+					<td>${movie.title}</td>
+					<td>${new Date(created_at).toLocaleDateString()}</td>
+					<td class="action-icons">
+						 <i
+							  class="fas fa-eye"
+							  onclick="showRowDetails({movieId: ${movie.id}})"
+						 ></i>
+						 <i
+							  class="remove fas fa-trash"
+							  onclick="removeRow(this, {id:${id}, movieId:${movie.id}})"
+						 ></i>
+					</td> 
+			  </tr>
+		 `;
 	});
+
+	tableBody.appendChild(row);
+	setupPagination(comments, currentPage, rowsPerPage);
+}
+
+function setupPagination(comments, currentPage, rowsPerPage) {
+	const paginationDiv = document.getElementById('pagination');
+	paginationDiv.innerHTML = '';
+	const totalPages = Math.ceil(comments.length / rowsPerPage);
+
+	for (let i = 1; i <= totalPages; i++) {
+		 const pageButton = document.createElement('button');
+		 pageButton.innerText = i;
+		 pageButton.className = 'pagination-button';
+		 pageButton.addEventListener('click', () => displayComments(comments, i, rowsPerPage));
+		 if (i === currentPage) {
+			  pageButton.disabled = true;
+		 }
+		 paginationDiv.appendChild(pageButton);
+	}
 }
 
 document.addEventListener('DOMContentLoaded', () => {

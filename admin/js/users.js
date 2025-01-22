@@ -96,30 +96,53 @@ const fetchUsers = async () => {
 		}).showToast()
 	}
 };
-function displayUsers(users) {
+function displayUsers(users, currentPage = 1, rowsPerPage = 15) {
 	const tableBody = document.querySelector('table');
 	tableBody.innerHTML = '';
 	tableBody.innerHTML = `
-      <thead>
-         <tr>
-            <th>ID</th>
-            <th>Full Name</th>
-            <th>Email</th>
-            <th>Created</th>
-         </tr>
-      </thead>
-   `;
+		 <thead>
+			  <tr>
+					<th>ID</th>
+					<th>Full Name</th>
+					<th>Email</th>
+					<th>Created</th>
+			  </tr>
+		 </thead>
+	`;
 
 	const row = document.createElement('tbody');
-	users.forEach(user => {
-		row.innerHTML += `
-        <tr>
-            <td>${user.id}</td>
-            <td>${user.full_name}</td>
-            <td>${user.email}</td>
-            <td>${new Date(user.created_at).toLocaleDateString()}</td>
-        </tr>
-      `;
-		tableBody.appendChild(row);
+	const start = (currentPage - 1) * rowsPerPage;
+	const end = start + rowsPerPage;
+	const paginatedUsers = users.slice(start, end);
+
+	paginatedUsers.forEach(user => {
+		 row.innerHTML += `
+			  <tr>
+					<td>${user.id}</td>
+					<td>${user.full_name}</td>
+					<td>${user.email}</td>
+					<td>${new Date(user.created_at).toLocaleDateString()}</td>
+			  </tr>
+		 `;
 	});
+
+	tableBody.appendChild(row);
+	setupPagination(users, currentPage, rowsPerPage);
+}
+
+function setupPagination(users, currentPage, rowsPerPage) {
+	const paginationDiv = document.getElementById('pagination');
+	paginationDiv.innerHTML = '';
+	const totalPages = Math.ceil(users.length / rowsPerPage);
+
+	for (let i = 1; i <= totalPages; i++) {
+		 const pageButton = document.createElement('button');
+		 pageButton.innerText = i;
+		 pageButton.className = 'pagination-button';
+		 pageButton.addEventListener('click', () => displayUsers(users, i, rowsPerPage));
+		 if (i === currentPage) {
+			  pageButton.disabled = true;
+		 }
+		 paginationDiv.appendChild(pageButton);
+	}
 }
