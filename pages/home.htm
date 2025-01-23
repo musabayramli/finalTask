@@ -26,212 +26,30 @@
                 <img src="images/logo.png" alt="logo" />
             </div>
             <ul>
-                <li><a href="#"><i class="fa-solid fa-house-chimney-window"></i></a></li>
-                <li><a href="./pages/searchResult.htm"><i class="fa-solid fa-layer-group"></i></a></li>
-                <li><a href="./pages/account.htm"><i class="fa-solid fa-tv"></i></a></li>
-                <li><a href="./pages/favoritePage.htm"><i class="fa-regular fa-star"></i></a></li>
+                <li><a href="home.htm"><i class="fa-solid fa-house-chimney-window"></i></a></li>
+                <li><a href="searchResult.htm"><i class="fa-solid fa-layer-group"></i></a></li>
+                <li><a href="account.htm"><i class="fa-solid fa-tv"></i></a></li>
+                <li><a href="favoritePage.htm"><i class="fa-regular fa-star"></i></a></li>
             </ul>
         </nav>
         <div class="swiper mySwiperHeader">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" >
-                    <img src="../images/imagess.jpeg" alt="">
-                    <div class="header-content">
-                        <h1>Godzilla vs. Kong</h1>
-                        <p>In a time when monsters walk the Earth, humanity's fight for its future sets Godzilla and
-                            Kong on a collision course.</p>
-                        <button>Watch Now</button>
-                    </div>
-                </div>
-                <div class="swiper-slide" >
-                    <img src="../images/imagess.jpeg" alt="">
-                    <div class="header-content">
-                        <h1>Epic Adventure</h1>
-                        <p>Discover the untold stories of heroes as they embark on an epic journey to save their world.
-                        </p>
-                        <button>Explore</button>
-                    </div>
-                </div>
-                <div class="swiper-slide" >
-                    <img src="../images/imagess.jpeg" alt="">
-                    <div class="header-content">
-                        <h1>Fantasy World</h1>
-                        <p>Step into a magical world filled with wonders and unimaginable adventures.</p>
-                        <button>Discover</button>
-                    </div>
-                </div>
+                <!-- Dinamik məlumatlar buraya əlavə olunacaq -->
             </div>
             <div class="swiper-pagination"></div>
         </div>
     </header>
-    <main>
-        <section class="movie-carousel">
-            <h2>Action <a href="#">&#x276F;</a></h2>
-            <div class="swiper mySwiperMovies">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="../images/img.png" alt="Wonder Woman 1984" />
-                        <div class="box">
-                            <span>Fantasy</span>
-                            <p>Wonder Woman 1984</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="../images/img1.png" alt="Zack Snyder's Justice League" />
-                        <div class="box">
-                            <span>Fantasy</span>
-                            <p>Zack Snyder's Justice League</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="../images/img2.png" alt="Mortal Kombat" />
-                        <div class="box">
-                            <span>Fantasy</span>
-                            <p>Mortal Kombat</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="../images/img3.png" alt="The Courier" />
-                        <div class="box">
-                            <span>Drama</span>
-                            <p>The Courier</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="../images/img3.png" alt="Thunder Force" />
-                        <div class="box">
-                            <span>Action</span>
-                            <p>Thunder Force</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-button-next swiper-movies-next"></div>
-                <div class="swiper-button-prev swiper-movies-prev"></div>
-            </div>
-        </section>
-        <section class="movie-carousel">
-            <h2>Comedy <a href="#">&#x276F;</a></h2>
-            <div class="swiper mySwiperComedy">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="../images/img.png" alt="Comedy Movie 1" />
-                        <div class="box">
-                            <span>Comedy</span>
-                            <p>Funny Movie 1</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="../images/img1.png" alt="Comedy Movie 2" />
-                        <div class="box">
-                            <span>Comedy</span>
-                            <p>Funny Movie 2</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="../images/img2.png" alt="Comedy Movie 3" />
-                        <div class="box">
-                            <span>Comedy</span>
-                            <p>Funny Movie 3</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="../images/img3.png" alt="Comedy Movie 4" />
-                        <div class="box">
-                            <span>Comedy</span>
-                            <p>Funny Movie 4</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="../images/img3.png" alt="Comedy Movie 4" />
-                        <div class="box">
-                            <span>Comedy</span>
-                            <p>Funny Movie 4</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-button-next swiper-comedy-next"></div>
-                <div class="swiper-button-prev swiper-comedy-prev"></div>
-            </div>
-        </section>
-
+    
+    <main id="main-content">
+        <!-- Karusellər dinamik olaraq burada yaradılacaq -->
     </main>
 
-
-
-    <!-- Swiper -->
+    <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-    <script>// Header Swiper
-        var swiperHeader = new Swiper(".mySwiperHeader", {
-            loop: true,
-            pagination: {
-                el: ".swiper-pagination",
-                dynamicBullets: true,
-            },
-        });
-
-
-        var swiperMovies = new Swiper(".mySwiperMovies", {
-            slidesPerView: 4,
-            spaceBetween: 20,
-            loop: true,
-            navigation: {
-                nextEl: ".swiper-movies-next",
-                prevEl: ".swiper-movies-prev",
-            },
-            breakpoints: {
-                480: {
-                    slidesPerView: 1,
-                    spaceBetween: 10,
-                },
-                640: {
-                    slidesPerView: 2,
-                    spaceBetween: 15,
-                },
-                768: {
-                    slidesPerView: 3,
-                    spaceBetween: 20,
-                },
-                1024: {
-                    slidesPerView: 4,
-                    spaceBetween: 25,
-                },
-            },
-        });
-
-
-        var swiperComedy = new Swiper(".mySwiperComedy", {
-            slidesPerView: 4,
-            spaceBetween: 20,
-            loop: true,
-            navigation: {
-                nextEl: ".swiper-comedy-next",
-                prevEl: ".swiper-comedy-prev",
-            },
-            breakpoints: {
-                480: {
-                    slidesPerView: 1,
-                    spaceBetween: 10,
-                },
-                640: {
-                    slidesPerView: 2,
-                    spaceBetween: 15,
-                },
-                768: {
-                    slidesPerView: 3,
-                    spaceBetween: 20,
-                },
-                1024: {
-                    slidesPerView: 4,
-                    spaceBetween: 25,
-                },
-            },
-        });
-
-
-
-
-    </script>
+    <!-- Swiper Config -->
+    <script src="../js/swiperConfig.js"></script>
+    <!-- Main Script -->
+    <script src="../js/home.js"></script>
 </body>
 
 </html>

@@ -15,7 +15,7 @@ nav {
     padding: 20px;
     background: rgba(0, 0, 0, 0.6);
 }
-nav .logo{
+nav .logo {
     margin-bottom: 50px;
 }
 
@@ -38,7 +38,6 @@ nav ul li a i {
 nav ul li a:hover i {
     color: #0feffd;
 }
-
 
 .header-content {
     padding-left: 120px;
@@ -74,21 +73,21 @@ nav ul li a:hover i {
 }
 
 /* Header Swiper */
-header .mySwiperHeader {
+header {
     width: 100%;
-    height: 100%;
+    height: 100vh;
 }
 
-header .mySwiperHeader .swiper-slide {
+header .swiper-slide {
     position: relative;
     color: white;
 }
-header .mySwiperHeader .swiper-slide img{
+header .swiper-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-header .mySwiperHeader .swiper-slide .header-content{
+header .swiper-slide .header-content {
     position: absolute;
     left: 0;
     top: 50%;
@@ -107,20 +106,27 @@ header .mySwiperHeader .swiper-slide .header-content{
     margin-bottom: 20px;
 }
 
-.mySwiperMovies, .mySwiperComedy {
+.mySwiperMovies,
+.mySwiperComedy {
     padding: 20px;
 }
 
-.mySwiperMovies .swiper-slide, .mySwiperComedy .swiper-slide {
+.swiper .swiper-slide {
     width: 150px;
     border-radius: 10px;
     position: relative;
     overflow: hidden;
 }
+.movie-card{
+    height: 520px;
+}
 
-.mySwiperMovies .swiper-slide img, .mySwiperComedy .swiper-slide img {
+.swiper-slide img {
     width: 100%;
+    height: 100%; 
     object-fit: cover;
+    overflow: hidden;
+    border-radius: 10px;
 }
 
 .box {
@@ -139,6 +145,7 @@ header .mySwiperHeader .swiper-slide .header-content{
     justify-content: flex-end;
     gap: 5px;
     align-items: start;
+    pointer-events: none;
 }
 
 .box p {
@@ -153,13 +160,14 @@ header .mySwiperHeader .swiper-slide .header-content{
     border-radius: 4px;
 }
 
-.mySwiperMovies .swiper-button-next, .mySwiperMovies .swiper-button-prev,
-.mySwiperComedy .swiper-button-next, .mySwiperComedy .swiper-button-prev {
+.mySwiperMovies .swiper-button-next,
+.mySwiperMovies .swiper-button-prev,
+.mySwiperComedy .swiper-button-next,
+.mySwiperComedy .swiper-button-prev {
     display: none;
 }
 
 /* Media Queries */
-
 
 @media (max-width: 768px) {
     .header-content {
@@ -199,7 +207,8 @@ header .mySwiperHeader .swiper-slide .header-content{
         padding-left: 20px;
     }
 
-    .mySwiperMovies .swiper-slide, .mySwiperComedy .swiper-slide {
+    .mySwiperMovies .swiper-slide,
+    .mySwiperComedy .swiper-slide {
         width: 130px;
     }
 }
@@ -218,12 +227,15 @@ header .mySwiperHeader .swiper-slide .header-content{
         font-size: 0.8rem;
     }
 
-    .mySwiperMovies .swiper-slide, .mySwiperComedy .swiper-slide {
+    .mySwiperMovies .swiper-slide,
+    .mySwiperComedy .swiper-slide {
         width: 100px;
     }
 
-    .mySwiperMovies .swiper-button-next, .mySwiperMovies .swiper-button-prev,
-    .mySwiperComedy .swiper-button-next, .mySwiperComedy .swiper-button-prev {
+    .mySwiperMovies .swiper-button-next,
+    .mySwiperMovies .swiper-button-prev,
+    .mySwiperComedy .swiper-button-next,
+    .mySwiperComedy .swiper-button-prev {
         display: none;
     }
 }
