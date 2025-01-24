@@ -1,9 +1,7 @@
 const pageRight = document.querySelector(".page-right");
 
-
-
 //SHOW DETAILS MODAL #################################
-function showRowDetails({movieId}) {
+function showRowDetails({ movieId }) {
 	const removeModal = document.querySelector("#detailsModal");
 	const modalOverlay = document.querySelector(".modal-details-overlay");
 	const cancelBtn = document.querySelector("#detailsModal .cancelBtn");
@@ -16,21 +14,21 @@ function showRowDetails({movieId}) {
 	let innerHTMLData = "";
 	fetch(`https://api.sarkhanrahimli.dev/api/filmalisa/admin/movies/${movieId}`, {
 		method: 'GET',
-			headers: {
-				'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
-				'Content-Type': 'application/json'
-			}
-	})
-	.then(response => {
-		if (response.ok) {
-			return response.json();
+		headers: {
+			'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+			'Content-Type': 'application/json'
 		}
-		throw new Error('Server Error');
 	})
-	.then(({data}) => {
-		const { title, cover_url, overview, category } = data;
+		.then(response => {
+			if (response.ok) {
+				return response.json();
+			}
+			throw new Error('Server Error');
+		})
+		.then(({ data }) => {
+			const { title, cover_url, overview, category } = data;
 
-		innerHTMLData = `
+			innerHTMLData = `
 		<div class="table-responsive-md">
 			<table class="table table-striped-columns table-hover table-borderless table-primary align-middle">
 				<thead>
@@ -52,7 +50,7 @@ function showRowDetails({movieId}) {
 						<td scope="row">${title}</td>
 						<td>${category.name}</td>
 						<td><img src="${cover_url}" /></td>
-						<td>${overview.slice(0,20)}</td>
+						<td>${overview.slice(0, 20)}</td>
 					</tr>
 				</tbody>
 				<tfoot>
@@ -62,11 +60,11 @@ function showRowDetails({movieId}) {
 		</div>
 		`;
 
-		removeModal.querySelector('div:first-child').innerHTML = innerHTMLData;
-	})
-	.catch(error => {
-		console.error('Fetch error:', error);
-	});
+			removeModal.querySelector('div:first-child').innerHTML = innerHTMLData;
+		})
+		.catch(error => {
+			console.error('Fetch error:', error);
+		});
 
 
 	cancelBtn.onclick = () => {
@@ -84,7 +82,7 @@ function modalDetailsHide() {
 }
 
 
-//REMOVE MODAL #################################
+//SHOW REMOVE MODAL #################################
 function removeRow(el, obj) {
 	const removeModal = document.querySelector("#removeModal");
 	const modalOverlay = document.querySelector(".modal-remove-overlay");
@@ -124,7 +122,6 @@ function modalHide() {
 
 
 // API -----------------------
-
 function skeleton() {
 	const tableBody = document.querySelector('tbody');
 
@@ -265,7 +262,8 @@ function displayComments(comments, currentPage = 1, rowsPerPage = 5) {
 					<th class="title-head">Comment</th>
 					<th>Movie</th>
 					<th>Created At</th>
-					<th>Operate</th>
+					<th>See</th>
+					<th>Delete</th>
 			  </tr>
 		 </thead>
 	`;
@@ -276,7 +274,7 @@ function displayComments(comments, currentPage = 1, rowsPerPage = 5) {
 	const paginatedComments = comments.slice(start, end);
 
 	paginatedComments.forEach(({ comment, movie, created_at, id }) => {
-		 row.innerHTML += `
+		row.innerHTML += `
 			  <tr>
 					<td class="title-cell">${comment}</td>
 					<td>${movie.title}</td>
@@ -284,10 +282,12 @@ function displayComments(comments, currentPage = 1, rowsPerPage = 5) {
 					<td class="action-icons">
 						 <i
 							  class="fas fa-eye"
-							  onclick="showRowDetails({movieId: ${movie.id}})"
+							  onclick="showRowDetails({movieId: ${movie.id}})" 
 						 ></i>
-						 <i
-							  class="remove fas fa-trash"
+						 
+					</td> 
+					<td class="action-icons">
+						<i class="remove fas fa-trash"
 							  onclick="removeRow(this, {id:${id}, movieId:${movie.id}})"
 						 ></i>
 					</td> 
@@ -305,14 +305,14 @@ function setupPagination(comments, currentPage, rowsPerPage) {
 	const totalPages = Math.ceil(comments.length / rowsPerPage);
 
 	for (let i = 1; i <= totalPages; i++) {
-		 const pageButton = document.createElement('button');
-		 pageButton.innerText = i;
-		 pageButton.className = 'pagination-button';
-		 pageButton.addEventListener('click', () => displayComments(comments, i, rowsPerPage));
-		 if (i === currentPage) {
-			  pageButton.disabled = true;
-		 }
-		 paginationDiv.appendChild(pageButton);
+		const pageButton = document.createElement('button');
+		pageButton.innerText = i;
+		pageButton.className = 'pagination-button';
+		pageButton.addEventListener('click', () => displayComments(comments, i, rowsPerPage));
+		if (i === currentPage) {
+			pageButton.disabled = true;
+		}
+		paginationDiv.appendChild(pageButton);
 	}
 }
 

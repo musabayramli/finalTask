@@ -6,7 +6,7 @@ main {
   margin-right: 75px;
 }
 table {
-  width: 40%;
+  width: 100%;
   border-collapse: collapse;
   border-radius: 8px;
   overflow: hidden;
@@ -37,6 +37,7 @@ td {
    margin-top: 30px;
    width: 100%;
    display: flex;
+	justify-content: center;
    flex-wrap: wrap;
    align-items: center;
 
