@@ -1,41 +1,14 @@
-var swiperComedy = new Swiper(".mySwiperComedy", {
-    slidesPerView: 1,
-    loop: true,
-    breakpoints: {
-        320: {
-            slidesPerView: 1,
-            spaceBetween: 10,
-        },
-        480: {
-            slidesPerView: 2,
-            spaceBetween: 15,
-        },
-        768: {
-            slidesPerView: 3,
-            spaceBetween: 20,
-        },
-        1024: {
-            slidesPerView: 5,
-            spaceBetween: 25,
-        },
-        1440: {
-            slidesPerView: 6,
-            spaceBetween: 30,
-        },
-    },
-});
-
-// API-dən məlumatları çəkmək üçün funksiya
+// API-dən favorite filmləri çəkmək üçün funksiya
 async function fetchFavoriteMovies() {
-    const API_URL = "http://localhost:3000/api/filmalisa/movies/favorites"; // Local API
-    const token = "Bearer YOUR_TOKEN_HERE"; // Buraya öz tokeninizi yazın
+    const API_URL = "https://api.sarkhanrahimli.dev/api/filmalisa/movies/favorites";
+    const token = `Bearer ${localStorage.getItem("authToken")}`; 
 
     try {
         const response = await fetch(API_URL, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": token, // Token başlığı
+                "Authorization": token,
             },
         });
 
@@ -43,17 +16,25 @@ async function fetchFavoriteMovies() {
             throw new Error("API-dən məlumat alınmadı");
         }
 
-        const data = await response.json();
+        const { data } = await response.json();
+        console.log("Gələn məlumat:", data); 
+
+        const movies = data; 
+        const moviesContainer = document.getElementById("favorite-movies");
+
+        if (!movies || movies.length === 0) {
+            moviesContainer.innerHTML = "<p>Sevimli filmlər tapılmadı.</p>";
+            return;
+        }
 
         // Məlumatları DOM-a əlavə et
-        const moviesContainer = document.getElementById("favorite-movies");
-        data.forEach(movie => {
+        movies.forEach(movie => {
             const slide = document.createElement("div");
             slide.classList.add("swiper-slide");
             slide.innerHTML = `
-                <img src="${movie.image}" alt="${movie.title}" />
+                <img src="${movie.cover_url}" alt="${movie.title}" />
                 <div class="box">
-                    <span>${movie.genre}</span>
+                    <span>${movie.genre || "Unknown Genre"}</span>
                     <p>${movie.title}</p>
                 </div>
             `;
@@ -67,5 +48,4 @@ async function fetchFavoriteMovies() {
     }
 }
 
-// Funksiyanı çağır
 fetchFavoriteMovies();
