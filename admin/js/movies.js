@@ -152,22 +152,25 @@ function checkImageUrl() {
 	const url = input.value;
 
 	if (url) {
+
 		const testImg = new Image();
 
 		testImg.onload = function () {
-			img.src = url;
-		}
+			console.log('goodimg', url);
+			img.src = url; 
+		};
 
 		testImg.onerror = function () {
+			console.log('errimg', url);
 			img.src = 'https://www.4willis.com/wp-content/uploads/2019/10/insert-image-here.jpg';
-		}
+		};
 
-		testImg.src = '';
-
+		testImg.src = url; 
 	} else {
-		img.src = 'https://www.4willis.com/wp-content/uploads/2019/10/insert-image-here.jpg';
+		img.src = 'https://www.4willis.com/wp-content/uploads/2019/10/insert-image-here.jpg'; 
 	}
 }
+
 
 // Show Movie Modal
 function modalShow() {
@@ -251,7 +254,7 @@ function editMovieRow(movieId) {
 					<div class="form">
 						<div class="checkbox">
 							<label for="check">Adult</label>
-							<input id="check" type="checkbox" class="movieAdult" checked="${adult}" />
+							<input id="check" type="checkbox" class="movieAdult" ${adult ? 'checked' : ''} />
 						</div>
 						<button class="submit EditMovie" onclick="editMovie(${movieId})">
 							Edit
@@ -266,6 +269,7 @@ function editMovieRow(movieId) {
 		`;
 
 			removeModal.innerHTML = innerHTMLData;
+			document.querySelector('.movieCoverUrl').addEventListener('input', checkImageUrl);
 		})
 		.catch(error => {
 			console.error('Fetch error:', error);
