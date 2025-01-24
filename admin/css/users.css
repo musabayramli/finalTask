@@ -6,7 +6,7 @@ main {
   margin-right: 75px;
 }
 table {
-  width: 40%;
+  width: 100%;
   border-collapse: collapse;
   border-radius: 8px;
   overflow: hidden;
@@ -33,3 +33,23 @@ td {
   font-size: 14px;
 }
 
+#pagination {
+   margin-top: 30px;
+   width: 100%;
+   display: flex;
+	justify-content: center;
+   flex-wrap: wrap;
+   align-items: center;
+
+   button {
+      padding: 10px;
+      background-color: #58209d;
+		color: white;
+		border: 0;
+		border-radius: 5px;
+      margin-right: 5px;
+   }
+	button[disabled] {
+		background-color: grey;
+	}
+}

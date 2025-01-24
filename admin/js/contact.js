@@ -118,7 +118,7 @@ const fetchContacts = async () => {
 
 
 	try {
-		if (typeof accessToken === 'undefined') {
+		if (typeof accessToken === 'undefined' || accessToken == null) {
 			throw new Error('accessToken is not defined');
 		}
 	} catch (error) {
@@ -198,45 +198,71 @@ const fetchContacts = async () => {
 	}
 };
 
-function displayContacts(contacts) {
+function displayContacts(contacts, currentPage = 1, rowsPerPage = 5) {
 	const tableBody = document.querySelector('table');
 	tableBody.innerHTML = '';
 	tableBody.innerHTML = `
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th class="title-head">Title</th>
-				<th>Email</th>
-				<th>Reason</th>
-				<th>Created</th>
-				<th>Operate</th>
-			</tr>
-		</thead>
+		 <thead>
+			  <tr>
+					<th>ID</th>
+					<th class="title-head">Title</th>
+					<th>Email</th>
+					<th>Reason</th>
+					<th>Created</th>
+					<th>See</th>
+					<th>Delete</th>
+			  </tr>
+		 </thead>
 	`;
 
 	const row = document.createElement('tbody');
-	contacts.forEach(contact => {
+	const start = (currentPage - 1) * rowsPerPage;
+	const end = start + rowsPerPage;
+	const paginatedContacts = contacts.slice(start, end);
+
+	paginatedContacts.forEach(contact => {
 		row.innerHTML += `
-        <tr>
-				<td>${contact.id}</td>
-				<td class="title-cell">${contact.full_name}</td>
-				<td>${contact.email}</td>
-				<td>${contact.reason}</td>
-				<td>${new Date(contact.created_at).toLocaleDateString()}</td>
-				<td class="action-icons">
-					<i
-						class="fas fa-eye"
-						onclick="showRowDetails(this)"
-					></i>
-					<i
-						class="remove fas fa-trash"
-						onclick="removeRow(this)"
-					></i>
-				</td> 
-		  </tr>
-      `;
-		tableBody.appendChild(row);
+			  <tr>
+					<td>${contact.id}</td>
+					<td class="title-cell">${contact.full_name}</td>
+					<td>${contact.email}</td>
+					<td>${contact.reason}</td>
+					<td>${new Date(contact.created_at).toLocaleDateString()}</td>
+					<td class="action-icons">
+						 <i
+							  class="fas fa-eye"
+							  onclick="showRowDetails(this)"
+						 ></i>
+					</td> 
+					<td class="action-icons">
+						 <i
+							  class="remove fas fa-trash"
+							  onclick="removeRow(this)"
+						 ></i>
+					</td> 
+			  </tr>
+		 `;
 	});
+
+	tableBody.appendChild(row);
+	setupPagination(contacts, currentPage, rowsPerPage);
+}
+
+function setupPagination(contacts, currentPage, rowsPerPage) {
+	const paginationDiv = document.getElementById('pagination');
+	paginationDiv.innerHTML = '';
+	const totalPages = Math.ceil(contacts.length / rowsPerPage);
+
+	for (let i = 1; i <= totalPages; i++) {
+		const pageButton = document.createElement('button');
+		pageButton.innerText = i;
+		pageButton.className = 'pagination-button';
+		pageButton.addEventListener('click', () => displayContacts(contacts, i, rowsPerPage));
+		if (i === currentPage) {
+			pageButton.disabled = true;
+		}
+		paginationDiv.appendChild(pageButton);
+	}
 }
 
 document.addEventListener('DOMContentLoaded', () => {

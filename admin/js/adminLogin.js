@@ -1,3 +1,5 @@
+localStorage.clear();
+
 // Login düyməsi üçün click hadisəsini təyin edirik
 document.getElementById("loginBtn").addEventListener("click", async function (event) {
   event.preventDefault();
