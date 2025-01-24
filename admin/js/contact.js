@@ -209,7 +209,8 @@ function displayContacts(contacts, currentPage = 1, rowsPerPage = 5) {
 					<th>Email</th>
 					<th>Reason</th>
 					<th>Created</th>
-					<th>Operate</th>
+					<th>See</th>
+					<th>Delete</th>
 			  </tr>
 		 </thead>
 	`;
@@ -232,6 +233,8 @@ function displayContacts(contacts, currentPage = 1, rowsPerPage = 5) {
 							  class="fas fa-eye"
 							  onclick="showRowDetails(this)"
 						 ></i>
+					</td> 
+					<td class="action-icons">
 						 <i
 							  class="remove fas fa-trash"
 							  onclick="removeRow(this)"

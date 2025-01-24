@@ -64,7 +64,6 @@ const fetchDatas = async () => {
 };
 
 function displayDatas(datas) {
-	console.log(datas);
 	document.querySelectorAll('main div').forEach((el, ind) => {
 		const span = el.querySelector('span');
 		span.className = `${Object.entries(datas)[ind][0]} number-animate`;
