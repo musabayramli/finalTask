@@ -173,7 +173,7 @@ const fetchComments = async () => {
 
 
 	try {
-		if (typeof accessToken === 'undefined') {
+		if (typeof accessToken === 'undefined' || accessToken == null) {
 			throw new Error('accessToken is not defined');
 		}
 	} catch (error) {
