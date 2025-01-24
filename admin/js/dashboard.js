@@ -6,17 +6,14 @@ const fetchDatas = async () => {
 	const apiUrl = 'https://api.sarkhanrahimli.dev/api/filmalisa/admin/dashboard';
 	const accessToken = localStorage.getItem('authToken');
 
-
 	try {
-		if (typeof accessToken === 'undefined') {
+		if (typeof accessToken === 'undefined' || accessToken == null) {
 			throw new Error('accessToken is not defined');
 		}
 	} catch (error) {
 		window.location.href = '../html/adminLogin.html';
 		return;
 	}
-
-	// skeleton();
 
 	try {
 		const response = await fetch(apiUrl, {
