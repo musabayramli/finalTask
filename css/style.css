@@ -1,229 +1,305 @@
-/* Ümumi Düzəlişlər */
+/* Fonts Numan */
+@import url("https://fonts.googleapis.com/css2?family=Numans&display=swap");
+/* Roboto Font */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 body {
-    background-color: black;
+    background: #000;
 }
-
-/* Header */
 header {
-    height: 100vh;
+    z-index: 5;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 92px;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+header .logo img {
+    width: 60px;
+    height: 62px;
+}
+header .logo span {
+    font: 400 3rem Numans;
+    letter-spacing: -0.02em;
+    color: #c3c8d4;
+}
+header .btn {
+    background: #9b51e0;
+    border-radius: 4px;
+    color: #fff;
+    width: 77px;
+    height: 32px;
+    border: none;
+    text-transform: capitalize;
+}
+
+/* Main */
+
+/* Section bir Start */
+
+#sec1 {
     position: relative;
-    overflow: hidden;
+    height: 100vh;
+    background: url("../images/bgImage.jpeg") center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#sec1::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(#0609083f, #150114b7, #0903027c);
+}
+.sec1-content {
+    text-align: center;
+    color: #fff;
+    z-index: 3;
+}
+.sec1-content h1 {
+    font: 700 3rem Roboto;
+}
+.sec1-content h5 {
+    font: 400 1.5rem Roboto;
+    margin-top: 10px;
+}
+.sec1-content p {
+    font: 400 1.3rem Roboto;
+    margin: 10px 0;
+}
+.sec1-content button {
+    width: 208px;
+    padding: 18px 24px;
+    background: #9b51e0;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+}
+.sec1-content button span {
+    font-size: 16px;
+}
+.sec1-content input {
+    width: 368px;
+    border-radius: 4px;
+    padding: 18px 16px;
+    background: #00000080;
+    border: 1px solid #00000080;
+    outline: none;
+    color: #fff;
 }
 
-nav {
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.6);
+/* Section 1 End */
+
+/* Section 2 Start */
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    color: #fff;
+    margin: 40px 0;
+    position: relative;
 }
-nav .logo{
-    margin-bottom: 50px;
+.row .col6 {
+    flex: 1;
+}
+.row .col6 {
+    flex: 1;
 }
 
-nav .logo img {
-    height: 50px;
+.row .col6 img {
+    width: 100%;
+    margin-bottom: 60px;
 }
 
-nav ul {
+#sec2 .col6 h4 {
+    font: 700 3rem Roboto;
+    line-height: 62px;
+}
+
+#sec2 .col6 p {
+    font: 400 1.5rem Roboto;
+    line-height: 30px;
+}
+.row::after {
+    content: "";
+    position: absolute;
+    width: 98vw;
+    transform: translateX(-50%);
+    left: 50%;
+    height: 4px;
+    background-color: #343232;
+    bottom: -10px;
+}
+.input-container {
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+}
+.input-container form {
+    margin: 10px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 50px;
-}
-
-nav ul li a i {
-    font-size: 2.3rem;
-    color: #fff;
-}
-
-nav ul li a:hover i {
-    color: #0feffd;
-}
-
-
-.header-content {
-    padding-left: 120px;
-    display: flex;
     justify-content: center;
-    flex-direction: column;
-    align-items: start;
+    gap: 10px;
 }
-
-.header-content h1 {
-    font-size: 4rem;
-    margin-bottom: 20px;
-}
-
-.header-content p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-}
-
-.header-content button {
-    padding: 15px 30px;
-    font-size: 1rem;
-    border: none;
-    background: #f04e30;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.header-content button:hover {
-    background: #c03d26;
-}
-
-/* Header Swiper */
-header .mySwiperHeader {
+.input-container form input,
+.input-container form textarea {
     width: 100%;
-    height: 100%;
+    border: 1px solid #808080;
+    padding: 18px 16px;
+    border-radius: 4px;
+    background: #00000080;
 }
-
-header .mySwiperHeader .swiper-slide {
-    position: relative;
-    color: white;
+.input-container form textarea {
+    resize: none;
 }
-header .mySwiperHeader .swiper-slide img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-header .mySwiperHeader .swiper-slide .header-content{
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-}
-/* Film Karuselləri */
-.movie-carousel {
-    padding: 30px;
-    margin-bottom: 40px;
-}
-
-.movie-carousel h2 {
-    font: 500 35px Roboto;
+.input-container button {
+    font: 500 1.5rem Roboto;
     color: #fff;
-    padding-left: 50px;
+    padding: 12px 24px;
+    border-radius: 4px;
+    background: #9b51e0;
+}
+/* FAQ Section */
+#faq {
+    background-color: #000;
+    color: #fff;
+    padding: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 8px;
+    font-family: "Roboto", sans-serif;
+}
+
+#faq h2 {
+    text-align: center;
+    font-size: 2rem;
     margin-bottom: 20px;
 }
 
-.mySwiperMovies, .mySwiperComedy {
-    padding: 20px;
-}
-
-.mySwiperMovies .swiper-slide, .mySwiperComedy .swiper-slide {
-    width: 150px;
-    border-radius: 10px;
-    position: relative;
+.faq-item {
+    border: 1px solid #333;
+    border-radius: 5px;
+    margin-bottom: 10px;
     overflow: hidden;
 }
 
-.mySwiperMovies .swiper-slide img, .mySwiperComedy .swiper-slide img {
-    width: 100%;
-    object-fit: cover;
-}
-
-.box {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    top: 0;
-    background: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    padding: 10px 15px;
-    border-radius: 5px;
+.faq-question {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    gap: 5px;
-    align-items: start;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #1a1a1a;
+    cursor: pointer;
 }
 
-.box p {
-    font: 500 24px Roboto;
+.faq-question span {
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
-.box span {
-    font: 400 14px Roboto;
-    color: #0feffd;
-    background: #00000033;
-    padding: 2px 8px;
-    border-radius: 4px;
+.toggle-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s;
 }
 
-.mySwiperMovies .swiper-button-next, .mySwiperMovies .swiper-button-prev,
-.mySwiperComedy .swiper-button-next, .mySwiperComedy .swiper-button-prev {
+.toggle-btn.open {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
     display: none;
+    background-color: #222;
+    color: #ddd;
+    padding: 15px 20px;
+    line-height: 1.6;
+    font-size: 1rem;
 }
 
-/* Media Queries */
+/* Footer Start */
+
+#footer {
+    color: #fff;
+    padding: 70px 0;
+    font-family: "Roboto", sans-serif;
+}
+
+.footer-line {
+    height: 2px;
+    background-color: #343232;
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.footer-content ul {
+    min-width: 200px;
+}
+
+.footer-content ul li {
+    margin-bottom: 10px;
+}
+
+.footer-content ul li a {
+    color: #b3b3b3;
+    font: 400 14px Roboto;
+    line-height: 18px;
+    text-decoration-line: underline;
+}
+
+.footer-content ul li a:hover {
+    color: #9b51e0;
+}
 
 
-@media (max-width: 768px) {
-    .header-content {
-        padding-left: 20px;
-        text-align: center;
-    }
-
-    .header-content h1 {
-        font-size: 2.5rem;
-    }
-
-    .header-content p {
-        font-size: 1rem;
-    }
-
-    .header-content button {
+@media only screen and (max-width:768px) {
+    header{
         padding: 10px 20px;
-        font-size: 0.9rem;
     }
-
-    nav ul {
-        flex-direction: row;
-        justify-content: space-around;
+    header .logo{
         gap: 10px;
     }
-
-    nav ul li a i {
-        font-size: 1.8rem;
+    header .logo img {
+        width: 30px;
+        height: 32px;
     }
-
-    nav .logo img {
-        height: 40px;
+    header .logo span {
+        font-size: 2rem;
     }
-
-    .movie-carousel h2 {
-        font-size: 1.8rem;
-        padding-left: 20px;
+    .row{
+        flex-direction: column;
+        align-items: center;
+        
     }
-
-    .mySwiperMovies .swiper-slide, .mySwiperComedy .swiper-slide {
-        width: 130px;
+    .coll{
+        max-width: 350px;
     }
-}
-
-@media (max-width: 480px) {
-    .header-content h1 {
-        font-size: 1.8rem;
-    }
-
-    .header-content p {
-        font-size: 0.9rem;
-    }
-
-    .header-content button {
-        padding: 8px 16px;
-        font-size: 0.8rem;
-    }
-
-    .mySwiperMovies .swiper-slide, .mySwiperComedy .swiper-slide {
-        width: 100px;
-    }
-
-    .mySwiperMovies .swiper-button-next, .mySwiperMovies .swiper-button-prev,
-    .mySwiperComedy .swiper-button-next, .mySwiperComedy .swiper-button-prev {
-        display: none;
+    .bir{
+        order: -1;
     }
 }

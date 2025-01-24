@@ -237,7 +237,30 @@ nav ul li a:hover {
     background: #20283ecc;
     border-radius: 24px;
 }
+.overview {
+    margin: 20px 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #c3c8d4;
+}
+
+#toggleOverview {
+    background-color: #0feffd;
+    color: black;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#toggleOverview:hover {
+    background-color: #00c6d1;
+}
+
 .sec1-content {
+    padding: 50px 0;
     display: flex;
     justify-content: space-between;
     gap: 30px;
@@ -372,6 +395,11 @@ nav ul li a:hover {
     display: flex;
     justify-content: space-between;
 }
+.detail-bg{
+    width: 100%;
+    height: 100vh;
+    object-fit: contain;
+}
 .detail-box {
     width: 75%;
     display: flex;
@@ -430,6 +458,55 @@ nav ul li a:hover {
     font-weight: bold;
     margin-top: 10px;
 } */
+/* #modal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+} */
+#modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    visibility: hidden; /* Başlanğıcda gizli */
+    opacity: 0; /* Görünməz etmək üçün */
+    transition: visibility 0s, opacity 0.3s ease;
+}
+
+#modal.active {
+    visibility: visible; /* Modal açıq olduqda görünür */
+    opacity: 1;
+}
+
+#modal .modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 90%;
+    height: 90vh;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: auto;
+}
+#modal .modal-content img{
+    margin: 0 !important;
+}
+#modal #closeModal {
+    align-self: flex-end;
+    font-size: 1.5rem;
+    color: #333;
+}
 
 .watch-link:hover {
     background-color: #bf0810;
