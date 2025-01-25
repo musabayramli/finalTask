@@ -115,9 +115,9 @@ const showMovies = async ({ movies, status, searching }) => {
 	if (status) {
 		if (searching) {
 			// Searched movies:
-			document.querySelector('.movies').innerHTML = movies.map(({ title, cover_url, category }) => {
+			document.querySelector('.movies').innerHTML = movies.map(({ id, title, cover_url, category }) => {
 				return `
-					<div class="movie">
+					<div class="movie" onclick="goDetailsPage(${id})">
 						<img src="${cover_url}" alt="Wonder Woman 1984" />
 						<div class="movieDescBox">
 							<h4>${category.name}</h4>
