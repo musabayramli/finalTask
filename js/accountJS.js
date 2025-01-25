@@ -17,7 +17,7 @@ const imgUrl = document.querySelector("#img_url");
 const fullname = document.querySelector("#fullname");
 const email = document.querySelector("#email");
 const password = document.querySelector("#password");
-const saveButton = document.querySelector("#savbtn"); // Assuming a save button exists
+const saveButton = document.querySelector("#savbtn"); 
 const displayImg = document.querySelector("#display_img");
 
 
@@ -71,12 +71,7 @@ if (!authToken) {
 
 
 
-// Input sahəsində hər hansı bir dəyişiklik olduqda
-// DOMContentLoaded hadisəsini gözləyin
 
-
-
-// -----------------------------------------------------------------------------------------
 
 
 
@@ -109,7 +104,7 @@ if (!authToken) {
       })
       .then((data) => {
         console.log("Profile updated successfully:", data);
-        alert("Profile updated successfully!"); // Notify the user
+        alert("Profile updated successfully!"); 
       })
       .catch((error) => {
         console.error("Error updating profile:", error);
