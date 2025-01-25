@@ -48,7 +48,7 @@ body {
 				background-color: transparent;
 				border: 0;
 				outline: 0;
-				color: #475069;
+				color: #FFFF;
 				font: 400 20px arial;
 	
 				&::placeholder {
