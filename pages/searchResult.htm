@@ -12,10 +12,17 @@
          crossorigin="anonymous"
          referrerpolicy="no-referrer"
       />
+      <link
+         rel="stylesheet"
+         type="text/css"
+         href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+      />
       <!-- Reset Css -->
       <link rel="stylesheet" href="../css/reset.css" />
       <!-- Qlobal Css -->
       <link rel="stylesheet" href="../css/qlobal.css" />
+		<!-- Card Skeleton -->
+      <link rel="stylesheet" href="../css/cardskelton.css" />
       <!-- Search Page CSS -->
       <link rel="stylesheet" href="../css/searchResult.css" />
    </head>
@@ -24,133 +31,57 @@
       <header>
          <nav>
             <div class="logo">
-               <img src="../images/logo.png" alt="logo" />
+               <a href="../index.htm"><img src="../images/logo.png" alt="logo" /></a>
             </div>
             <ul>
                <li>
-                  <a href="../index.htm"
+                  <a href="./home.htm"
                      ><i class="fa-solid fa-house-chimney-window"></i
                   ></a>
                </li>
-               <li>
-                  <a href="#"><i class="fa-solid fa-layer-group"></i></a>
+               <li >
+                  <a href="./searchResult.htm" class="active"><i class="fa-solid fa-layer-group"></i></a>
                </li>
                <li>
-                  <a href="../pages/account.htm"><i class="fa-solid fa-tv"></i></a>
+                  <a href="../pages/account.htm"
+                     ><i class="fa-solid fa-tv"></i
+                  ></a>
                </li>
                <li>
-                  <a href="../pages/favoritePage.htm"><i class="fa-regular fa-star"></i></a>
+                  <a href="../pages/favoritePage.htm"
+                     ><i class="fa-regular fa-star"></i
+                  ></a>
                </li>
             </ul>
          </nav>
       </header>
-		
+
       <main>
          <section class="searchbar">
-				<input type="text" placeholder="Search....." />
-				<button>+</button>
-			</section>
+            <input type="text" placeholder="Search....." />
+            <button>+</button>
+         </section>
 
-			<section class="moviesContainer">
-				<div>
-					<h3>Search Result &#x276F;</h3>
-				</div>
-				<div class="movies">
-					<div class="movie">
-						<img src="../images/img.png" alt="Wonder Woman 1984" />
-						<div class="movieDescBox">
-							<h4>Fantasy</h4>
-							<p>Wonder Woman 1984</p>
-						</div>
-					</div>
-					<div class="movie">
-						<img
-							src="../images/img1.png"
-							alt="Zack Snyder's Justice League"
-						/>
-						<div class="movieDescBox">
-							<h4>Fantasy</h4>
-							<p>Zack Snyder's Justice League</p>
-						</div>
-					</div>
-					<div class="movie">
-						<img src="../images/img2.png" alt="Mortal Kombat" />
-						<div class="movieDescBox">
-							<h4>Fantasy</h4>
-							<p>Mortal Kombat</p>
-						</div>
-					</div>
-					<div class="movie">
-						<img src="../images/img3.png" alt="The Courier" />
-						<div class="movieDescBox">
-							<h4>Drama</h4>
-							<p>The Courier</p>
-						</div>
-					</div>
-					<div class="movie">
-						<img src="../images/img.png" alt="Wonder Woman 1984" />
-						<div class="movieDescBox">
-							<h4>Fantasy</h4>
-							<p>Wonder Woman 1984</p>
-						</div>
-					</div>
-					<div class="movie">
-						<img
-							src="../images/img1.png"
-							alt="Zack Snyder's Justice League"
-						/>
-						<div class="movieDescBox">
-							<h4>Fantasy</h4>
-							<p>Zack Snyder's Justice League</p>
-						</div>
-					</div>
-					<div class="movie">
-						<img src="../images/img2.png" alt="Mortal Kombat" />
-						<div class="movieDescBox">
-							<h4>Fantasy</h4>
-							<p>Mortal Kombat</p>
-						</div>
-					</div>
-					<div class="movie">
-						<img src="../images/img3.png" alt="The Courier" />
-						<div class="movieDescBox">
-							<h4>Drama</h4>
-							<p>The Courier</p>
-						</div>
-					</div>
-					<div class="movie">
-						<img src="../images/img.png" alt="Wonder Woman 1984" />
-						<div class="movieDescBox">
-							<h4>Fantasy</h4>
-							<p>Wonder Woman 1984</p>
-						</div>
-					</div>
-					<div class="movie">
-						<img
-							src="../images/img1.png"
-							alt="Zack Snyder's Justice League"
-						/>
-						<div class="movieDescBox">
-							<h4>Fantasy</h4>
-							<p>Zack Snyder's Justice League</p>
-						</div>
-					</div>
-					<div class="movie">
-						<img src="../images/img2.png" alt="Mortal Kombat" />
-						<div class="movieDescBox">
-							<h4>Fantasy</h4>
-							<p>Mortal Kombat</p>
-						</div>
-					</div>
-					<div class="movie">
-						<img src="../images/img3.png" alt="The Courier" />
-						<div class="movieDescBox">
-							<h4>Drama</h4>
-							<p>The Courier</p>
-						</div>
-					</div>
-				</div>
-			</section>
+         <section class="moviesContainer">
+            <div>
+               <h3>Search Result &#x276F;</h3>
+            </div>
+            <div class="movies">
+               <!-- <div class="movie">
+                  <img src="../images/img.png" alt="Wonder Woman 1984" />
+                  <div class="movieDescBox">
+                     <h4>Fantasy</h4>
+                     <p>Wonder Woman 1984</p>
+                  </div>
+               </div> -->
+            </div>
+         </section>
       </main>
+
+      <script
+         type="text/javascript"
+         src="https://cdn.jsdelivr.net/npm/toastify-js"
+      ></script>
+      <script src="../js/searchResult.js"></script>
    </body>
 </html>
