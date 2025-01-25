@@ -2,9 +2,9 @@ body {
    display: flex;
    background-color: #1d1d1d;
 
-   & > * {
+   /* & > * {
       height: 100vh;
-   }
+   } */
 }
 
 header {
@@ -32,19 +32,26 @@ header {
          font-size: 16px;
 
          li {
-				box-sizing: border-box;
+            box-sizing: border-box;
 
-				a {
-            color: white;
+            a {
+               color: white;
 
-            &:hover {
-               color: #0feffd;
-					background-color: grey;
-					padding: 10px;
-					border-radius: 10px;
+               &:hover {
+                  color: #0feffd;
+                  background-color: grey;
+                  padding: 10px;
+                  border-radius: 10px;
+               }
+
+               &.active {
+                  color: #0feffd;
+                  background-color: grey;
+                  padding: 10px;
+                  border-radius: 10px;
+               }
             }
          }
-			}
       }
    }
 }
@@ -110,11 +117,15 @@ main {
          & * {
             box-sizing: border-box;
          }
+
+
          .movie {
             position: relative;
             height: 440px;
+				border-radius: 10px;
             overflow: hidden;
-            flex: 1 1 calc(25% - 20px);
+            flex: 0 1 calc(25% - 20px);
+				cursor: pointer;
 
             @media (min-width: 1440px) {
                height: 700px;
