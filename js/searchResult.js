@@ -92,18 +92,8 @@ const fetchMovies = async (apiWithSearchParam = null) => {
 			showMovies({ movies: data, status: true, searching: apiWithSearchParam ?? false })
 
 		} else {
-			Toastify({
-				text: "Not found movie in database!",
-				className: "error",
-				gravity: "top",
-				position: "center",
-				duration: 1500,
-				style: {
-					background: "linear-gradient(to right, red, yellow)",
-				}
-			}).showToast();
 
-			showMovies({ status: false })
+			showMovies({ status: false, searching: apiWithSearchParam ?? false })
 
 			return;
 		}
@@ -150,21 +140,25 @@ const showMovies = async ({ movies, status, searching }) => {
 					</div>
 				`;
 			}).join('');
-
 		}
 
 	} else {
 		// Not any movies on database
-		Toastify({
-			text: "No movies in database",
-			className: "error",
-			gravity: "top",
-			position: "center",
-			duration: 1500,
-			style: {
-				background: "maroon",
-			}
-		}).showToast();
+		if (searching) {
+			document.querySelector(".movies").innerHTML = '<div class="message">No movies found matching your search criteria.</div>';
+
+		} else {
+			Toastify({
+				text: "Not any movies in database. Please add from admin panel.",
+				className: "error",
+				gravity: "top",
+				position: "center",
+				duration: 1500,
+				style: {
+					background: "maroon",
+				}
+			}).showToast();
+		}
 	}
 }
 

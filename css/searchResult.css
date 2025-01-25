@@ -118,6 +118,23 @@ main {
             box-sizing: border-box;
          }
 
+			.message {
+				width: 100%;
+				text-align: center;
+				font-size: 30px;
+				padding: 20px;
+				margin-top: 20px;
+				background-color: #ffdddd;
+				border: 1px solid #ff0000;
+				color: #900000;
+				font-weight: bold;
+				transition: all 0.3s ease-in-out;
+		  }
+		  
+		  .message:hover {
+				background-color: #ffaaaa;
+				border-color: #ff0000;
+		  }
 
          .movie {
             position: relative;
