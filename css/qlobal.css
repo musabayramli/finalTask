@@ -8,3 +8,22 @@ html{
     max-width: 1100px;
     margin: auto;
 }
+.swiper-slide img{
+    transition: all .9s
+}
+.box span{
+    transition: all .9s
+}
+.box p{
+    transition: all .9s
+}
+.swiper-slide:hover img{
+    scale: 1.1;
+}
+
+.swiper-slide:hover .box > span{
+    transform: translateY(-10px);
+}
+.swiper-slide:hover .box > p{
+    transform: translateY(-7px);
+}
