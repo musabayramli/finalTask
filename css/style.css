@@ -5,6 +5,7 @@
 body {
    background: #000;
 }
+/* Header */
 header {
    z-index: 5;
    display: flex;
@@ -17,7 +18,6 @@ header {
    left: 50%;
    transform: translateX(-50%);
 }
-
 header .logo {
    display: flex;
    align-items: center;
@@ -33,6 +33,7 @@ header .logo span {
    color: #c3c8d4;
 }
 header .btn {
+	display: none;
    background: #9b51e0;
    border-radius: 4px;
    color: #fff;
@@ -40,6 +41,62 @@ header .btn {
    height: 32px;
    border: none;
    text-transform: capitalize;
+	cursor: pointer;
+}
+.profile-container {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   cursor: pointer;
+   position: relative;
+
+   span {
+      cursor: auto;
+   }
+}
+.profile-img {
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
+}
+.go-to-movies {
+   background: #9b51e0;
+   border-radius: 4px;
+   color: #fff;
+   width: 100px;
+   height: 32px;
+   border: none;
+   cursor: pointer;
+}
+.dropdown {
+   display: none;
+   position: absolute;
+   top: 100%; 
+   right: 0; 
+   background: white;
+   border: 1px solid #ddd;
+	border-radius: 10px;
+   padding: 10px;
+   width: 120px; 
+	margin-top: 10px;
+}
+.dropdown a {
+   display: flex;
+   align-items: center;
+   padding: 10px;
+   text-decoration: none;
+   color: black;
+	border-radius: 5px;
+}
+.dropdown a .icon {
+   display: flex;
+   align-items: center;
+   width: 20px;
+   height: 20px;
+   margin-right: 3px;
+}
+.dropdown a:hover {
+   background-color: #eee;
 }
 
 /* Main */
@@ -180,69 +237,68 @@ header .btn {
 }
 /* FAQ Section */
 #faq {
-	background-color: #000;
-	color: #fff;
-	padding: 40px;
-	max-width: 800px;
-	margin: 0 auto;
-	border-radius: 8px;
-	font-family: "Roboto", sans-serif;
+   background-color: #000;
+   color: #fff;
+   padding: 40px;
+   max-width: 800px;
+   margin: 0 auto;
+   border-radius: 8px;
+   font-family: "Roboto", sans-serif;
 }
 
 #faq h2 {
-	text-align: center;
-	font-size: 2rem;
-	margin-bottom: 20px;
+   text-align: center;
+   font-size: 2rem;
+   margin-bottom: 20px;
 }
 
 .faq-item {
-	border: 1px solid #333;
-	border-radius: 5px;
-	margin-bottom: 10px;
-	overflow: hidden;
-	transition: max-height 0.3s ease-out;
+   border: 1px solid #333;
+   border-radius: 5px;
+   margin-bottom: 10px;
+   overflow: hidden;
+   transition: max-height 0.3s ease-out;
 }
 
 .faq-question {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 15px 20px;
-	background-color: #1a1a1a;
-	cursor: pointer;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 15px 20px;
+   background-color: #1a1a1a;
+   cursor: pointer;
 }
 
 .faq-question span {
-	font-size: 1.2rem;
-	font-weight: bold;
+   font-size: 1.2rem;
+   font-weight: bold;
 }
 
 .toggle-btn {
-	background: none;
-	border: none;
-	color: #fff;
-	font-size: 1.5rem;
-	cursor: pointer;
-	transition: transform 0.3s;
+   background: none;
+   border: none;
+   color: #fff;
+   font-size: 1.5rem;
+   cursor: pointer;
+   transition: transform 0.3s;
 }
 
 .toggle-btn.open {
-	transform: rotate(45deg);
+   transform: rotate(45deg);
 }
 
 .faq-answer {
-	display: flex;
-	align-items: center;
-	max-height: 0;
-	overflow: hidden;
-	background-color: #222;
-	color: #ddd;
-	padding: 0 20px;
-	line-height: 1.6;
-	font-size: 1rem;
-	transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+   display: flex;
+   align-items: center;
+   max-height: 0;
+   overflow: hidden;
+   background-color: #222;
+   color: #ddd;
+   padding: 0 20px;
+   line-height: 1.6;
+   font-size: 1rem;
+   transition: max-height 0.3s ease-out, padding 0.3s ease-out;
 }
-
 
 /* Footer Start */
 
