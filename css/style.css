@@ -206,35 +206,140 @@ header .btn {
 }
 .input-container {
    text-align: center;
-   color: #fff;
    font-size: 20px;
 }
 .input-container form {
-   margin: 10px 0;
+   margin: 30px 0;
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   gap: 10px;
+   gap: 36px;
+ 
 }
-.input-container form input,
-.input-container form textarea {
-   width: 100%;
+.input-container form input {
+   width: 478px;
+   height: 56px;
    border: 1px solid #808080;
    padding: 18px 16px;
    border-radius: 4px;
    background: #00000080;
+   color: #fff;
+   outline: none;
+   
 }
-.input-container form textarea {
+.input-container form ::placeholder {
+   color:#BCBCBC;
+}
+.input-container form textarea{
+   width: 478px;
+   height: 120px;
+   border: 1px solid #808080;
+   padding: 18px 16px;
+   border-radius: 4px;
+   background: #00000080;
+   color: #fff;
+   outline: none;
    resize: none;
+   
+}
+.input-container h4 {
+font:700 3rem Roboto;
+line-height: 62px;
+text-align: center;
+
 }
 .input-container button {
    font: 500 1.5rem Roboto;
    color: #fff;
-   padding: 12px 24px;
+   padding: 12px 64px;
    border-radius: 4px;
    background: #9b51e0;
+   border: none;
+   cursor: pointer;
+   transition: background-color 0.3s ease-out;
+   &:hover {
+      background-color: #9b51e080;
+   }
+
+   
 }
+
+/* Success Message */
+.success-message {
+   display: none; /* Başlanğıcda gizlidir */
+   position: absolute; /* Sabit yerləşir */
+   bottom: 20px; /* Ekranın altından 20px məsafə */
+   left: 50%; /* Mərkəzə gətirir */
+   transform: translateX(-50%); /* Xətti tam ortalamaq */
+   background-color: #28a745; /* Yaşıl fon */
+   color: white; /* Ağ mətn */
+   padding: 10px 20px; /* Daxili boşluq */
+   border-radius: 5px; /* Dairəvi künclər */
+   font-size: 16px; /* Yazı ölçüsü */
+   font-weight: bold; /* Güclü yazı */
+   text-align: center; /* Mətni mərkəzə yerləşdirir */
+   opacity: 0; /* Başlanğıcda şəffafdır */
+   z-index: 9999; /* Ən üstə gətirir */
+   width: auto;
+   max-width: 400px;
+   animation: fadeInOut 6s ease forwards; /* Bütün animasiya müddəti */
+}
+
+/* Yazının Fade in və Fade Out animasiyası */
+@keyframes fadeInOut {
+   0% {
+       opacity: 0; /* Başlanğıcda gizli */
+       transform: translateX(-50%) translateY(20px); /* Yuxarıdan gəlsin */
+   }
+   25% {
+       opacity: 1; /* Tam görünür */
+       transform: translateX(-50%) translateY(0); /* Yerinə gəlir */
+   }
+   75% {
+       opacity: 1; /* Tam görünür */
+   }
+   100% {
+       opacity: 0; /* Tam solur */
+       transform: translateX(-50%) translateY(-20px); /* Yuxarıya doğru hərəkət edir */
+   }
+}
+
+/* Alt xəttin çəkilməsi */
+.success-message p {
+   margin: 0;
+   padding: 0;
+   position: relative;
+}
+
+/* Success Message Underline Animation */
+.success-message p::after {
+   content: '';
+   display: block;
+   height: 3px;
+   background-color: #ffffff; /* Ağ xətt */
+   width: 0; /* Başlanğıcda xətt yoxdur */
+   position: absolute;
+   bottom: -5px; /* Mətnin alt hissəsinə yerləşdiririk */
+   left: 0;
+   animation: drawLine 3s ease-out forwards; /* Xəttin çəkilmə animasiyası */
+}
+
+/* Xəttin çəkilməsi */
+@keyframes drawLine {
+   0% {
+       width: 0;
+   }
+   100% {
+       width: 100%; /* Xəttin tam uzunluğu */
+   }
+}
+
+
+
+
+
+
 /* FAQ Section */
 #faq {
    background-color: #000;
