@@ -4,7 +4,7 @@
 
 /* Rubik */
 
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 body {
     background-color: #121212;
     color: white;
@@ -144,10 +144,8 @@ nav ul li a:hover {
 /* Swiper Navigation Buttons */
 .swiper-button-next,
 .swiper-button-prev {
-
     display: none;
 }
-
 
 .content {
     display: flex;
@@ -199,30 +197,32 @@ nav ul li a:hover {
     color: #fff;
 }
 #closeEdModal {
-    position: absolute; 
-    top: 10px; 
-    right: 10px; 
-    font-size: 24px; 
-    font-weight: bold; 
-    color: #fdeeee; 
-    background: #bb5656; 
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fdeeee;
+    background: #bb5656;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    border: none; 
-    cursor: pointer; 
-    z-index: 1000; 
-    transition: transform 0.2s ease, color 0.2s ease; 
-  }
-  
-  #closeEdModal:hover {
-    color: #ff0000; 
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    transition:
+        transform 0.2s ease,
+        color 0.2s ease;
+}
+
+#closeEdModal:hover {
+    color: #ff0000;
     transform: scale(1.2);
-  }
-  
+}
+
 .play-btn {
     background-color: #e50914;
     color: white;
@@ -252,14 +252,14 @@ nav ul li a:hover {
     font-size: 14px;
     color: #b3b3b3;
     margin-bottom: 10px;
-  }
+}
 
-  .detail-header h1 {
+.detail-header h1 {
     font-size: 36px;
     font-weight: bold;
     color: #ffffff;
     margin: 0;
-  }
+}
 .overview {
     margin: 20px 0;
     font-size: 16px;
@@ -319,7 +319,7 @@ nav ul li a:hover {
 
 .content-section p {
     margin-bottom: 15px;
-    font: 400 3rem Poppins;
+    font: 400 2.2rem Poppins;
 }
 .content-heading {
     display: flex;
@@ -402,8 +402,7 @@ nav ul li a:hover {
 }
 .sec2-commet p {
     color: #c3c8d4;
-    font:400 16px Rubik;
-
+    font: 400 16px Rubik;
 }
 .commet-heading {
     display: flex;
@@ -413,12 +412,11 @@ nav ul li a:hover {
 }
 
 .details {
-    font-size: 0.9rem;
     margin-bottom: 15px;
     display: flex;
     justify-content: space-between;
 }
-.detail-bg{
+.detail-bg {
     width: 100%;
     height: 100vh;
     object-fit: contain;
@@ -428,21 +426,38 @@ nav ul li a:hover {
     display: flex;
     justify-content: space-between;
 }
-.details span .genres span {
+.details span {
     display: block;
-    margin-bottom: 10px;
-    font-size: 400 2rem Poppins;
-    line-height: 32px;
+    color: #c3c8d4;
 }
 .details span strong,
 .genres strong {
     display: block;
+}
+
+.details span,
+.genres span {
+    font-size: 1.8rem !important;
+    line-height: 32px;
+}
+
+.details span strong,
+.genres strong {
+    font-size: 1.2rem !important;
     margin-bottom: 10px;
-    font: 400 1.6rem Poppins;
+}
+.content-section > h4 {
+    font: 500 26px Roboto;
+    padding: 10px 0;
 }
 .detail-top {
     position: relative;
     top: -10px;
+}
+.actor span {
+    font: 400 1rem Roboto !important; 
+    line-height: 2;
+
 }
 
 .genres {
@@ -471,7 +486,6 @@ nav ul li a:hover {
     display: block;
 }
 
-
 #modal {
     display: flex;
     align-items: center;
@@ -483,13 +497,15 @@ nav ul li a:hover {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 9999;
-    visibility: hidden; 
-    opacity: 0; 
-    transition: visibility 0s, opacity 0.3s ease;
+    visibility: hidden;
+    opacity: 0;
+    transition:
+        visibility 0s,
+        opacity 0.3s ease;
 }
 
 #modal.active {
-    visibility: visible; 
+    visibility: visible;
     opacity: 1;
 }
 
@@ -506,7 +522,7 @@ nav ul li a:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: auto;
 }
-#modal .modal-content img{
+#modal .modal-content img {
     margin: 0 !important;
 }
 #modal #closeModal {
@@ -537,8 +553,6 @@ nav ul li a:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
-
-
 }
 
 .mySwiperSimilar .box {
@@ -555,7 +569,6 @@ nav ul li a:hover {
     align-items: flex-start;
     justify-content: end;
     gap: 5px;
-
 }
 
 .mySwiperSimilar .box span {
@@ -563,14 +576,12 @@ nav ul li a:hover {
     font-weight: bold;
     color: #0feffd;
     text-transform: uppercase;
-
 }
 
 .mySwiperSimilar .box p {
     font-size: 16px;
     font-weight: 600;
     color: #fff;
- 
 }
 
 /* Responsive Design */
