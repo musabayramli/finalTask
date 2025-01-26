@@ -148,7 +148,7 @@ async function loadActors() {
     const data = await response.json();
 
     if (response.ok && Array.isArray(data.data)) {
-      data.data.sort((a, b) => a.id - b.id);
+      data.data.sort((a, b) => b.id - a.id);
       currentPage = 1;
       displayTableRows(data.data);
       setupPagination(data.data);
