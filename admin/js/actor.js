@@ -238,6 +238,7 @@ async function deleteActor() {
     if (response.ok) {
       actorToDelete.rowElement.remove(); 
       showMessageModal("Actor deleted successfully!");
+      loadActors()
     } else {
       showMessageModal("Failed to delete actor.");
     }
