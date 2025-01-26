@@ -144,24 +144,11 @@ nav ul li a:hover {
 /* Swiper Navigation Buttons */
 .swiper-button-next,
 .swiper-button-prev {
-    /*     color: white;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.3s ease; */
+
     display: none;
 }
 
-/* .swiper-button-next:hover,
-.swiper-button-prev:hover {
-    background: rgba(255, 255, 255, 0.8);
-    color: black;
 
-} */
 .content {
     display: flex;
     align-items: center;
@@ -484,23 +471,7 @@ nav ul li a:hover {
     display: block;
 }
 
-/* .watch-link {
-    display: inline-block;
-    background-color: #e50914;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    margin-top: 10px;
-} */
-/* #modal{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-} */
+
 #modal {
     display: flex;
     align-items: center;
@@ -512,13 +483,13 @@ nav ul li a:hover {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 9999;
-    visibility: hidden; /* Başlanğıcda gizli */
-    opacity: 0; /* Görünməz etmək üçün */
+    visibility: hidden; 
+    opacity: 0; 
     transition: visibility 0s, opacity 0.3s ease;
 }
 
 #modal.active {
-    visibility: visible; /* Modal açıq olduqda görünür */
+    visibility: visible; 
     opacity: 1;
 }
 
