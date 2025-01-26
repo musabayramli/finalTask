@@ -48,7 +48,7 @@ body {
 				background-color: transparent;
 				border: 0;
 				outline: 0;
-				color: #475069;
+				color: #FFFF;
 				font: 400 20px arial;
 	
 				&::placeholder {
@@ -66,7 +66,16 @@ body {
 		border: 0;
 		color: white;
 		font: 400 16px arial;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		&:hover {
+			background-color: #7b38b5;
+		}
 	}
+}
+
+.toggleIcon {
+   cursor: pointer;
 }
 
 
