@@ -82,6 +82,10 @@ input {
 input::placeholder {
   color: #475069;
 }
+input:focus {
+  background-color: transparent;
+  outline: none;
+}
 .register {
   display: block;
   text-decoration: underline;
