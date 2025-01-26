@@ -324,35 +324,55 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
-  document
-    .querySelector(".plus-button")
-    .addEventListener("click", async (e) => {
-      e.preventDefault();
-      const movieId = new URLSearchParams(window.location.search).get("id");
+  document.querySelector(".plus-button").addEventListener("click", async (e) => {
+    e.preventDefault();
+    const button = e.currentTarget; 
+    const movieId = new URLSearchParams(window.location.search).get("id");
+  
+    if (!movieId) return;
+  
+    try {
 
-      if (!movieId) return;
-
-      try {
-        const response = await fetch(
-          `https://api.sarkhanrahimli.dev/api/filmalisa/movie/${movieId}/favorite`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-            },
-          }
-        );
-
-        if (response.ok) {
-          alert("Film favorilere əlavə edildi!");
-        } else {
-          alert("Favorilere əlavə olunarkən xəta baş verdi!");
+      const isFavorite = button.classList.contains("favorited");
+  
+ 
+      const response = await fetch(
+        `https://api.sarkhanrahimli.dev/api/filmalisa/movie/${movieId}/favorite`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          },
         }
-      } catch (error) {
-        console.error("Xəta baş verdi:", error);
+      );
+  
+      if (response.ok) {
+        if (isFavorite) {
+          alert("Film favorilərdən çıxarıldı!");
+          button.classList.remove("favorited"); 
+          button.innerHTML = "➕"; 
+  
+ 
+          const favoriteItem = document.querySelector(`#favorite-item-${movieId}`);
+          if (favoriteItem) favoriteItem.remove();
+        } else {
+          alert("Film favorilərə əlavə edildi!");
+          button.classList.add("favorited");
+          button.innerHTML = "➖";
+        }
+      } else {
+        alert("Əməliyyat zamanı xəta baş verdi!");
       }
-    });
+    } catch (error) {
+      console.error("Xəta baş verdi:", error);
+    }
+  });
+  
+  
+  
+  
+  
 
 
 
