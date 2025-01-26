@@ -1,85 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Account Page</title>
+      <!-- Font Awesome -->
+      <link
+         rel="stylesheet"
+         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+         crossorigin="anonymous"
+         referrerpolicy="no-referrer"
+      />
+      <!-- Swiper -->
+      <link
+         rel="stylesheet"
+         href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+      />
+      <!-- Reset Css -->
+      <link rel="stylesheet" href="../css/reset.css" />
+      <!-- Qlobal Css -->
+      <link rel="stylesheet" href="../css/qlobal.css" />
+      <!-- Account Page CSS -->
+      <link rel="stylesheet" href="../css/accountPage.css" />
+   </head>
 
-<head>
-   <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>Account Page</title>
-   <!-- Font Awesome -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-      crossorigin="anonymous" referrerpolicy="no-referrer" />
-   <!-- Swiper -->
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-   <!-- Reset Css -->
-   <link rel="stylesheet" href="../css/reset.css" />
-   <!-- Qlobal Css -->
-   <link rel="stylesheet" href="../css/qlobal.css" />
-   <!-- Account Page CSS -->
-   <link rel="stylesheet" href="../css/accountPage.css" />
-</head>
+   <body>
+      <header>
+         <a href="../index.htm"
+            ><img class="leftLogo" src="../images/logo.png" alt="logo"
+         /></a>
+         <nav>
+            <a href="./home.htm">
+               <img src="../images/Home.svg" alt="home" />
+            </a>
+            <a href="../pages/searchResult.htm">
+               <img src="../images/Group.svg" alt="search" />
+            </a>
+            <a href="../pages/account.htm">
+               <img src="../images/TV.svg" alt="Account" />
+            </a>
+            <a href="../pages/favoritePage.htm">
+               <img src="../images/Star Stroke.svg" alt="Favorits" />
+            </a>
+         </nav>
+      </header>
 
-<body>
-   <header>
-      <nav>
-         <div class="logo">
-            <img src="../images/logo.png" alt="logo" />
+      <section class="profile">
+         <div class="profile_container">
+            <div class="profile_pic">
+               <img id="display_img" src="" alt="" />
+            </div>
+
+            <div class="profile_details">
+               <div class="profile_img_url">
+                  <img src="../images/icons/profile/leftIcon.png" alt="" />
+                  <input
+                     id="img_url"
+                     type="text"
+                     class="img_url"
+                     placeholder="profile image url"
+                  />
+               </div>
+
+               <div class="profile_fullname">
+                  <img src="../images/icons/profile/leftIcon.png" alt="" />
+                  <input
+                     id="fullname"
+                     type="text"
+                     class="fullname"
+                     placeholder="fullname"
+                  />
+               </div>
+
+               <div class="profile_mail">
+                  <img src="../images/icons/profile/emailIcon.png" alt="" />
+                  <input
+                     id="email"
+                     type="email"
+                     class="mail"
+                     disabled
+                     placeholder="rahimlisarkhan@gmail.com"
+                     readonly
+                  />
+                  />
+               </div>
+
+               <div class="profile_pass">
+                  <img src="../images/icons/profile/leftIcon.png" alt="" />
+                  <input
+                     id="password"
+                     type="password"
+                     class="pass"
+                     placeholder="password"
+                  />
+                  <img
+                     src="../images/icons/profile/eyeIcon.png"
+                     class="toggleIcon"
+                     alt=""
+                  />
+               </div>
+            </div>
+
+            <button id="savbtn">save</button>
          </div>
-         <ul>
-            <li>
-               <a href="../index.htm"><img src="../images/Home.svg" alt="home"></a>
-            </li>
-            <li>
-               <a href="./searchResult.htm"><img src="../images/Group.svg" alt="Search"></a>
-            </li>
-            <li>
-               <a href="./account.htm"><img src="../images/TV.svg" alt="account"></a>
-            </li>
-            <li>
-               <a href="./favoritePage.htm"><img src="../images/Star Stroke.svg" alt="favorits"></a>
-            </li>
-         </ul>
-      </nav>
-   </header>
+      </section>
 
-   <section class="profile">
-      <div class="profile_container">
-         <div class="profile_pic">
-            <img id="display_img" src="" alt="" />
-         </div>
-
-         <div class="profile_details">
-            <div class="profile_img_url">
-               <img src="../images/icons/profile/leftIcon.png" alt="" />
-               <input id="img_url" type="text" class="img_url" placeholder="profile image url" />
-
-            </div>
-
-            <div class="profile_fullname">
-               <img src="../images/icons/profile/leftIcon.png" alt="" />
-               <input id="fullname" type="text" class="fullname" placeholder="fullname" />
-
-            </div>
-
-            <div class="profile_mail">
-               <img src="../images/icons/profile/emailIcon.png" alt="" />
-               <input id="email" type="email" class="mail" disabled placeholder="rahimlisarkhan@gmail.com" readonly />
-               />
-
-            </div>
-
-            <div class="profile_pass">
-               <img src="../images/icons/profile/leftIcon.png" alt="" />
-               <input id="password" type="password" class="pass" placeholder="password" />
-               <img src="../images/icons/profile/eyeIcon.png" class="toggleIcon" alt="" />
-            </div>
-         </div>
-
-         <button id="savbtn">save</button>
-      </div>
-   </section>
-
-   <script src="../js/accountJS.js"></script>
-</body>
-
+      <script src="../js/accountJS.js"></script>
+   </body>
 </html>
