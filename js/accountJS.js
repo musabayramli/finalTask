@@ -37,7 +37,7 @@ if (!authToken) {
       return response.json();
     })
     .then((data) => {
-      console.log(data); // Debug the response structure
+      
 
       if (data && data.data) {
         // Assuming data.data contains the user's profile
@@ -60,11 +60,11 @@ if (!authToken) {
         }
 
       } else {
-        console.error("Unexpected data structure:", data);
+       
       }
     })
     .catch((error) => {
-      console.error("Error fetching data:", error);
+      
     });
 }
 

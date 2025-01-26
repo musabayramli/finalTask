@@ -145,3 +145,12 @@ td {
 		background-color: grey;
 	}
 }
+
+.email-link {
+   text-decoration: none;
+   color: #000000;
+}
+
+.email-link:hover {
+   text-decoration: underline;
+}
