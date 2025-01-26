@@ -1,6 +1,7 @@
 body {
    display: flex;
    background-color: #1d1d1d;
+	margin-bottom: 50px;
 
    /* & > * {
       height: 100vh;
@@ -64,6 +65,7 @@ main {
    .searchbar {
       display: flex;
       justify-content: flex-end;
+      margin-right: 20px;
       padding-right: 20px;
       @media (max-width: 900px) {
          margin-bottom: 30px;
@@ -118,31 +120,31 @@ main {
             box-sizing: border-box;
          }
 
-			.message {
-				width: 100%;
-				text-align: center;
-				font-size: 30px;
-				padding: 20px;
-				margin-top: 20px;
-				background-color: #ffdddd;
-				border: 1px solid #ff0000;
-				color: #900000;
-				font-weight: bold;
-				transition: all 0.3s ease-in-out;
-		  }
-		  
-		  .message:hover {
-				background-color: #ffaaaa;
-				border-color: #ff0000;
-		  }
+         .message {
+            width: 100%;
+            text-align: center;
+            font-size: 30px;
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #ffdddd;
+            border: 1px solid #ff0000;
+            color: #900000;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+         }
+
+         .message:hover {
+            background-color: #ffaaaa;
+            border-color: #ff0000;
+         }
 
          .movie {
             position: relative;
             height: 440px;
-				border-radius: 10px;
+            border-radius: 10px;
             overflow: hidden;
             flex: 0 1 calc(25% - 20px);
-				cursor: pointer;
+            cursor: pointer;
 
             @media (min-width: 1440px) {
                height: 700px;
@@ -184,7 +186,7 @@ main {
                object-fit: cover;
                object-position: center;
                position: relative;
-               transition: all .9s;
+               transition: all 0.9s;
             }
 
             .movieDescBox {
@@ -209,7 +211,7 @@ main {
                   display: inline-block;
                   padding: 10px;
                   margin-left: 30px;
-                  transition: all .9s;
+                  transition: all 0.9s;
 
                   &::before {
                      content: "";
@@ -228,7 +230,7 @@ main {
                   margin: 10px 0;
                   margin-left: 30px;
                   font: 500 24px Roboto;
-                  transition: all .9s;
+                  transition: all 0.9s;
                }
             }
          }
@@ -236,14 +238,14 @@ main {
    }
 }
 
-.movie:hover img{
-scale: 1.1;
+.movie:hover img {
+   scale: 1.1;
 }
 
-.movie:hover h4{
+.movie:hover h4 {
    transform: translateY(-20px);
 }
 
-.movie:hover p{
+.movie:hover p {
    transform: translateY(-10px);
 }
