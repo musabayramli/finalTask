@@ -141,9 +141,10 @@ td img{
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 .modal{
-  height: 884px;
+  height: 584px;
   position: absolute;
-  top: 75%;
+  overflow-y: auto;
+  top: 45%;
   left: 50%;
 }
 .removeModal p {
@@ -159,7 +160,7 @@ td img{
   display: flex;
 }
 .modal-left {
-  margin: 57px 84px 118px 27px;
+  margin: 20px  27px;
   display: flex;
   flex-direction: column;
   gap: 20px;
