@@ -184,14 +184,22 @@ main {
                object-fit: cover;
                object-position: center;
                position: relative;
+               transition: all .9s;
             }
 
             .movieDescBox {
                position: absolute;
-               bottom: 40px;
-               left: 20px;
+               bottom: 0;
+               left: 0;
                right: 20px;
+               height: 100%;
+               width: 100%;
+               background: #2a2a2a65;
                color: white;
+               display: inline-flex;
+               flex-direction: column;
+               align-items: start;
+               justify-content: end;
                z-index: 2;
 
                h4 {
@@ -200,6 +208,8 @@ main {
                   position: relative;
                   display: inline-block;
                   padding: 10px;
+                  margin-left: 30px;
+                  transition: all .9s;
 
                   &::before {
                      content: "";
@@ -215,11 +225,25 @@ main {
                }
 
                p {
-                  margin-top: 10px;
+                  margin: 10px 0;
+                  margin-left: 30px;
                   font: 500 24px Roboto;
+                  transition: all .9s;
                }
             }
          }
       }
    }
+}
+
+.movie:hover img{
+scale: 1.1;
+}
+
+.movie:hover h4{
+   transform: translateY(-20px);
+}
+
+.movie:hover p{
+   transform: translateY(-10px);
 }
