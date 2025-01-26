@@ -225,7 +225,7 @@ function displayContacts(contacts, currentPage = 1, rowsPerPage = 5) {
 			  <tr>
 					<td>${contact.id}</td>
 					<td class="title-cell">${contact.full_name}</td>
-					<td>${contact.email}</td>
+					<td><a href="mailto:${contact.email}" class="email-link">${contact.email}</a></td>
 					<td>${contact.reason}</td>
 					<td>${new Date(contact.created_at).toLocaleDateString()}</td>
 					<td class="action-icons">

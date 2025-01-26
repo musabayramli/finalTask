@@ -120,7 +120,7 @@ function displayUsers(users, currentPage = 1, rowsPerPage = 8) {
 			  <tr>
 					<td>${user.id}</td>
 					<td>${user.full_name}</td>
-					<td>${user.email}</td>
+					<td><a href="mailto:${user.email}" class="email-link">${user.email}</a></td>
 					<td>${new Date(user.created_at).toLocaleDateString()}</td>
 			  </tr>
 		 `;

@@ -16,7 +16,15 @@ main {
   border-radius: 30px;
   padding: 24px;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.main-items:hover {
+  background-color: #652f8d; 
+  transform: translateY(-6px); 
+  box-shadow: 0 12px 18px rgba(101, 47, 141, 0.3); 
+}
+
 .large {
   width: 288px;
 }
