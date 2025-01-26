@@ -96,7 +96,7 @@ const fetchUsers = async () => {
 		}).showToast()
 	}
 };
-function displayUsers(users, currentPage = 1, rowsPerPage = 20) {
+function displayUsers(users, currentPage = 1, rowsPerPage = 8) {
 	const tableBody = document.querySelector('table');
 	tableBody.innerHTML = '';
 	tableBody.innerHTML = `

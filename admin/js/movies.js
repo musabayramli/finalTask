@@ -458,6 +458,7 @@ function displayMovies(movies, currentPage = 1, rowsPerPage = 7) {
 		 <thead>
 			  <tr>
 			  		<th>ID</th>
+					<th>Img</th>
 					<th class="title-head">Title</th>
 					<th>Overview</th>
 					<th>Category</th>
@@ -476,13 +477,14 @@ function displayMovies(movies, currentPage = 1, rowsPerPage = 7) {
 		return `
 			  <tr>
 			  		<td>${id}</td>
-					<td class="title-cell">
-                        <img
+					<td> <img
                            class="poster"
                            src="${cover_url}"
                            alt="poster"
-                        />
-                        <span>${title}</span>
+                        /></td>
+					<td class="title-cell">
+                       
+                        ${title}
                      </td>
 					<td>${overview.length < 60 ? overview : overview.substring(0, 59) + '...'}</td>
 					<td>${category.name}</td>
