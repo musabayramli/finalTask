@@ -136,7 +136,7 @@ async function loadCategories() {
 
     const result = await response.json();
     const data = Array.isArray(result) ? result : result.data;
-    data.sort((a, b) => a.id - b.id);
+    data.sort((a, b) => b.id - a.id);
     // İlk səhifəni göstəririk
     currentPage = 1;
     displayTableRows(data);
