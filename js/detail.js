@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const modalTitle = document.querySelector(".modal-box h1");
   const playButton = document.querySelector(".play-btn");
   const modalImageElement = modal.querySelector("#modal img");
+  const modalContent = modal.querySelector(".modal-content");
 
   if (!modal || !closeModal || !modalImage || !modalTitle || !playButton) {
     console.error(
@@ -49,10 +50,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         <p>${commentText}</p>
       `;
 
- 
       commentList.innerHTML += newComment;
 
-   
       commentInput.value = "";
     }
   });
@@ -92,7 +91,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       // Similar Movies üçün uyğun kategoriya ilə çağırış
       fetchSimilarMovies(data.category.id);
       console.log(data);
-      
+
       videoUrl = data.fragman || "";
     } catch (error) {
       console.error("Xəta baş verdi:", error);
@@ -131,7 +130,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (movieTitleElement) {
       movieTitleElement.textContent = data.title || "Film adı yoxdur";
     }
-  
+
     const overviewElement = document.querySelector(".overview p");
     const toggleButton = document.createElement("button");
     toggleButton.textContent = "Daha çox";
@@ -157,31 +156,61 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     updateOverview();
+    const movieTrailerIframe = document.createElement("iframe");
+    movieTrailerIframe.setAttribute("width", "100%");
+    movieTrailerIframe.setAttribute("height", "100%");
+    movieTrailerIframe.setAttribute("frameborder", "0");
+    movieTrailerIframe.setAttribute(
+      "allow",
+      "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    );
+    movieTrailerIframe.style.display = "none"; 
+    modalContent.appendChild(movieTrailerIframe);
 
     // Play düyməsinə klikləmə funksiyası
     playButton.addEventListener("click", () => {
       if (videoUrl) {
-        window.open(videoUrl, "_blank"); 
+        modal.classList.add("active");
+        modalTitle.textContent = data.title || "Film Adı";
+        modalImageElement.style.display = "none";
+        movieTrailerIframe.style.display = "block"; 
+        movieTrailerIframe.src = `https://www.youtube.com/embed/${getYouTubeVideoId(
+          videoUrl
+        )}?autoplay=1`; 
       } else {
         alert("Fraqment URL tapılmadı!");
       }
     });
+
     // Modalı açmaq üçün:
     modalImage.addEventListener("click", () => {
       modal.classList.add("active");
-      modalTitle.textContent = data.title || "Film Adı"; 
+      modalTitle.textContent = data.title || "Film Adı";
       modalImageElement.src = data.cover_url || "";
     });
+
     // Modalı bağlamaq üçün:
     closeModal.addEventListener("click", () => {
       modal.classList.remove("active");
+      movieTrailerIframe.style.display = "none"; 
+      movieTrailerIframe.src = ""; 
+      modalImageElement.style.display = "block";
     });
+    
+
+    // YouTube video ID-ni çıxarmaq üçün funksiya
+    function getYouTubeVideoId(url) {
+      const regExp =
+        /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+      const match = url.match(regExp);
+      return match && match[1] ? match[1] : null;
+    }
+
 
     document.querySelector(".detail-bg img").src = data.cover_url;
     document.querySelector(".image-section img").src = data.cover_url;
     document.querySelector(".content-link h1").textContent = data.title;
     document.querySelector(".link").href = data.watch_url || "#";
-    
   }
 
   function renderTopCast(actors) {
@@ -293,9 +322,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  
-
-  
   submitComment.addEventListener("click", async (e) => {
     e.preventDefault();
     const commentText = commentInput.value.trim();
@@ -324,63 +350,56 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
-  document.querySelector(".plus-button").addEventListener("click", async (e) => {
-    e.preventDefault();
-    const button = e.currentTarget; 
-    const movieId = new URLSearchParams(window.location.search).get("id");
-  
-    if (!movieId) return;
-  
-    try {
+  document
+    .querySelector(".plus-button")
+    .addEventListener("click", async (e) => {
+      e.preventDefault();
+      const button = e.currentTarget;
+      const movieId = new URLSearchParams(window.location.search).get("id");
 
-      const isFavorite = button.classList.contains("favorited");
-  
- 
-      const response = await fetch(
-        `https://api.sarkhanrahimli.dev/api/filmalisa/movie/${movieId}/favorite`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-          },
-        }
-      );
-  
-      if (response.ok) {
-        if (isFavorite) {
-          alert("Film favorilərdən çıxarıldı!");
-          button.classList.remove("favorited"); 
-          button.innerHTML = "➕"; 
-  
- 
-          const favoriteItem = document.querySelector(`#favorite-item-${movieId}`);
-          if (favoriteItem) favoriteItem.remove();
+      if (!movieId) return;
+
+      try {
+        const isFavorite = button.classList.contains("favorited");
+
+        const response = await fetch(
+          `https://api.sarkhanrahimli.dev/api/filmalisa/movie/${movieId}/favorite`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+            },
+          }
+        );
+
+        if (response.ok) {
+          if (isFavorite) {
+            alert("Film favorilərdən çıxarıldı!");
+            button.classList.remove("favorited");
+            button.innerHTML = "➕";
+
+            const favoriteItem = document.querySelector(
+              `#favorite-item-${movieId}`
+            );
+            if (favoriteItem) favoriteItem.remove();
+          } else {
+            alert("Film favorilərə əlavə edildi!");
+            button.classList.add("favorited");
+            button.innerHTML = "➖";
+          }
         } else {
-          alert("Film favorilərə əlavə edildi!");
-          button.classList.add("favorited");
-          button.innerHTML = "➖";
+          alert("Əməliyyat zamanı xəta baş verdi!");
         }
-      } else {
-        alert("Əməliyyat zamanı xəta baş verdi!");
+      } catch (error) {
+        console.error("Xəta baş verdi:", error);
       }
-    } catch (error) {
-      console.error("Xəta baş verdi:", error);
-    }
-  });
-  
-  
-  
-  
-  
-
-
+    });
 
   window.addEventListener("click", (e) => {
     if (e.target === modal) {
-      modal.classList.remove("active");
-      movieTrailer.pause();
-      movieTrailer.style.display = "none";
+      modal.classList.remove("active"); 
+      movieTrailer.style.display = "none"; 
     }
   });
 

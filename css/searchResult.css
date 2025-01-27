@@ -141,6 +141,7 @@ main {
 
          .movie {
             position: relative;
+            max-width: 280px;
             height: 440px;
             border-radius: 10px;
             overflow: hidden;
@@ -263,37 +264,3 @@ main {
    display: flex;
    gap: 20px;
 }
-
-@keyframes slideAnimation {
-   0% {
-      transform: translateX(-100%);
-      opacity: 0;
-      filter: blur(3px);
-   }
-   8% {
-      transform: translateX(0);
-      opacity: 1;
-      filter: blur(0);
-   }
-   92% {
-      transform: translateX(0);
-      opacity: 1;
-      filter: blur(0);
-   }
-   100% {
-      transform: translateX(100%);
-      opacity: 0;
-      filter: blur(3px);
-   }
-}
-
-.movie {
-   animation: slideAnimation 20s ease-in-out infinite;
-   transition: transform 0.5s ease;
-}
-
-
-.movie:nth-child(2) { animation-delay: 3s; }
-.movie:nth-child(3) { animation-delay: 6s; }
-.movie:nth-child(4) { animation-delay: 9s; }
-.movie:nth-child(5) { animation-delay: 12s; }   
