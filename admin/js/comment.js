@@ -1,5 +1,7 @@
 const pageRight = document.querySelector(".page-right");
 
+// Elave olaraq admin panelde ad ve resim gorunecek
+
 //SHOW DETAILS MODAL #################################
 function showRowDetails({ movieId, comment }) {
 	const removeModal = document.querySelector("#detailsModal");

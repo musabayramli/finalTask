@@ -53,7 +53,7 @@ const updateAuthUI = async () => {
 	let apiProfileImg = '';
 	let fullName = '';
 
-	// Skeleton göster
+	// Skeleton show
 	const showSkeleton = () => {
 		const skeletonText = document.createElement('div');
 		skeletonText.classList.add('skeleton', 'skeleton-text');
@@ -64,13 +64,13 @@ const updateAuthUI = async () => {
 		return { skeletonText, skeletonCircle };
 	};
 
-	// Skeleton gizle
+	// Skeleton hide
 	const hideSkeleton = (skeletonElements) => {
 		profileContainer.removeChild(skeletonElements.skeletonText);
 		profileContainer.removeChild(skeletonElements.skeletonCircle);
 	};
 
-	// Skeleton elemanlarını göster
+	// Show skeleton elements:
 	const skeletonElements = showSkeleton();
 
 	if (authToken) {
