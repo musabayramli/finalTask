@@ -383,6 +383,7 @@ nav ul li a:hover {
     color: #fff;
 }
 .inp-img {
+    display: block;
     width: 35px;
     height: 35px;
     object-fit: cover;

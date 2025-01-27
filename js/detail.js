@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const newComment = `
         <div class="commet-heading">
           <div class="commet-img">
-            <img src="../images/defoult.jpg" alt="User" class="inp-img">
+            <img src="../images/default.jpg" alt="User" class="inp-img">
             <h4>Admin</h4>
           </div>
           <div>
@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       "allow",
       "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     );
-    movieTrailerIframe.style.display = "none"; 
+    movieTrailerIframe.style.display = "none";
     modalContent.appendChild(movieTrailerIframe);
 
     // Play düyməsinə klikləmə funksiyası
@@ -174,11 +174,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         modal.classList.add("active");
         /* modalTitle.textContent = data.title || "Film Adı"; */
         modalImageElement.style.display = "none";
-        modalBox.style.display = 'none'
-        movieTrailerIframe.style.display = "block"; 
+        modalBox.style.display = "none";
+        movieTrailerIframe.style.display = "block";
         movieTrailerIframe.src = `https://www.youtube.com/embed/${getYouTubeVideoId(
           videoUrl
-        )}?autoplay=1`; 
+        )}?autoplay=1`;
       } else {
         alert("Fraqment URL tapılmadı!");
       }
@@ -194,12 +194,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Modalı bağlamaq üçün:
     closeModal.addEventListener("click", () => {
       modal.classList.remove("active");
-      movieTrailerIframe.style.display = "none"; 
-      movieTrailerIframe.src = ""; 
-       modalBox.style.display = 'block'
+      movieTrailerIframe.style.display = "none";
+      movieTrailerIframe.src = "";
+      modalBox.style.display = "block";
       modalImageElement.style.display = "block";
     });
-    
 
     // YouTube video ID-ni çıxarmaq üçün funksiya
     function getYouTubeVideoId(url) {
@@ -208,7 +207,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       const match = url.match(regExp);
       return match && match[1] ? match[1] : null;
     }
-
 
     document.querySelector(".detail-bg img").src = data.cover_url;
     document.querySelector(".image-section img").src = data.cover_url;
@@ -244,15 +242,21 @@ document.addEventListener("DOMContentLoaded", async () => {
       commentList.innerHTML = "<p>Şərhlər tapılmadı.</p>";
       return;
     }
+    // Undefined və ya boş olan şərhləri süzgəcdən keçirmək
+    const validComments = comments.filter(
+      (comment) => comment.text && comment.text.trim() !== ""
+    );
 
+    if (!validComments.length) {
+      commentList.innerHTML = "<p>Şərhlər tapılmadı.</p>";
+      return;
+    }
     commentList.innerHTML = comments
       .map(
         (comment) => `
         <div class="commet-heading">
           <div class="commet-img">
-            <img src="${
-              "../images/default-user.jpg"
-            }" alt="User" class="inp-img">
+            <img src="${"../images/default.jpg"}" alt="User" class="inp-img">
             <h4>Admin</h4>
           </div>
           <div>
@@ -401,8 +405,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   window.addEventListener("click", (e) => {
     if (e.target === modal) {
-      modal.classList.remove("active"); 
-      movieTrailer.style.display = "none"; 
+      modal.classList.remove("active");
+      movieTrailer.style.display = "none";
     }
   });
 
