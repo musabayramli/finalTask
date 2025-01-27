@@ -1,7 +1,7 @@
 const pageRight = document.querySelector(".page-right");
 
 //SHOW DETAILS MODAL #################################
-function showRowDetails({ movieId }) {
+function showRowDetails({ movieId, comment }) {
 	const removeModal = document.querySelector("#detailsModal");
 	const modalOverlay = document.querySelector(".modal-details-overlay");
 	const cancelBtn = document.querySelector("#detailsModal .cancelBtn");
@@ -29,36 +29,56 @@ function showRowDetails({ movieId }) {
 			const { title, cover_url, overview, category } = data;
 
 			innerHTMLData = `
-		<div class="table-responsive-md">
-			<table class="table table-striped-columns table-hover table-borderless table-primary align-middle">
-				<thead>
-					<caption>
-						Comment Description
-					</caption>
-	
-					<tr>
-						<th>Movie Name</th>
-						<th>Category</th>
-						<th>Cover Url</th>
-						<th>Overview</th>
-					</tr>
-				</thead>
-				<tbody class="table-group-divider">
-					<tr
-						class="table-primary"
+				<div
+					style="
+						background-color: #171616;
+						color: white;
+						border-radius: 10px;
+					"
+				>
+					<table
+						style="width: 100%; border-collapse: collapse;"
 					>
-						<td scope="row">${title}</td>
-						<td>${category.name}</td>
-						<td><img src="${cover_url}" /></td>
-						<td>${overview.slice(0, 20)}</td>
-					</tr>
-				</tbody>
-				<tfoot>
-					
-				</tfoot>
-			</table>
-		</div>
-		`;
+						<caption style="margin-bottom: 30px">
+							Comment Description<br />
+							<span
+								style="
+									animation: colorChange 3s infinite;
+									font-weight: bold;
+									text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+								"
+								>${comment}</span
+							>
+						</caption>
+						<thead>
+							<tr style="background-color: #2c2c2c">
+								<th style="padding: 10px">Movie Cover</th>
+								<th style="padding: 10px">Movie Name</th>
+								<th style="padding: 10px">Category</th>
+							</tr>
+						</thead>
+						<tbody style="background-color: #2c2c2c; color: white">
+							<tr class="table-primary">
+								<td style="padding: 10px; text-align: center">
+									<img
+										src="${cover_url}"
+										style="width: 50px; height: auto"
+									/>
+								</td>
+								<td style="padding: 10px; color: black"><b>${title}</b></td>
+								<td style="padding: 10px; color: black">${category.name}</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="3" style="padding: 10px; color: black">
+									${overview}
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			`;
 
 			removeModal.querySelector('div:first-child').innerHTML = innerHTMLData;
 		})
@@ -259,8 +279,8 @@ function displayComments(comments, currentPage = 1, rowsPerPage = 5) {
 	tableBody.innerHTML = `
 		 <thead>
 			  <tr>
-					<th class="title-head">Comment</th>
-					<th>Movie</th>
+			  		<th class="title-head">Movie Name</th>
+					<th>Comment</th>
 					<th>Created At</th>
 					<th>See</th>
 					<th>Delete</th>
@@ -276,13 +296,13 @@ function displayComments(comments, currentPage = 1, rowsPerPage = 5) {
 	paginatedComments.forEach(({ comment, movie, created_at, id }) => {
 		row.innerHTML += `
 			  <tr>
-					<td class="title-cell">${comment}</td>
-					<td>${movie.title}</td>
+			  		<td class="title-cell">${movie.title}</td>       
+					<td>${comment.length < 30 ? comment : comment.substring(0, 29) + '...'}</td>
 					<td>${new Date(created_at).toLocaleDateString()}</td>
 					<td class="action-icons">
 						 <i
 							  class="fas fa-eye"
-							  onclick="showRowDetails({movieId: ${movie.id}})" 
+							  onclick="showRowDetails({movieId: ${movie.id}, comment: '${comment}'})" 
 						 ></i>
 						 
 					</td> 

@@ -2,16 +2,15 @@ const pageRight = document.querySelector(".page-right");
 
 
 //SHOW DETAILS MODAL #################################
-function showRowDetails(el) {
+function showRowDetails(contactText) {
 	const removeModal = document.querySelector("#detailsModal");
 	const modalOverlay = document.querySelector(".modal-details-overlay");
 	const cancelBtn = document.querySelector("#detailsModal .cancelBtn");
-	const elDesc = el.closest("tr").querySelector('td:nth-child(4)').textContent;
 
 	removeModal.classList.add("modal-hidden");
 	modalOverlay.style.visibility = "visible";
 	pageRight.style.backgroundColor = "#090909";
-	removeModal.querySelector('p').innerHTML = elDesc;
+	removeModal.querySelector('p').innerHTML = contactText.reason;
 
 	cancelBtn.onclick = () => {
 		modalDetailsHide();
@@ -226,12 +225,12 @@ function displayContacts(contacts, currentPage = 1, rowsPerPage = 5) {
 					<td>${contact.id}</td>
 					<td class="title-cell">${contact.full_name}</td>
 					<td><a href="mailto:${contact.email}" class="email-link">${contact.email}</a></td>
-					<td>${contact.reason}</td>
+					<td>${contact.reason.length < 21 ? contact.reason : contact.reason.substring(0, 20) + '...'}</td>
 					<td>${new Date(contact.created_at).toLocaleDateString()}</td>
 					<td class="action-icons">
 						 <i
 							  class="fas fa-eye"
-							  onclick="showRowDetails(this)"
+							  onclick="showRowDetails({reason: '${contact.reason}'})"
 						 ></i>
 					</td> 
 					<td class="action-icons">

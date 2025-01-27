@@ -8,7 +8,6 @@ let allActors = [];
 document.addEventListener('DOMContentLoaded', () => {
 	fetchMovies();
 	fetchCategoriesAndActors();
-
 	document.querySelector('#createBtn').addEventListener('click', () => showModal(isCategories, isActors));
 });
 
@@ -76,6 +75,8 @@ const fetchCategoriesAndActors = async () => {
 				<option value="${id}">${name} ${surname}</option>
 			`;
 		}).join('');
+
+		MultiselectDropdown(window.MultiselectDropdownOptions);
 
 	} catch (error) {
 		console.error('An error occurred while fetching data:', error);
@@ -156,18 +157,16 @@ function checkImageUrl() {
 		const testImg = new Image();
 
 		testImg.onload = function () {
-			console.log('goodimg', url);
 			img.src = url; 
 		};
 
 		testImg.onerror = function () {
-			console.log('errimg', url);
-			img.src = 'https://www.4willis.com/wp-content/uploads/2019/10/insert-image-here.jpg';
+			img.src = 'https://askjan.org/publications/consultants-corner/images/online.jpg';
 		};
 
 		testImg.src = url; 
 	} else {
-		img.src = 'https://www.4willis.com/wp-content/uploads/2019/10/insert-image-here.jpg'; 
+		img.src = 'https://askjan.org/publications/consultants-corner/images/online.jpg'; 
 	}
 }
 
@@ -242,15 +241,22 @@ function editMovieRow(movieId) {
 						</select>
 						<i class="down fa-solid fa-chevron-down"></i>
 					</label>
+
+
 					<label for="select-box" class="category">
-						<select id="select-box" multiple class="movieActors">
+						<select id="select-box" multiple class="movieActors" 
+						>
 							${allActors.map(actor => {
-				const isSelected = actors.some(a => a.id === actor.id) ? 'selected' : '';
-				return `<option value="${actor.id}" ${isSelected}>${actor.name} ${actor.surname}</option>`;
-			}).join('')}
+								const isSelected = actors.some(a => a.id === actor.id) ? 'selected' : '';
+								return `
+									<option value="${actor.id}" ${isSelected}>
+										${actor.name} ${actor.surname}
+									</option>`;
+							}).join('')}
 						</select>
-						<i class="down fa-solid fa-chevron-down"></i>
+						<!--<i class="down fa-solid fa-chevron-down"></i>-->
 					</label>
+					
 					<div class="form">
 						<div class="checkbox">
 							<label for="check">Adult</label>
@@ -270,6 +276,7 @@ function editMovieRow(movieId) {
 
 			removeModal.innerHTML = innerHTMLData;
 			document.querySelector('.movieCoverUrl').addEventListener('input', checkImageUrl);
+			MultiselectDropdown(window.MultiselectDropdownOptions);
 		})
 		.catch(error => {
 			console.error('Fetch error:', error);

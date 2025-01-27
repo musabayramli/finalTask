@@ -33,7 +33,7 @@ header .logo span {
    color: #c3c8d4;
 }
 header .btn {
-	display: none;
+   display: none;
    background: #9b51e0;
    border-radius: 4px;
    color: #fff;
@@ -41,7 +41,7 @@ header .btn {
    height: 32px;
    border: none;
    text-transform: capitalize;
-	cursor: pointer;
+   cursor: pointer;
 }
 .profile-container {
    display: flex;
@@ -52,6 +52,63 @@ header .btn {
 
    span {
       cursor: auto;
+   }
+
+   .skeleton {
+      background: linear-gradient(
+         90deg,
+         rgba(224, 224, 224, 0.2) 25%,
+         rgba(255, 255, 255, 0.5) 50%,
+         rgba(224, 224, 224, 0.2) 75%
+      );
+      background-size: 200% 100%;
+      border-radius: 4px;
+      animation: shimmer 0.75s infinite linear, glow 0.75s infinite alternate;
+      position: relative;
+   }
+
+   .skeleton-text {
+      width: 100px;
+      height: 20px;
+      background: rgba(224, 224, 224, 0.5);
+   }
+
+   .skeleton-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(224, 224, 224, 0.5);
+      position: relative;
+   }
+
+   @keyframes shimmer {
+      0% {
+         background-position: -200px 0;
+      }
+      50% {
+         background-position: 200px 0;
+      }
+      100% {
+         background-position: -200px 0;
+      }
+   }
+
+   @keyframes glow {
+      0% {
+         box-shadow: 0 0 5px rgba(0, 150, 255, 0.6);
+      }
+      50% {
+         box-shadow: 0 0 15px rgba(0, 150, 255, 0.8);
+      }
+      100% {
+         box-shadow: 0 0 25px rgba(0, 150, 255, 1);
+      }
+   }
+
+   .user-image {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
    }
 }
 .profile-img {
@@ -71,14 +128,14 @@ header .btn {
 .dropdown {
    display: none;
    position: absolute;
-   top: 100%; 
-   right: 0; 
+   top: 100%;
+   right: 0;
    background: white;
    border: 1px solid #ddd;
-	border-radius: 10px;
+   border-radius: 10px;
    padding: 10px;
-   width: 120px; 
-	margin-top: 10px;
+   width: 120px;
+   margin-top: 10px;
 }
 .dropdown a {
    display: flex;
@@ -86,7 +143,7 @@ header .btn {
    padding: 10px;
    text-decoration: none;
    color: black;
-	border-radius: 5px;
+   border-radius: 5px;
 }
 .dropdown a .icon {
    display: flex;
