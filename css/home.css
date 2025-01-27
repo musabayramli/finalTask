@@ -38,9 +38,7 @@ nav ul {
 nav ul li a:hover {
     color: #0feffd;
 }
-.icon {
-    filter: brightness(0) saturate(100%) invert(40%) sepia(100%) saturate(275%) hue-rotate(145deg) brightness(103%) contrast(110%);
-}
+
 .header-content {
     padding-left: 120px;
     display: flex;
