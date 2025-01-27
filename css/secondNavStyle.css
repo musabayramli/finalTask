@@ -7,9 +7,14 @@ header {
    backdrop-filter: blur(24px);
    box-shadow: 0px 40px 40px 8px rgba(0, 0, 0, 0.18); 
    padding: 20px 0;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   gap: 50px;
 }
 
 header .logo {
+   display: block;
    width: 56px;
    height: 56px;
 }
@@ -24,7 +29,7 @@ nav{
    display: flex;
    flex-direction: column;
    align-items: center;
-   gap: 40px;
+   gap: 50px;
 }
 ul {
    display: flex;
@@ -34,5 +39,5 @@ ul {
 }
 
 ul li {
-   cursor: pointer; /
+   cursor: pointer; 
 }
