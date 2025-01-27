@@ -89,12 +89,25 @@
             <div class="row">
                <div class="input-container">
                   <h4>Contact Us</h4>
-                  <form>
-                     <input type="text" placeholder="Fullname" />
-                     <input type="email" placeholder="Email adress" />
-                     <textarea name="" id="" placeholder="Reason"></textarea>
+                  <form id="contactForm">
+                     <input type="text" placeholder="Fullname" id="full_name"/>
+                     <input type="email" placeholder="Email adress" id="email" />
+                     <textarea placeholder="Reason" id="reason"></textarea>
+
                      <button class="btn">Send</button>
+                
+
                   </form>
+
+                     <!-- Loading Message here -->
+        <div class="loading-message" style="display: none;">
+         <p>Sending...</p>
+     </div>
+
+                  <!-- Success Message here -->
+        <div class="success-message" style="display: none;">
+         <p>Thank you, <span id="userName"></span>! Your message has been sent successfully.</p>
+     </div>
                </div>
             </div>
          </section>
@@ -185,5 +198,7 @@
       </footer>
 
       <script src="../js/app.js"></script>
+      <script src="../js/contact-us.js"></script>
+
    </body>
 </html>
