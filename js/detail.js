@@ -4,13 +4,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   const closeModal = document.getElementById("closeEdModal");
   const modalImage = document.querySelector("#openModal");
   const modalTitle = document.querySelector(".modal-box h1");
+  const modalBox = document.querySelector(".modal-box");
   const playButton = document.querySelector(".play-btn");
   const modalImageElement = modal.querySelector("#modal img");
   const modalContent = modal.querySelector(".modal-content");
 
   if (!modal || !closeModal || !modalImage || !modalTitle || !playButton) {
     console.error(
-      "Bəzi vacib elementlər tapılmadı. Zəhmət olmasa HTML-ni yoxlayın."
+      "Bəzi vacib elementlər tapılmadı. Zəhmət olmasamodal HTML-ni yoxlayın."
     );
     return;
   }
@@ -171,8 +172,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     playButton.addEventListener("click", () => {
       if (videoUrl) {
         modal.classList.add("active");
-        modalTitle.textContent = data.title || "Film Adı";
+        /* modalTitle.textContent = data.title || "Film Adı"; */
         modalImageElement.style.display = "none";
+        modalBox.style.display = 'none'
         movieTrailerIframe.style.display = "block"; 
         movieTrailerIframe.src = `https://www.youtube.com/embed/${getYouTubeVideoId(
           videoUrl
@@ -194,6 +196,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       modal.classList.remove("active");
       movieTrailerIframe.style.display = "none"; 
       movieTrailerIframe.src = ""; 
+       modalBox.style.display = 'block'
       modalImageElement.style.display = "block";
     });
     
@@ -248,9 +251,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         <div class="commet-heading">
           <div class="commet-img">
             <img src="${
-              comment.user_image || "../images/default-user.jpg"
+              "../images/default-user.jpg"
             }" alt="User" class="inp-img">
-            <h4>${comment.user_name || "İstifadəçi"}</h4>
+            <h4>Admin</h4>
           </div>
           <div>
             <span>${new Date(comment.created_at).toLocaleString()}</span>
