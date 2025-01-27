@@ -27,3 +27,7 @@ html{
 .swiper-slide:hover .box > p{
     transform: translateY(-7px);
 }
+
+img.active{
+    filter: brightness(0) saturate(100%) invert(70%) sepia(87%) saturate(1368%) hue-rotate(145deg) brightness(103%) contrast(109%);
+}

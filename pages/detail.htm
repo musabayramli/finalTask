@@ -27,18 +27,17 @@
             </div>
             <ul>
                 <li>
-                    <a href="../index.htm"
-                       ><img src="../images/Home.svg" alt="home"></a>
-                 </li>
-                 <li>
-                    <a href="./searchResult.htm"><img src="../images/Group.svg" alt="Search"></a>
-                 </li>
-                 <li>
-                    <a href="./account.htm"><img src="../images/TV.svg" alt="account"></a>
-                 </li>
-                 <li>
-                    <a href="./favoritePage.htm"><img src="../images/Star Stroke.svg" alt="favorits"></a>
-                 </li>
+                    <a href="../index.htm"  data-page="home"><img src="../images/Home.svg" alt="home"></a>
+                </li>
+                <li>
+                    <a href="./searchResult.htm"  data-page="search"><img src="../images/Group.svg" alt="Search"></a>
+                </li>
+                <li>
+                    <a href="./account.htm"  data-page="account"><img src="../images/TV.svg" alt="account"></a>
+                </li>
+                <li>
+                    <a href="./favoritePage.htm"  data-page="favorits"><img src="../images/Star Stroke.svg" alt="favorits"></a>
+                </li>
             </ul>
         </nav>
         <div class="detail-bg">
@@ -53,8 +52,8 @@
                 <span>MaileHereko</span>
                 <span> / </span>
                 <span>TV Shows</span>
-              </div>
-              <h1 id="movieTitle">lost In space</h1>
+            </div>
+            <h1 id="movieTitle">lost In space</h1>
         </div>
         <section id="sec1" class="container">
             <div class="sec1-content">
@@ -73,11 +72,16 @@
                     </div>
                     <div class="overview">
                         <p id="movieOverview">
-                            Özge Özpirinçci ve Buğra Gülsoy'un başrollerini paylaştığı 2017 yerli romantik ve dram filmini bedava HD full sürümde izleyin. Duygu ile Murat’ın aşkını hikâye eden Acı Tatlı Ekşi filmi, büyük ve uzun bir aşkı konu edinmektedir. Duygu ve Murat çocuktan arkadaştırlar ve birbirlerine aşıktırlar. Murat’ın uzun yıllardır tek dileği Duygu ile evlenmektir. Üniversiteyi bitirdikten sonra Murat bu düşüncesini Duygu ile paylaşır ve evlenme teklifi eder.
+                            Özge Özpirinçci ve Buğra Gülsoy'un başrollerini paylaştığı 2017 yerli romantik ve dram
+                            filmini bedava HD full sürümde izleyin. Duygu ile Murat’ın aşkını hikâye eden Acı Tatlı Ekşi
+                            filmi, büyük ve uzun bir aşkı konu edinmektedir. Duygu ve Murat çocuktan arkadaştırlar ve
+                            birbirlerine aşıktırlar. Murat’ın uzun yıllardır tek dileği Duygu ile evlenmektir.
+                            Üniversiteyi bitirdikten sonra Murat bu düşüncesini Duygu ile paylaşır ve evlenme teklifi
+                            eder.
                         </p>
-                       <!--  <button id="toggleOverview">Daha çox</button> -->
+                        <!--  <button id="toggleOverview">Daha çox</button> -->
                     </div>
-                    
+
                     <div class="details">
                         <div class="detail-box">
                             <div>
@@ -210,7 +214,7 @@
         </section>
 
 
-      <!--   <section class="movie-carousel container">
+        <!--   <section class="movie-carousel container">
             <h2>Favorite movies <a href="#">&#x276F;</a></h2>
             <div class="swiper mySwiperComedy">
                 <div class="swiper-wrapper">
@@ -269,7 +273,7 @@
                 </div>
             </div>
         </section>
-        
+
     </main>
 
 
@@ -285,8 +289,8 @@
             <video id="movieTrailer" width="100%" controls style="display: none;"></video>
         </div>
     </div>
-    
-    
+
+
 
     <!-- Swiper -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -321,6 +325,20 @@
                     spaceBetween: 30,
                 },
             },
+        });
+
+    </script>
+    <script>
+        const currentPage = window.location.pathname.split("/").pop();
+
+
+        const links = document.querySelectorAll("header ul li a");
+
+        links.forEach((link) => {
+            const page = link.getAttribute("data-page");
+            if (currentPage.includes(page)) {
+                link.querySelector("img").classList.add("active");
+            }
         });
 
     </script>

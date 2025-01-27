@@ -23,15 +23,15 @@
     <header>
         <nav>
             <div class="logo">
-               <a href="../index.htm">
-                <img src="../images/logo.png" alt="logo" />
-               </a>
+                <a href="../index.htm">
+                    <img src="../images/logo.png" alt="logo" />
+                </a>
             </div>
             <ul>
-                <li><a href="home.htm"><img src="../images/Home.svg" alt="home"></i></a></li>
-                <li><a href="searchResult.htm"><img class="icon" src="../images/Group.svg" alt=""></a></li>
-                <li><a href="account.htm"><img src="../images/TV.svg" alt="account"></a></li>
-                <li><a href="favoritePage.htm"><img src="../images/Star Stroke.svg" alt="favorits"></a></li>
+                <li><a href="home.htm"  data-page="home"><img src="../images/Home.svg" alt="home"></i></a></li>
+                <li><a href="searchResult.htm"  data-page="search"><img class="icon" src="../images/Group.svg" alt=""></a></li>
+                <li><a href="account.htm"  data-page="account"><img src="../images/TV.svg" alt="account"></a></li>
+                <li><a href="favoritePage.htm"  data-page="favorit"><img src="../images/Star Stroke.svg" alt="favorits"></a></li>
             </ul>
         </nav>
         <div class="swiper mySwiperHeader">
@@ -41,11 +41,25 @@
             <div class="swiper-pagination"></div>
         </div>
     </header>
-    
+
     <main id="main-content">
         <!-- Karusellər dinamik olaraq burada yaradılacaq -->
     </main>
+    <script>
+        const currentPage = window.location.pathname.split("/").pop();
 
+
+        const links = document.querySelectorAll("header ul li a");
+
+        links.forEach((link) => {
+            const page = link.getAttribute("data-page");
+            if (currentPage.includes(page)) {
+                link.querySelector("img").classList.add("active");
+            }
+        });
+
+
+    </script>
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!-- Swiper Config -->

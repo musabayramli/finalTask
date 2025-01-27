@@ -14,7 +14,7 @@
     <!-- Reset CSS -->
     <link rel="stylesheet" href="../css/reset.css" />
     <!-- Qlobal CSS -->
-     <link rel="stylesheet" href="../css/qlobal.css">
+    <link rel="stylesheet" href="../css/qlobal.css">
     <!-- Main CSS -->
     <link rel="stylesheet" href="../css/favoritePage.css">
 </head>
@@ -27,23 +27,22 @@
             </div>
             <ul>
                 <li>
-                    <a href="../index.htm"
-                       ><img src="../images/Home.svg" alt="home"></a>
-                 </li>
-                 <li>
-                    <a href="./searchResult.htm"><img src="../images/Group.svg" alt="Search"></a>
-                 </li>
-                 <li>
-                    <a href="./account.htm"><img src="../images/TV.svg" alt="account"></a>
-                 </li>
-                 <li>
-                    <a href="./favoritePage.htm"><img src="../images/Star Stroke.svg" alt="favorits"></a>
-                 </li>
+                    <a href="../index.htm"  data-page="home"><img src="../images/Home.svg" alt="home"></a>
+                </li>
+                <li>
+                    <a href="./searchResult.htm"  data-page="search"><img src="../images/Group.svg" alt="Search"></a>
+                </li>
+                <li>
+                    <a href="./account.htm"  data-page="account"><img src="../images/TV.svg" alt="account"></a>
+                </li>
+                <li>
+                    <a href="./favoritePage.htm"  data-page="favorit"><img src="../images/Star Stroke.svg" alt="favorits"></a>
+                </li>
             </ul>
         </nav>
         <section class="movie-carousel">
             <h2>Favorite movies <a href="#">&#x276F;</a></h2>
-           <!--  <div class="swiper mySwiperComedy">
+            <!--  <div class="swiper mySwiperComedy">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <img src="../images/img.png" alt="Comedy Movie 1" />
@@ -95,7 +94,7 @@
                 <div class="swiper-wrapper" id="favorite-movies">
                     <!-- Buraya API-dən gələn məlumatlar əlavə ediləcək -->
                 </div>
-               
+
             </div>
         </section>
     </header>
@@ -108,14 +107,14 @@
 
     <script>
         var swiperComedy = new Swiper(".mySwiperComedy", {
-            slidesPerView: 1, 
+            slidesPerView: 1,
             loop: true,
             /* navigation: {
                 nextEl: ".swiper-comedy-next",
                 prevEl: ".swiper-comedy-prev",
             }, */
             breakpoints: {
-                320: { 
+                320: {
                     slidesPerView: 1,
                     spaceBetween: 10,
                 },
@@ -131,11 +130,25 @@
                     slidesPerView: 5,
                     spaceBetween: 25,
                 },
-                1440: { 
+                1440: {
                     slidesPerView: 6,
                     spaceBetween: 30,
                 },
             },
+        });
+
+    </script>
+    <script>
+        const currentPage = window.location.pathname.split("/").pop();
+
+
+        const links = document.querySelectorAll("header ul li a");
+
+        links.forEach((link) => {
+            const page = link.getAttribute("data-page");
+            if (currentPage.includes(page)) {
+                link.querySelector("img").classList.add("active");
+            }
         });
 
     </script>
