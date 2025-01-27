@@ -116,7 +116,7 @@ function displayUsers(users, currentPage = 1, rowsPerPage = 8) {
 	const paginatedUsers = users.slice(start, end);
 
 	paginatedUsers.forEach(user => {
-		 row.innerHTML += `
+		row.innerHTML += `
 			  <tr>
 					<td>${user.id}</td>
 					<td>${user.full_name}</td>
@@ -136,13 +136,13 @@ function setupPagination(users, currentPage, rowsPerPage) {
 	const totalPages = Math.ceil(users.length / rowsPerPage);
 
 	for (let i = 1; i <= totalPages; i++) {
-		 const pageButton = document.createElement('button');
-		 pageButton.innerText = i;
-		 pageButton.className = 'pagination-button';
-		 pageButton.addEventListener('click', () => displayUsers(users, i, rowsPerPage));
-		 if (i === currentPage) {
-			  pageButton.disabled = true;
-		 }
-		 paginationDiv.appendChild(pageButton);
+		const pageButton = document.createElement('button');
+		pageButton.innerText = i;
+		pageButton.className = 'pagination-button';
+		pageButton.addEventListener('click', () => displayUsers(users, i, rowsPerPage));
+		if (i === currentPage) {
+			pageButton.disabled = true;
+		}
+		paginationDiv.appendChild(pageButton);
 	}
 }

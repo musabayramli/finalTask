@@ -118,7 +118,7 @@ const showMovies = async ({ movies, status, searching }) => {
 			document.querySelector('.movies').innerHTML = movies.map(({ id, title, cover_url, category }) => {
 				return `
 					<div class="movie" onclick="goDetailsPage(${id})">
-						<img src="${cover_url}" alt="Wonder Woman 1984" />
+						<img src="${cover_url || 'https://www.subaruenginesandgearboxes.co.uk/storage/uploads/xno-image.jpg.pagespeed.ic.w2co8EoeAJ.jpg'}" alt="Wonder Woman 1984" />
 						<div class="movieDescBox">
 							<h4>${category.name}</h4>
 							<p>${title}</p>
@@ -132,7 +132,7 @@ const showMovies = async ({ movies, status, searching }) => {
 			document.querySelector('.movies').innerHTML = movies.slice().sort((a, b) => b.imdb - a.imdb).map(({ id, title, cover_url, category }) => {
 				return `
 					<div class="movie" onclick="goDetailsPage(${id})">
-						<img src="${cover_url}" alt="Wonder Woman 1984" />
+						<img src="${cover_url || 'https://www.subaruenginesandgearboxes.co.uk/storage/uploads/xno-image.jpg.pagespeed.ic.w2co8EoeAJ.jpg'}" alt="Wonder Woman 1984" />
 						<div class="movieDescBox">
 							<h4>${category.name}</h4>
 							<p>${title}</p>

@@ -53,21 +53,42 @@ const updateAuthUI = async () => {
 	let apiProfileImg = '';
 	let fullName = '';
 
+	// Skeleton show
+	const showSkeleton = () => {
+		const skeletonText = document.createElement('div');
+		skeletonText.classList.add('skeleton', 'skeleton-text');
+		const skeletonCircle = document.createElement('div');
+		skeletonCircle.classList.add('skeleton', 'skeleton-circle');
+		profileContainer.appendChild(skeletonText);
+		profileContainer.appendChild(skeletonCircle);
+		return { skeletonText, skeletonCircle };
+	};
+
+	// Skeleton hide
+	const hideSkeleton = (skeletonElements) => {
+		profileContainer.removeChild(skeletonElements.skeletonText);
+		profileContainer.removeChild(skeletonElements.skeletonCircle);
+	};
+
+	// Show skeleton elements:
+	const skeletonElements = showSkeleton();
+
 	if (authToken) {
-		 try {
-			  const response = await fetch('https://api.sarkhanrahimli.dev/api/filmalisa/profile', {
-					headers: {
-						 'Authorization': `Bearer ${authToken}`
-					}
-			  });
-			  const data = await response.json();
-			  if (data.result && data.data.img_url && data.data.full_name) {
-					apiProfileImg = data.data.img_url;
-					fullName = data.data.full_name;
-			  }
-		 } catch (error) {
-			  console.error('API error:', error);
-		 }
+		try {
+			const response = await fetch('https://api.sarkhanrahimli.dev/api/filmalisa/profile', {
+				headers: {
+					'Authorization': `Bearer ${authToken}`
+				}
+			});
+
+			const data = await response.json();
+			if (data.result && data.data.img_url && data.data.full_name) {
+				apiProfileImg = data.data.img_url;
+				fullName = data.data.full_name;
+			}
+		} catch (error) {
+			console.error('API error:', error);
+		}
 	}
 
 	profileImg.src = apiProfileImg || defaultProfileImg;
@@ -100,50 +121,46 @@ const updateAuthUI = async () => {
 	greeting.style.marginLeft = '10px';
 	greeting.style.color = '#fff';
 
-	
 	if (authToken) {
-		 
-		 profileContainer.style.display = 'flex';
-		 profileContainer.appendChild(goToMoviesButton);
-		 profileContainer.appendChild(greeting);
-		 profileContainer.appendChild(profileImg);
-		 profileContainer.appendChild(dropdownMenu);
+		hideSkeleton(skeletonElements);
+		profileContainer.style.display = 'flex';
+		profileContainer.appendChild(goToMoviesButton);
+		profileContainer.appendChild(greeting);
+		profileContainer.appendChild(profileImg);
+		profileContainer.appendChild(dropdownMenu);
 	} else {
 		signInButton.style.display = 'block';
-		 profileContainer.style.display = 'none';
+		profileContainer.style.display = 'none';
 	}
 
-	// Profile picture
 	profileImg.addEventListener('click', (e) => {
-		 e.stopPropagation();
-		 dropdownMenu.style.top = `${profileImg.offsetHeight}px`;
-		 dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+		e.stopPropagation();
+		dropdownMenu.style.top = `${profileImg.offsetHeight}px`;
+		dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
 	});
 
-	// Closing dropdown
 	document.addEventListener('click', () => {
-		 dropdownMenu.style.display = 'none';
+		dropdownMenu.style.display = 'none';
 	});
 
 	dropdownMenu.addEventListener('click', (e) => {
-		 e.stopPropagation();
+		e.stopPropagation();
 	});
 
 	goToMoviesButton.addEventListener('click', () => {
-		 window.location.href = './pages/home.htm';
+		window.location.href = './pages/home.htm';
 	});
 
 	goToMoviesButton.style.cursor = 'pointer';
 
 	document.getElementById('logout').addEventListener('click', () => {
-		 localStorage.removeItem('authToken');
-		 location.reload();
+		localStorage.removeItem('authToken');
+		location.reload();
 	});
 
 	document.getElementById('settings').addEventListener('click', () => {
-		 if (authToken) {
-			  window.location.href = './pages/account.htm';
-		 }
+		if (authToken) {
+			window.location.href = './pages/account.htm';
+		}
 	});
 }
-

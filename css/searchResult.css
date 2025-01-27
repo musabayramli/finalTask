@@ -141,7 +141,6 @@ main {
 
          .movie {
             position: relative;
-            max-width: 280px;
             height: 440px;
             border-radius: 10px;
             overflow: hidden;
@@ -152,8 +151,8 @@ main {
                height: 700px;
             }
 
-            @media (min-width: 1024px) and (max-width: 1440px) {
-               flex: 1 1 calc(25% - 20px);
+            @media (min-width: 1280x) and (max-width: 1440px) {
+               flex: 0 1 calc(25% - 20px);
             }
 
             @media (min-width: 900px) and (max-width: 1024px) {
@@ -250,17 +249,4 @@ main {
 
 .movie:hover p {
    transform: translateY(-10px);
-}
-
-.moviesContainer {
-   position: relative;
-   overflow: hidden;
-   padding: 20px;
-}
-
-.movies {
-   position: relative;
-   min-height: 440px;
-   display: flex;
-   gap: 20px;
 }
