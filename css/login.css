@@ -11,10 +11,10 @@ body {
   margin: 0;
 }
 .sidebar {
-  width: 56px;
+  width: 80px;
   position: fixed;
-  top: 8px;
-  left: 20px;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -39,8 +39,8 @@ nav {
   color: white;
 }
 .logo {
-  width: 249px;
-  height: 214px;
+  width: 186px;
+  height: 154px;
   margin: auto;
 }
 .logo img {
@@ -93,6 +93,14 @@ input:focus {
   color: #99a3be;
   font-size: 14px;
 }
+.form input:-webkit-autofill {
+  background-color: transparent !important;
+  -webkit-box-shadow: 0 0 0px 1000px var(--TEXT-color_8) inset !important;
+  color: inherit !important;
+  }
+  input:-webkit-autofill::first-line {
+  color: inherit !important;
+  }
 .login {
   display: inline-block;
   width: 547px;
@@ -113,7 +121,7 @@ input:focus {
 }
 #message {
   display: block;
-  color: red; /* Mesajın rəngini test üçün qırmızı edin */
-  font-size: 16px; /* Oxunaqlı ölçü */
+  color: red; 
+  font-size: 16px; 
   margin-top: 10px;
 }

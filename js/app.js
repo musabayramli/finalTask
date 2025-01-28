@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	const signInButton = document.querySelector(".btn");
 
 	signInButton.addEventListener("click", () => {
-		window.location.href = "../pages/login.html"; // Login səhifəsinin dəqiq yolunu buraya yazın
+		window.location.href = "../pages/login.html"; 
 	});
 
 	dropdownfaq();

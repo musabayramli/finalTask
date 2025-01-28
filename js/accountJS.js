@@ -75,10 +75,10 @@ if (!authToken) {
 	saveButton.addEventListener("click", () => {
 		// Get updated values from form fields
 		const updatedProfile = {
-			img_url: imgUrl.value, // Assuming input field contains the image URL
+			img_url: imgUrl.value, 
 			full_name: fullname.value,
 			email: email.value,
-			password: password.value, // Send the new password if updated
+			password: password.value, 
 		};
 
 		// Send PUT request to update the profile

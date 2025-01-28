@@ -28,10 +28,12 @@
                 </a>
             </div>
             <ul>
-                <li><a href="home.htm"  data-page="home"><img src="../images/Home.svg" alt="home"></i></a></li>
-                <li><a href="searchResult.htm"  data-page="search"><img class="icon" src="../images/Group.svg" alt=""></a></li>
-                <li><a href="account.htm"  data-page="account"><img src="../images/TV.svg" alt="account"></a></li>
-                <li><a href="favoritePage.htm"  data-page="favorit"><img src="../images/Star Stroke.svg" alt="favorits"></a></li>
+                <li><a href="home.htm" data-page="home"><img src="../images/Home.svg" alt="home"></i></a></li>
+                <li><a href="searchResult.htm" data-page="search"><img class="icon" src="../images/Group.svg"
+                            alt=""></a></li>
+                <li><a href="account.htm" data-page="account"><img src="../images/TV.svg" alt="account"></a></li>
+                <li><a href="favoritePage.htm" data-page="favorit"><img src="../images/Star Stroke.svg"
+                            alt="favorits"></a></li>
             </ul>
         </nav>
         <div class="swiper mySwiperHeader">
@@ -61,11 +63,19 @@
 
     </script>
     <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <!-- Swiper Config -->
-    <script src="../js/swiperConfig.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
     <!-- Main Script -->
     <script src="../js/home.js"></script>
+    <script>
+        new Swiper(".swiper", {
+            loop: true,
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+            },
+        });
+    </script>
 </body>
 
 </html>
