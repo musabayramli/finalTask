@@ -60,3 +60,20 @@ document.getElementById("loginBtn").addEventListener("click", async function (ev
     console.error("Login error:", error);
   }
 });
+// Şifrənin görünür/gizlənməsi funksionallığı
+document.getElementById("eyesIcon").addEventListener("click", function () {
+  const passwordInput = document.getElementById("password");
+  const eyesIcon = document.getElementById("eyesIcon2");
+
+
+  // Şifrəni görünən/görünməz etmək
+  if (passwordInput.type === "password") {
+    console.log(eyesIcon);
+    
+    passwordInput.type = "text";
+    eyesIcon.src = "../icons/eyesClose.svg";
+  } else {
+    passwordInput.type = "password";
+    eyesIcon.src = "../icons/eyes.svg";
+  }
+});
