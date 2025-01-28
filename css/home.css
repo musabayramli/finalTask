@@ -46,7 +46,7 @@ nav ul li a:hover {
 
 .header-content h1 {
     font-size: 4rem;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .header-content p {
@@ -106,7 +106,9 @@ nav ul li a:hover {
     text-align: justify;
     color: #849394;
 }
-
+ .imdb-rating{
+    margin-bottom: 10px;
+}
 /* Header Swiper */
 header {
     width: 100%;

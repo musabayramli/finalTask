@@ -91,9 +91,9 @@ function renderHeaderMovies(movies) {
       console.error("'main-content' elementi tapılmadı.");
       return;
     }
-
+  
     const categories = {};
-
+  
     // Filmləri kateqoriyalara görə qruplaşdır
     movies.forEach((movie) => {
       const categoryName = movie.category?.name || "Unknown";
@@ -102,13 +102,13 @@ function renderHeaderMovies(movies) {
       }
       categories[categoryName].push(movie);
     });
-
+  
     // Hər bir kateqoriya üçün karusel yaratmaq
     Object.keys(categories).forEach((categoryName) => {
       const categoryId = `swiper-${categoryName
         .replace(/\s+/g, "-")
         .toLowerCase()}`;
-
+  
       // Karusel şablonu
       const carousel = document.createElement("section");
       carousel.classList.add("movie-carousel");
@@ -117,17 +117,32 @@ function renderHeaderMovies(movies) {
                 <div class="swiper ${categoryId}">
                     <div class="swiper-wrapper">
                         ${categories[categoryName]
-                          .map(
-                            (movie) => `
+                          .map((movie) => {
+                            // IMDb reytinqinə əsasən ulduzları təyin et
+                            const imdbRating = parseFloat(movie.imdb) || 0;
+                            let starIcon = "";
+  
+                            if (imdbRating >= 8.0) {
+                              starIcon = "⭐️⭐️⭐️⭐️⭐️";
+                            } else if (imdbRating >= 7.0) {
+                              starIcon = "⭐️⭐️⭐️⭐️";
+                            } else if (imdbRating >= 5.0) {
+                              starIcon = "⭐️⭐️⭐️";
+                            } else {
+                              starIcon = "⭐️";
+                            }
+  
+                            return `
                             <div class="swiper-slide movie-card" data-id="${movie.id}">
                                 <img src="${movie.cover_url}" alt="${movie.title}">
                                 <div class="box">
                                     <span>${categoryName}</span>
+                                    <p class="imdb-rating">${starIcon}</p>
                                     <p>${movie.title}</p>
                                 </div>
                             </div>
-                        `
-                          )
+                            `;
+                          })
                           .join("")}
                     </div>
                     <div class="swiper-button-next swiper-${categoryId}-next"></div>
@@ -135,7 +150,7 @@ function renderHeaderMovies(movies) {
                 </div>
             `;
       mainContent.appendChild(carousel);
-
+  
       // Swiper-in hərəkətliliyini təmin et
       initializeSwiper(
         `.${categoryId}`,
@@ -143,7 +158,7 @@ function renderHeaderMovies(movies) {
         `.swiper-${categoryId}-prev`
       );
     });
-
+  
     // Kartlara klik funksiyası əlavə et
     document.querySelectorAll(".movie-card").forEach((card) => {
       card.addEventListener("click", (event) => {
@@ -152,6 +167,7 @@ function renderHeaderMovies(movies) {
       });
     });
   }
+  
 
   // Swiper konfiqurasiyası
   function initializeSwiper(carouselClass, nextButtonClass, prevButtonClass) {
