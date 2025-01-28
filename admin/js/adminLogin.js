@@ -68,7 +68,6 @@ document.getElementById("eyesIcon").addEventListener("click", function () {
 
   // Şifrəni görünən/görünməz etmək
   if (passwordInput.type === "password") {
-    console.log(eyesIcon);
     
     passwordInput.type = "text";
     eyesIcon.src = "../icons/eyesClose.svg";
