@@ -196,7 +196,7 @@ header .swiper-slide .header-content {
     padding: 2px 8px;
     border-radius: 4px;
 }
-.mySwiperMovies:hover{
+.swiper-slide:hover{
     cursor: pointer;
 }
 
