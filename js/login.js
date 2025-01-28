@@ -3,7 +3,9 @@ document
   .addEventListener("click", async function () {
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
+    const passwordInput = document.getElementById("password");
     const messageDiv = document.getElementById("message");
+    console.log(passwordInput);
 
     // Form validation
     if (!email || !password) {
@@ -56,3 +58,18 @@ document
       console.error("Error:", error);
     }
   });
+
+// Şifrənin görünür/gizlənməsi funksionallığı
+document.getElementById("eyesIcon").addEventListener("click", function () {
+  const passwordInput = document.getElementById("password");
+  const eyesIcon = document.getElementById("eyesIcon");
+
+  // Şifrəni görünən/görünməz etmək
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    eyesIcon.src = "../admin/icons/eyesClose.svg";
+  } else {
+    passwordInput.type = "password";
+    eyesIcon.src = "../admin/icons/eyes.svg";
+  }
+});
