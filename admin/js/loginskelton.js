@@ -22,14 +22,15 @@ const updateAuthUI = async () => {
 				}
 			});
 			const data = await response.json();
-			if (data.result && data.data.img_url && data.data.full_name) {
-				apiProfileImg = data.data.img_url;
+			if (data.result && data.data.full_name) {
 				fullName = data.data.full_name;
+				apiProfileImg = data.data.img_url || '';
 			}
 		} catch (error) {
 			console.error('API error:', error);
 		}
 	}
+
 
 	document.querySelector('.skeleton-container').innerHTML = '';
 	const newHtml = `
