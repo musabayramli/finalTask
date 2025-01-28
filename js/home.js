@@ -43,42 +43,46 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Header üçün carusel yaratmaq
-  function renderHeaderMovies(movies) {
-    const headerSwiperWrapper = document.querySelector(
-      ".mySwiperHeader .swiper-wrapper"
-    );
-    if (!headerSwiperWrapper) {
-      console.error("'mySwiperHeader' elementi tapılmadı.");
-      return;
-    }
-
-    // İlk 3 filmi header carusel üçün istifadə edək
-    const headerMovies = movies.slice(0, 3);
-
-    headerSwiperWrapper.innerHTML = headerMovies
-      .map(
-        (movie) => `
-            <div class="swiper-slide">
-                <img src="${movie.cover_url}" alt="${movie.title}">
-                <div class="header-content">
-                    <h1>${movie.title}</h1>
-                    <p>${movie.overview || "No description available."}</p>
-                    <button>Watch Now</button>
-                </div>
-            </div>
-        `
-      )
-      .join("");
-
-    // Swiper konfiqurasiyası
-    new Swiper(".mySwiperHeader", {
-      loop: true,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-    });
+// Header üçün carusel yaratmaq
+function renderHeaderMovies(movies) {
+  const headerSwiperWrapper = document.querySelector(".mySwiperHeader .swiper-wrapper");
+  if (!headerSwiperWrapper) {
+    console.error("'mySwiperHeader' elementi tapılmadı.");
+    return;
   }
+
+  console.log(movies);
+
+  headerSwiperWrapper.innerHTML = movies
+    .map((movie, index) => {
+      const imdbRating = parseFloat(movie.imdb) || 0; 
+      let starIcon = "";
+
+      if (imdbRating >= 8.0) {
+        starIcon = "⭐️⭐️⭐️⭐️⭐️"; 
+      } else if (imdbRating >= 7.0) {
+        starIcon = "⭐️⭐️⭐️⭐️"; 
+      } else if (imdbRating >= 5.0) {
+        starIcon = "⭐️⭐️⭐️"; 
+      } else {
+        starIcon = "⭐️"; 
+      }
+
+      return `
+          <div class="swiper-slide">
+              <img src="${movie.cover_url}" alt="${movie.title}">
+              <div class="header-content">
+                  <span>${movie.category.name}</span>
+                  <p class="imdb-rating">${starIcon}</p>
+                  <h1>${movie.title}</h1>
+                  <p>${movie.overview || "No description available."}</p>
+                  <button>Watch Now</button>
+              </div>
+          </div>
+      `;
+    })
+    .join(""); 
+}
 
   // Kateqoriyalara əsasən karusellər yaratmaq
   function renderCategories(movies) {
@@ -141,7 +145,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Kartlara klik funksiyası əlavə et
-    // Kartlara klik funksiyası əlavə et
     document.querySelectorAll(".movie-card").forEach((card) => {
       card.addEventListener("click", (event) => {
         const movieId = event.currentTarget.getAttribute("data-id");
@@ -168,6 +171,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Məlumatları yüklə
+
   fetchMovies();
 });

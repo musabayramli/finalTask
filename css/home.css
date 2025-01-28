@@ -30,16 +30,13 @@ nav ul {
     gap: 50px;
 }
 
-/* nav ul li a i {
-    font-size: 2.3rem;
-    color: #fff;
-} */
 
 nav ul li a:hover {
     color: #0feffd;
 }
 
 .header-content {
+    width: 900px;
     padding-left: 120px;
     display: flex;
     justify-content: center;
@@ -58,18 +55,56 @@ nav ul li a:hover {
 }
 
 .header-content button {
+    display: inline-block;
     padding: 15px 30px;
-    font-size: 1rem;
-    border: none;
-    background: #f04e30;
+    font-size: 18px;
     color: white;
-    border-radius: 5px;
+    background: transparent; 
+    border: none;
+    border-radius: 30px;
     cursor: pointer;
-    transition: background 0.3s;
+    font-weight: bold;
+    position: relative;
+}
+.header-content button::before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff00ff);
+    border-radius: 33px; 
+    z-index: -1;
+    mask:
+        linear-gradient(white 0 0) content-box,
+        linear-gradient(white 0 0);
+    -webkit-mask:
+        linear-gradient(white 0 0) content-box,
+        linear-gradient(white 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    padding: 3px; 
 }
 
 .header-content button:hover {
-    background: #c03d26;
+    color: black;
+    background: rgba(255, 255, 255, 0.1);
+    border-image-source: linear-gradient(90deg, #ff6600, #ff00ff);
+}
+.header-content span{
+    display: inline-block;
+    margin-bottom: 10px;
+    font: 400 2rem Roboto;
+    color: #0feffd;
+    background: #00000086;
+    padding: 6px 14px;
+    border-radius: 10px;
+}
+.header-content p{
+    font: 400 2rem Roboto;
+    text-align: justify;
+    color: #849394;
 }
 
 /* Header Swiper */
@@ -158,6 +193,9 @@ header .swiper-slide .header-content {
     background: #00000033;
     padding: 2px 8px;
     border-radius: 4px;
+}
+.mySwiperMovies:hover{
+    cursor: pointer;
 }
 
 .mySwiperMovies .swiper-button-next,
