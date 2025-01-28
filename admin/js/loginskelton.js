@@ -71,6 +71,7 @@ style.textContent = `
 		background: rgba(44, 62, 80, 0.85); 
 		position: relative;
 		overflow: hidden;
+		border-radius: 3px;
 	}
 
 	header .profile .skeleton-circle::after,
