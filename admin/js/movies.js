@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
 //GET CATEGORIES AND ACTORS FIRST
 const fetchCategoriesAndActors = async () => {
 	const apiCategoryUrl = 'https://api.sarkhanrahimli.dev/api/filmalisa/admin/categories';
@@ -76,7 +75,7 @@ const fetchCategoriesAndActors = async () => {
 			`;
 		}).join('');
 
-		MultiselectDropdown(window.MultiselectDropdownOptions);
+		// MultiselectDropdown(window.MultiselectDropdownOptions);
 
 	} catch (error) {
 		console.error('An error occurred while fetching data:', error);
@@ -141,6 +140,7 @@ function showModal(categoryMessage = null, actorsMessage = null) {
 	}
 
 	modalShow();
+	MultiselectDropdown(window.MultiselectDropdownOptions);
 
 	document.querySelector(".submit").className = "submit CreateMovie";
 	document.querySelector('#modal button.CreateMovie').addEventListener('click', createMovie);
@@ -157,16 +157,16 @@ function checkImageUrl() {
 		const testImg = new Image();
 
 		testImg.onload = function () {
-			img.src = url; 
+			img.src = url;
 		};
 
 		testImg.onerror = function () {
 			img.src = 'https://askjan.org/publications/consultants-corner/images/online.jpg';
 		};
 
-		testImg.src = url; 
+		testImg.src = url;
 	} else {
-		img.src = 'https://askjan.org/publications/consultants-corner/images/online.jpg'; 
+		img.src = 'https://askjan.org/publications/consultants-corner/images/online.jpg';
 	}
 }
 
@@ -247,14 +247,14 @@ function editMovieRow(movieId) {
 						<select id="select-box" multiple class="movieActors" 
 						>
 							${allActors.map(actor => {
-								const isSelected = actors.some(a => a.id === actor.id) ? 'selected' : '';
-								return `
+				const isSelected = actors.some(a => a.id === actor.id) ? 'selected' : '';
+				return `
 									<option value="${actor.id}" ${isSelected}>
 										${actor.name} ${actor.surname}
 									</option>`;
-							}).join('')}
+			}).join('')}
 						</select>
-						<!--<i class="down fa-solid fa-chevron-down"></i>-->
+						<i class="down fa-solid fa-chevron-down"></i>
 					</label>
 					
 					<div class="form">
