@@ -41,3 +41,14 @@ ul {
 ul li {
    cursor: pointer; 
 }
+a {
+   color: white;
+   padding: 10px;
+
+}
+a:hover {
+   color: #0feffd;
+   background-color: grey;
+   
+   border-radius: 10px;
+}
