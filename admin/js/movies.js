@@ -346,8 +346,8 @@ function editMovieRow(movieId) {
 			</div>
 		`;
 
-			modalShow('EDIT');
 			MultiselectDropdown(window.MultiselectDropdownOptions);
+			modalShow('EDIT');
 		})
 		.catch(error => {
 			console.error('Fetch error:', error);
