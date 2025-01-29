@@ -14,8 +14,8 @@ let categoryToDelete = null;
 
 const apiBaseUrl = "https://api.sarkhanrahimli.dev/api/filmalisa/admin";
 
-const rowsPerPage = 7; 
-let currentPage = 1; 
+const rowsPerPage = 7;
+let currentPage = 1;
 
 // Token alma funksiyası
 function getAuthToken() {
@@ -24,7 +24,7 @@ function getAuthToken() {
 
 // Mesaj Modalını göstərmək
 function showMessageModal(message) {
-  messageText.textContent = message; 
+  messageText.textContent = message;
   messageModal.style.visibility = "visible";
   messageModal.style.opacity = "1";
 }
@@ -39,7 +39,7 @@ function hideMessageModal() {
 function showModal() {
   const inputElement = document.querySelector(".modal-content input");
   if (inputElement) {
-    inputElement.value = ""; 
+    inputElement.value = "";
   }
   modal.style.visibility = "visible";
   modal.style.opacity = "1";
@@ -87,10 +87,14 @@ function displayTableRows(data) {
       <td>${category.id}</td>
       <td>${category.name}</td>
       <td class="action-icons">
-        <i class="edit fas fa-edit" onclick="showEditModal(${category.id}, '${category.name.replace(/'/g, "\\'")}')"></i>
+        <i class="edit fas fa-edit" onclick="showEditModal(${
+          category.id
+        }, '${category.name.replace(/'/g, "\\'")}')"></i>
       </td>
       <td class="action-icons">
-        <i class="remove fas fa-trash" onclick="showRemoveModal(${category.id}, this)"></i>
+        <i class="remove fas fa-trash" onclick="showRemoveModal(${
+          category.id
+        }, this)"></i>
       </td>
     `;
     tableBody.appendChild(row);
@@ -99,7 +103,7 @@ function displayTableRows(data) {
 
 // Pagination yaratmaq
 function setupPagination(data) {
-  paginationDiv.innerHTML = ""; 
+  paginationDiv.innerHTML = "";
   const pageCount = Math.ceil(data.length / rowsPerPage);
 
   for (let i = 1; i <= pageCount; i++) {
@@ -111,7 +115,7 @@ function setupPagination(data) {
     button.addEventListener("click", () => {
       currentPage = i;
       displayTableRows(data);
-      setupPagination(data); 
+      setupPagination(data);
     });
     paginationDiv.appendChild(button);
   }
@@ -197,7 +201,7 @@ async function createOrUpdateCategory() {
     }
 
     hideModal();
-    loadCategories(); 
+    loadCategories();
     editingCategoryId = null;
   } catch (error) {
     console.error(error);
@@ -235,15 +239,18 @@ async function deleteCategory() {
   }
 }
 
-// Redaktə modalını göstərmək
 function showEditModal(categoryId, categoryName) {
+
+  showModal(); 
   editingCategoryId = categoryId;
   const inputElement = document.querySelector(".modal-content input");
+  console.log(inputElement)
   if (inputElement) {
-    inputElement.value = categoryName || "";
+    inputElement.value += categoryName ;
   }
-  showModal();
 }
+
+
 
 // Event listener-lər
 submitBtn.addEventListener("click", createOrUpdateCategory);
