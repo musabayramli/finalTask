@@ -7,8 +7,8 @@ let allActors = [];
 
 document.addEventListener('DOMContentLoaded', () => {
 	fetchMovies();
-	fetchCategoriesAndActors();
-	document.querySelector('#createBtn').addEventListener('click', () => showModal(isCategories, isActors));
+
+	document.querySelector('.modal-overlay').addEventListener('click', hideModal)
 });
 
 
@@ -75,7 +75,7 @@ const fetchCategoriesAndActors = async () => {
 			`;
 		}).join('');
 
-		// MultiselectDropdown(window.MultiselectDropdownOptions);
+		MultiselectDropdown(window.MultiselectDropdownOptions);
 
 	} catch (error) {
 		console.error('An error occurred while fetching data:', error);
@@ -94,7 +94,7 @@ const fetchCategoriesAndActors = async () => {
 };
 
 // Open Create Modal
-function showModal(categoryMessage = null, actorsMessage = null) {
+function categoryaAndActorControl(categoryMessage = null, actorsMessage = null) {
 
 	if (categoryMessage != null && actorsMessage != null) {
 		Toastify({
@@ -138,12 +138,108 @@ function showModal(categoryMessage = null, actorsMessage = null) {
 
 		return;
 	}
+}
 
-	modalShow();
-	MultiselectDropdown(window.MultiselectDropdownOptions);
 
-	document.querySelector(".submit").className = "submit CreateMovie";
-	document.querySelector('#modal button.CreateMovie').addEventListener('click', createMovie);
+// Show Movie Modal
+function modalShow(type) {
+	const modalOverlay = document.querySelector(".modal-overlay");
+	const modal = document.querySelector(".modal");
+
+	modalOverlay.style.visibility = "visible";
+	modal.style.visibility = "visible";
+
+	if (type != 'EDIT') {
+		modal.innerHTML = `
+			<div class="modal-content">
+				<!-- LEFT -->
+				<div class="modal-left">
+					<input
+						type="text"
+						placeholder="title"
+						class="movieTitle"
+					/>
+					<textarea
+						placeholder="overview"
+						class="movieOverview"
+					></textarea>
+					<input
+						type="url"
+						placeholder="cover url"
+						class="movieCoverUrl"
+					/>
+					<input
+						type="url"
+						placeholder="fragman(youtube embed url)"
+						class="movieFragman"
+					/>
+					<input
+						type="url"
+						placeholder="watch url"
+						class="movieWatchUrl"
+					/>
+					<input
+						type="number"
+						placeholder="imdb"
+						class="movieImdb"
+					/>
+					<input
+						type="number"
+						placeholder="run time minute"
+						class="movieRunTimeMin"
+					/>
+					<label for="select-box" class="category">
+						<select id="select-box" class="movieCategory">
+							<option value="" disabled selected hidden>
+								Category
+							</option>
+						</select>
+						<i class="down fa-solid fa-chevron-down"></i>
+					</label>
+					<label for="select-box" class="category">
+						<select id="select-box" multiple class="movieActors">
+							<optgroup label="Actors"></optgroup>
+						</select>
+						<i class="down fa-solid fa-chevron-down"></i>
+					</label>
+					<div class="form">
+						<div class="checkbox">
+							<label for="check">Adult</label>
+							<input
+								id="check"
+								type="checkbox"
+								class="movieAdult"
+							/>
+						</div>
+						<button class="submit">Create</button>
+					</div>
+				</div>
+				<!-- RIGHT -->
+				<figure class="modal-image movieCoverImage">
+					<img
+						src="https://fitowatt.ru/assets/static/noimage.jpg"
+						alt="poster"
+						style="object-fit: cover"
+					/>
+				</figure>
+			</div>
+		`;
+
+		document.querySelector(".submit").className = "submit CreateMovie";
+		document.querySelector('#modal button.CreateMovie').addEventListener('click', createMovie);
+	}
+
+
+	document.querySelector('.movieCoverUrl').addEventListener('input', checkImageUrl);
+	fetchCategoriesAndActors();
+	categoryaAndActorControl(isCategories, isActors);
+}
+
+function hideModal() {
+	const modal = document.querySelector(".modal");
+	const modalOverlay = document.querySelector(".modal-overlay");
+	modalOverlay.style.visibility = "hidden";
+	modal.style.visibility = "hidden";
 }
 
 // Check Input Img Url
@@ -171,37 +267,9 @@ function checkImageUrl() {
 }
 
 
-// Show Movie Modal
-function modalShow() {
-	document.querySelector('.movieCoverUrl').addEventListener('input', checkImageUrl);
-
-	const modalOverlay = document.querySelector(".modal-remove-overlay");
-	modal.classList.add("modal-hidden");
-	modalOverlay.style.visibility = "visible";
-	pageRight.style.backgroundColor = "#090909";
-	pageRight.style.overflowY = "auto";
-}
-
-function hideModal() {
-	const modalOverlay = document.querySelector(".modal-remove-overlay");
-
-	modal.classList.remove("modal-hidden");
-	modalOverlay.style.visibility = "hidden";
-	pageRight.style.backgroundColor = "#171616";
-	pageRight.style.overflowY = "hidden";
-	window.location.reload();
-}
-
-// ------------------------------------
-
 //EDIT MODAL #################################
 function editMovieRow(movieId) {
-	modalShow();
-
-	const removeModal = document.querySelector("#modal.modal");
-	// const cancelBtn = document.querySelector("#removeModal .cancelBtn");
-
-	let innerHTMLData = "";
+	const editModal = document.querySelector("#modal.modal");
 
 	fetch(`https://api.sarkhanrahimli.dev/api/filmalisa/admin/movies/${movieId}`, {
 		method: 'GET',
@@ -219,7 +287,7 @@ function editMovieRow(movieId) {
 		.then(({ data }) => {
 			const { title, cover_url, fragman, watch_url, adult, run_time_min, imdb, overview, category, actors } = data;
 
-			innerHTMLData = `
+			editModal.innerHTML = `
 			<div class="modal-content">
 				<!-- LEFT -->
 				<div class="modal-left">
@@ -274,9 +342,7 @@ function editMovieRow(movieId) {
 			</div>
 		`;
 
-			removeModal.innerHTML = innerHTMLData;
-			document.querySelector('.movieCoverUrl').addEventListener('input', checkImageUrl);
-			MultiselectDropdown(window.MultiselectDropdownOptions);
+			modalShow('EDIT');
 		})
 		.catch(error => {
 			console.error('Fetch error:', error);
@@ -493,7 +559,7 @@ function displayMovies(movies, currentPage = 1, rowsPerPage = 7) {
                        
                         ${title}
                      </td>
-					<td>${overview.length < 60 ? overview : overview.substring(0, 59) + '...'}</td>
+					<td>${overview.length < 30 ? overview : overview.substring(0, 29) + '...'}</td>
 					<td>${category.name}</td>
 					<td>${imdb}</td>
 					<td class="action-icons">
