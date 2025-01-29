@@ -5,77 +5,97 @@ body {
    display: flex;
 }
 
+header {
+   margin-top: 30px;
+
+   & > a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 80px;
+      height: 80px;
+      margin-bottom: 40px;
+
+      img {
+         width: 100%;
+         height: 100%;
+      }
+
+		&:hover {
+			background-color: transparent;
+		}
+   }
+}
+
 .profile {
    display: flex;
    width: 100%;
    justify-content: center;
    padding-top: 50px;
 
-	.profile_pic {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 190px;
-		height: 190px;
-		overflow: hidden;
-		margin: auto;
-		border-radius: 50%;
-		background: linear-gradient(180deg, #72f435 0%, #027981 100%);
-	
-		& > img {
-			width: 180px;
-			height: 180px;
-			object-fit: cover;
-			border-radius: 50%;
-		}
-	}
-	
-	.profile_details {
-		margin: 20px 0;
-	
-		& > div {
-			display: flex;
-			margin: 10px 0;
-			justify-content: space-between;
-			padding: 16px 20px;
-			border-radius: 10px;
-			border: 1px solid #323b54;
-			background-color: #1a1a1a;
-	
-			input {
-				width: 100%;
-				margin-left: 20px;
-				background-color: transparent;
-				border: 0;
-				outline: 0;
-				color: #FFFF;
-				font: 400 20px arial;
-	
-				&::placeholder {
-					color: #475069;
-				}
-			}
-		}
-	}
-	
-	#savbtn {
-		padding: 16px 20px;
-		width: 100%;
-		background-color: #9b51e0;
-		border-radius: 12px;
-		border: 0;
-		color: white;
-		font: 400 16px arial;
-		cursor: pointer;
-		transition: all 0.3s ease;
-		&:hover {
-			background-color: #7b38b5;
-		}
-	}
+   .profile_pic {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 190px;
+      height: 190px;
+      overflow: hidden;
+      margin: auto;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #72f435 0%, #027981 100%);
+
+      & > img {
+         width: 180px;
+         height: 180px;
+         object-fit: cover;
+         border-radius: 50%;
+      }
+   }
+
+   .profile_details {
+      margin: 20px 0;
+
+      & > div {
+         display: flex;
+         margin: 10px 0;
+         justify-content: space-between;
+         padding: 16px 20px;
+         border-radius: 10px;
+         border: 1px solid #323b54;
+         background-color: #1a1a1a;
+
+         input {
+            width: 100%;
+            margin-left: 20px;
+            background-color: transparent;
+            border: 0;
+            outline: 0;
+            color: #ffff;
+            font: 400 20px arial;
+
+            &::placeholder {
+               color: #475069;
+            }
+         }
+      }
+   }
+
+   #savbtn {
+      padding: 16px 20px;
+      width: 100%;
+      background-color: #9b51e0;
+      border-radius: 12px;
+      border: 0;
+      color: white;
+      font: 400 16px arial;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+         background-color: #7b38b5;
+      }
+   }
 }
 
 .toggleIcon {
    cursor: pointer;
 }
-
-
