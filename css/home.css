@@ -16,11 +16,11 @@ nav {
     background: rgba(0, 0, 0, 0.6);
 }
 
- nav .logo {
+nav .logo {
     width: 60px;
     height: 60px;
     margin-bottom: 50px;
-} 
+}
 nav .logo img {
     height: 100%;
     width: 100%;
@@ -33,7 +33,6 @@ nav ul {
     gap: 50px;
 }
 
-
 nav ul li a:hover {
     color: #0feffd;
 }
@@ -45,24 +44,38 @@ nav ul li a:hover {
     justify-content: center;
     flex-direction: column;
     align-items: start;
+   
+}
+.swiper-slide{
+    position: relative;
+}
+.swiper-slide::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.503);
+    z-index: 1;
 }
 
 .header-content h1 {
     font-size: 4rem;
     margin-bottom: 10px;
 }
-
-.header-content p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
+.header-content{
+z-index: 8;
 }
+
+
 
 .header-content button {
     display: inline-block;
     padding: 15px 30px;
     font-size: 18px;
     color: white;
-    background: transparent; 
+    background: transparent;
     border: none;
     border-radius: 30px;
     cursor: pointer;
@@ -77,7 +90,7 @@ nav ul li a:hover {
     right: -3px;
     bottom: -3px;
     background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff00ff);
-    border-radius: 33px; 
+    border-radius: 33px;
     z-index: -1;
     mask:
         linear-gradient(white 0 0) content-box,
@@ -87,7 +100,7 @@ nav ul li a:hover {
         linear-gradient(white 0 0);
     mask-composite: exclude;
     -webkit-mask-composite: xor;
-    padding: 3px; 
+    padding: 3px;
 }
 
 .header-content button:hover {
@@ -95,7 +108,7 @@ nav ul li a:hover {
     background: rgba(255, 255, 255, 0.1);
     border-image-source: linear-gradient(90deg, #ff6600, #ff00ff);
 }
-.header-content span{
+.header-content span {
     display: inline-block;
     margin-bottom: 10px;
     font: 400 2rem Roboto;
@@ -104,12 +117,13 @@ nav ul li a:hover {
     padding: 6px 14px;
     border-radius: 10px;
 }
-.header-content p{
+.header-content p {
     font: 400 2rem Roboto;
     text-align: justify;
-    color: #849394;
+    color: #aebdbe;
+    margin-bottom: 30px;
 }
- .imdb-rating{
+.imdb-rating {
     margin-bottom: 10px;
 }
 /* Header Swiper */
@@ -126,6 +140,7 @@ header .swiper-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    z-index: 10;
 }
 header .swiper-slide .header-content {
     position: absolute;
@@ -199,7 +214,7 @@ header .swiper-slide .header-content {
     padding: 2px 8px;
     border-radius: 4px;
 }
-.swiper-slide:hover{
+.swiper-slide:hover {
     cursor: pointer;
 }
 
