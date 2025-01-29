@@ -324,41 +324,41 @@ text-align: center;
 
 /* Success Message */
 .success-message {
-   display: none; /* Başlanğıcda gizlidir */
-   position: absolute; /* Sabit yerləşir */
-   bottom: 20px; /* Ekranın altından 20px məsafə */
-   left: 50%; /* Mərkəzə gətirir */
-   transform: translateX(-50%); /* Xətti tam ortalamaq */
-   background-color: #28a745; /* Yaşıl fon */
-   color: white; /* Ağ mətn */
-   padding: 10px 20px; /* Daxili boşluq */
-   border-radius: 5px; /* Dairəvi künclər */
-   font-size: 16px; /* Yazı ölçüsü */
-   font-weight: bold; /* Güclü yazı */
-   text-align: center; /* Mətni mərkəzə yerləşdirir */
-   opacity: 0; /* Başlanğıcda şəffafdır */
-   z-index: 9999; /* Ən üstə gətirir */
+   display: none; 
+   position: absolute; 
+   bottom: 20px; 
+   left: 50%; 
+   transform: translateX(-50%);
+   background-color: #28a745; 
+   color: white; 
+   padding: 10px 20px;
+   border-radius: 5px; 
+   font-size: 16px; 
+   font-weight: bold; 
+   text-align: center; 
+   opacity: 0; 
+   z-index: 9999; 
    width: auto;
    max-width: 400px;
-   animation: fadeInOut 6s ease forwards; /* Bütün animasiya müddəti */
+   animation: fadeInOut 6s ease forwards; 
 }
 
 /* Yazının Fade in və Fade Out animasiyası */
 @keyframes fadeInOut {
    0% {
-       opacity: 0; /* Başlanğıcda gizli */
-       transform: translateX(-50%) translateY(20px); /* Yuxarıdan gəlsin */
+       opacity: 0; 
+       transform: translateX(-50%) translateY(20px); 
    }
    25% {
-       opacity: 1; /* Tam görünür */
-       transform: translateX(-50%) translateY(0); /* Yerinə gəlir */
+       opacity: 1; 
+       transform: translateX(-50%) translateY(0);
    }
    75% {
-       opacity: 1; /* Tam görünür */
+       opacity: 1; 
    }
    100% {
-       opacity: 0; /* Tam solur */
-       transform: translateX(-50%) translateY(-20px); /* Yuxarıya doğru hərəkət edir */
+       opacity: 0; 
+       transform: translateX(-50%) translateY(-20px); 
    }
 }
 
@@ -374,12 +374,12 @@ text-align: center;
    content: '';
    display: block;
    height: 3px;
-   background-color: #ffffff; /* Ağ xətt */
-   width: 0; /* Başlanğıcda xətt yoxdur */
+   background-color: #ffffff; 
+   width: 0; 
    position: absolute;
-   bottom: -5px; /* Mətnin alt hissəsinə yerləşdiririk */
+   bottom: -5px; 
    left: 0;
-   animation: drawLine 3s ease-out forwards; /* Xəttin çəkilmə animasiyası */
+   animation: drawLine 3s ease-out forwards; 
 }
 
 /* Xəttin çəkilməsi */
@@ -388,7 +388,7 @@ text-align: center;
        width: 0;
    }
    100% {
-       width: 100%; /* Xəttin tam uzunluğu */
+       width: 100%; 
    }
 }
 
