@@ -12,8 +12,8 @@ header {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 80px;
-      height: 80px;
+      width: 70px;
+      height: 70px;
       margin-bottom: 40px;
 
       img {
@@ -21,9 +21,9 @@ header {
          height: 100%;
       }
 
-		&:hover {
-			background-color: transparent;
-		}
+      &:hover {
+         background-color: transparent;
+      }
    }
 }
 
