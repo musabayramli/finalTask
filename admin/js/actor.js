@@ -37,6 +37,10 @@ function hideModal() {
   editingActorId = null;
 }
 
+// Overlay üzərinə klik edildikdə modalı gizlətmək
+modalOverlay.addEventListener("click", function () {
+  hideModal();
+});
 // Remove modalını göstərmək
 function showRemoveModal(actorId, element) {
   actorToDelete = { id: actorId, rowElement: element.closest("tr") };

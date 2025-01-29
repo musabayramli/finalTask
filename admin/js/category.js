@@ -55,6 +55,10 @@ function hideModal() {
   modalOverlay.style.opacity = "0";
 }
 
+// Overlay üzərinə klik edildikdə modalı gizlətmək
+modalOverlay.addEventListener("click", function () {
+  hideModal();
+});
 // Remove modalını göstərmək
 function showRemoveModal(categoryId, element) {
   categoryToDelete = { id: categoryId, rowElement: element.closest("tr") };
