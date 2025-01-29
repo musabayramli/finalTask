@@ -38,9 +38,9 @@ nav {
   font-weight: 400;
   color: white;
 }
-nav .logo {
-  width: 60px;
-  height: 60px;
+.logo {
+  width: 100px;
+  height: 100px;
   margin: auto;
 }
 .logo img {
