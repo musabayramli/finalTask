@@ -28,6 +28,7 @@ nav {
 nav .logo {
     width: 60px;
     height: 60px;
+    margin-bottom: 50px
 }
 nav .logo img {
     width: 100%;
