@@ -83,7 +83,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
 
       const { data } = await response.json();
-      console.log(data);
 
       renderMovieDetails(data);
       renderTopCast(data.actors);
@@ -91,7 +90,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       // Similar Movies üçün uyğun kategoriya ilə çağırış
       fetchSimilarMovies(data.category.id);
-      console.log(data);
 
       videoUrl = data.fragman || "";
     } catch (error) {
@@ -102,19 +100,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Şərhləri API-dən almaq üçün funksiya
   async function fetchComments() {
     const movieId = new URLSearchParams(window.location.search).get("id");
-
+  
     if (!movieId) return;
-
+  
     try {
       const response = await fetch(`${API_URL}/${movieId}/comments`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
         },
       });
-
+  
       if (response.ok) {
         const { data } = await response.json();
-        console.log(data);
 
         renderComments(data);
       } else {
@@ -124,7 +121,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       console.error("Şərhlər yüklənərkən xəta baş verdi:", error);
     }
   }
-
+  
   // Film detalları səhifəyə əlavə etmək
   function renderMovieDetails(data) {
     const movieTitleElement = document.getElementById("movieTitle");
@@ -172,7 +169,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     playButton.addEventListener("click", () => {
       if (videoUrl) {
         modal.classList.add("active");
-        /* modalTitle.textContent = data.title || "Film Adı"; */
+
         modalImageElement.style.display = "none";
         modalBox.style.display = "none";
         movieTrailerIframe.style.display = "block";
@@ -237,37 +234,41 @@ document.addEventListener("DOMContentLoaded", async () => {
       .join("");
   }
 
-  function renderComments(comments) {
-    if (!comments.length) {
-      commentList.innerHTML = "<p>Şərhlər tapılmadı.</p>";
-      return;
-    }
-    // Undefined və ya boş olan şərhləri süzgəcdən keçirmək
-    const validComments = comments.filter(
-      (comment) => comment.text && comment.text.trim() !== ""
-    );
-
-    if (!validComments.length) {
-      commentList.innerHTML = "<p>Şərhlər tapılmadı.</p>";
-      return;
-    }
-    commentList.innerHTML = comments
-      .map(
-        (comment) => `
-        <div class="commet-heading">
-          <div class="commet-img">
-            <img src="${"../images/default.jpg"}" alt="User" class="inp-img">
-            <h4>Admin</h4>
-          </div>
-          <div>
-            <span>${new Date(comment.created_at).toLocaleString()}</span>
-          </div>
-        </div>
-        <p>${comment.text}</p>
-      `
-      )
-      .join("");
+// Şərhləri göstərmək üçün funksiya
+function renderComments(comments) {
+  if (!comments || comments.length === 0) {
+    commentList.innerHTML = "<p>Şərhlər tapılmadı.</p>";
+    return;
   }
+
+  // Undefined və ya boş olan şərhləri süzgəcdən keçirmək
+  const validComments = comments.filter(
+    (comment) => comment.comment && comment.comment.trim() !== "" 
+  );
+
+  if (!validComments.length) {
+    commentList.innerHTML = "<p>Şərhlər tapılmadı.</p>";
+    return;
+  }
+
+  commentList.innerHTML = validComments
+    .map(
+      (comment) => `
+    <div class="commet-heading">
+      <div class="commet-img">
+        <img src="../images/default.jpg" alt="User" class="inp-img">
+        <h4>Admin</h4>
+      </div>
+      <div>
+        <span>${new Date(comment.created_at).toLocaleString()}</span>
+      </div>
+    </div>
+    <p>${comment.comment}</p> <!-- Düzgün sahə -->
+  `
+    )
+    .join("");
+}
+
   async function fetchSimilarMovies(categoryId) {
     try {
       const response = await fetch(API_URL, {
