@@ -343,7 +343,6 @@ text-align: center;
    max-width: 400px;
    animation: fadeInOut 6s ease forwards; 
 }
-
 /* Yazının Fade in və Fade Out animasiyası */
 @keyframes fadeInOut {
    0% {
@@ -362,6 +361,64 @@ text-align: center;
        transform: translateX(-50%) translateY(-20px); 
    }
 }
+/* Get Started */
+.success-text {
+   display: none; 
+   position: absolute; 
+   bottom: 20px; 
+   left: 50%; 
+   transform: translateX(-50%);
+   background-color: #28a745; 
+   color: white; 
+   padding: 10px 20px;
+   border-radius: 5px; 
+   font-size: 16px; 
+   font-weight: bold; 
+   text-align: center; 
+   opacity: 0; 
+   z-index: 9999; 
+   width: auto;
+   max-width: 400px;
+   animation: fadeInOutX 6s ease forwards; 
+}
+.errors-text {
+	display: none; 
+   position: absolute; 
+   bottom: 20px; 
+   left: 50%; 
+   transform: translateX(-50%);
+   background-color: red; 
+   color: white; 
+   padding: 10px 20px;
+   border-radius: 5px; 
+   font-size: 16px; 
+   font-weight: bold; 
+   text-align: center; 
+   opacity: 0; 
+   z-index: 9999; 
+   width: auto;
+   max-width: 400px;
+   animation: fadeInOutX 6s ease forwards;
+}
+/* Yazının Fade in və Fade Out animasiyası */
+@keyframes fadeInOutX {
+   0% {
+       opacity: 0; 
+       transform: translateX(-50%) translateY(20px); 
+   }
+   25% {
+       opacity: 1; 
+       transform: translateX(-50%) translateY(0);
+   }
+   75% {
+       opacity: 1; 
+   }
+   100% {
+       opacity: 1; 
+       transform: translateX(-50%) translateY(-20px); 
+   }
+}
+
 
 /* Alt xəttin çəkilməsi */
 .success-message p {
