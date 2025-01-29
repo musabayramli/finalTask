@@ -5,7 +5,6 @@ document
     const password = document.getElementById("password").value.trim();
     const passwordInput = document.getElementById("password");
     const messageDiv = document.getElementById("message");
-    console.log(passwordInput);
 
     // Form validation
     if (!email || !password) {

@@ -1,12 +1,16 @@
+const getStartedBtn = document.querySelector('#sec1 button');
+let getStarted = false;
+
 document.addEventListener("DOMContentLoaded", () => {
 	const signInButton = document.querySelector(".btn");
 
 	signInButton.addEventListener("click", () => {
-		window.location.href = "../pages/login.html"; 
+		window.location.href = "../pages/login.html";
 	});
 
 	dropdownfaq();
 	updateAuthUI();
+	getStartedBtn.addEventListener('click', getStartedBtnFx);
 });
 
 const dropdownfaq = () => {
@@ -85,6 +89,7 @@ const updateAuthUI = async () => {
 			if (data.result && data.data.img_url && data.data.full_name) {
 				apiProfileImg = data.data.img_url;
 				fullName = data.data.full_name;
+				getStarted = true;
 			}
 		} catch (error) {
 			console.error('API error:', error);
@@ -163,4 +168,22 @@ const updateAuthUI = async () => {
 			window.location.href = './pages/account.htm';
 		}
 	});
+}
+
+const getStartedBtnFx = () => {
+	const emailAdress = document.querySelector('#sec1 input');
+
+	if (emailAdress.value == '') {
+		alert('Please add your email first!')
+		return;
+	} else {
+
+		const inputmsg = document.querySelector('.inputmsg');
+		inputmsg.querySelector('#redirectpage').innerText = getStarted ? 'home' : 'loqin';
+		inputmsg.style.display = 'block';
+
+		setTimeout(() => {
+			getStarted ? location.href = "../pages/home.htm" : location.href = "../pages/login.html";
+		}, 2100);
+	}
 }

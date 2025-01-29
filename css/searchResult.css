@@ -1,7 +1,7 @@
 body {
    display: flex;
    background-color: #1d1d1d;
-	margin-bottom: 50px;
+   margin-bottom: 50px;
 
    /* & > * {
       height: 100vh;
@@ -14,15 +14,18 @@ header {
    nav {
       display: flex;
       flex-direction: column;
-      align-items: center;justify-content: center;
-      margin-top: 30px;
+      align-items: center;
+      justify-content: center;
+      margin-top: 55px;
       gap: 70px;
 
       .logo {
+         margin-bottom: 30px;
+
          img {
-            width: 100%;
+            width: 50px;
             object-fit: contain;
-            margin: auto
+            margin: auto;
          }
       }
 
@@ -30,19 +33,21 @@ header {
          display: flex;
          flex-direction: column;
          align-items: center;
-         gap: 70px;
+         gap: 40px;
          font-size: 16px;
 
          li {
-            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
             a {
                color: white;
+               padding: 10px;
 
                &:hover {
                   color: #0feffd;
                   background-color: grey;
-                  padding: 10px;
                   border-radius: 10px;
                }
 
@@ -66,6 +71,7 @@ main {
    .searchbar {
       display: flex;
       justify-content: flex-end;
+      align-items: center;
       margin-right: 20px;
       padding-right: 20px;
       @media (max-width: 900px) {
@@ -85,10 +91,14 @@ main {
          background-color: black;
          color: #bcbcbc;
          padding-left: 20px;
+         outline: 0;
 
          &::placeholder {
             font: 500 16px Roboto;
             color: #bcbcbc;
+         }
+         &:focus {
+            outline: 1px solid white;
          }
       }
 
@@ -101,6 +111,7 @@ main {
          color: white;
          margin-left: 20px;
          font-size: 25px;
+         cursor: pointer;
       }
    }
 
