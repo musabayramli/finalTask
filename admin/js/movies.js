@@ -7,6 +7,7 @@ let allActors = [];
 
 document.addEventListener('DOMContentLoaded', () => {
 	fetchMovies();
+	fetchCategoriesAndActors('EDIT');
 
 	document.querySelector('.modal-overlay').addEventListener('click', hideModal)
 });
@@ -228,7 +229,7 @@ function modalShow(type) {
 		`;
 
 		fetchCategoriesAndActors();
-		
+
 		document.querySelector(".submit").className = "submit CreateMovie";
 		document.querySelector('#modal button.CreateMovie').addEventListener('click', createMovie);
 	}
@@ -271,8 +272,7 @@ function checkImageUrl() {
 
 //EDIT MODAL #################################
 function editMovieRow(movieId) {
-	fetchCategoriesAndActors('EDIT');
-	
+
 	const editModal = document.querySelector("#modal.modal");
 
 	fetch(`https://api.sarkhanrahimli.dev/api/filmalisa/admin/movies/${movieId}`, {
