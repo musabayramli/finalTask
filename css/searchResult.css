@@ -33,17 +33,17 @@ header {
          display: flex;
          flex-direction: column;
          align-items: center;
-         gap: 70px;
+         gap: 40px;
          font-size: 16px;
 
          li {
-				display: flex;
-				justify-content: center;
-				align-items: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
             a {
                color: white;
-					padding: 10px;
+               padding: 10px;
 
                &:hover {
                   color: #0feffd;
@@ -71,7 +71,7 @@ main {
    .searchbar {
       display: flex;
       justify-content: flex-end;
-		align-items: center;
+      align-items: center;
       margin-right: 20px;
       padding-right: 20px;
       @media (max-width: 900px) {
@@ -91,15 +91,15 @@ main {
          background-color: black;
          color: #bcbcbc;
          padding-left: 20px;
-			outline: 0;
+         outline: 0;
 
          &::placeholder {
             font: 500 16px Roboto;
             color: #bcbcbc;
          }
-			&:focus {
-				outline: 1px solid white;
-			}
+         &:focus {
+            outline: 1px solid white;
+         }
       }
 
       button {
@@ -111,7 +111,7 @@ main {
          color: white;
          margin-left: 20px;
          font-size: 25px;
-			cursor: pointer;
+         cursor: pointer;
       }
    }
 

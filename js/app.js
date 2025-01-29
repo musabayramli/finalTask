@@ -171,5 +171,19 @@ const updateAuthUI = async () => {
 }
 
 const getStartedBtnFx = () => {
-	getStarted ? location.href = "../pages/home.htm" : location.href = "../pages/login.html";
+	const emailAdress = document.querySelector('#sec1 input');
+
+	if (emailAdress.value == '') {
+		alert('Please add your email first!')
+		return;
+	} else {
+
+		const inputmsg = document.querySelector('.inputmsg');
+		inputmsg.querySelector('#redirectpage').innerText = getStarted ? 'home' : 'loqin';
+		inputmsg.style.display = 'block';
+
+		setTimeout(() => {
+			getStarted ? location.href = "../pages/home.htm" : location.href = "../pages/login.html";
+		}, 1000);
+	}
 }
