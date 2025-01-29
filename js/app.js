@@ -184,6 +184,6 @@ const getStartedBtnFx = () => {
 
 		setTimeout(() => {
 			getStarted ? location.href = "../pages/home.htm" : location.href = "../pages/login.html";
-		}, 1000);
+		}, 2100);
 	}
 }
