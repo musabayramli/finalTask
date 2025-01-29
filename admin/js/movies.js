@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 //GET CATEGORIES AND ACTORS FIRST
-const fetchCategoriesAndActors = async () => {
+const fetchCategoriesAndActors = async (type) => {
 	const apiCategoryUrl = 'https://api.sarkhanrahimli.dev/api/filmalisa/admin/categories';
 	const apiActorUrl = 'https://api.sarkhanrahimli.dev/api/filmalisa/admin/actors';
 	const accessToken = localStorage.getItem('authToken');
@@ -62,20 +62,22 @@ const fetchCategoriesAndActors = async () => {
 		allCategories = categories.data;
 		allActors = actors.data;
 
-		//Handle datas
-		document.querySelector('#select-box.movieCategory').innerHTML += categories.data.map(({ id, name }) => {
-			return `
-				<option value="${id}">${name}</option>
-			`;
-		}).join('');
+		if (type != 'EDIT') {
+			//Handle datas
+			document.querySelector('#select-box.movieCategory').innerHTML += categories.data.map(({ id, name }) => {
+				return `
+					<option value="${id}">${name}</option>
+				`;
+			}).join('');
 
-		document.querySelector('#select-box.movieActors').innerHTML += actors.data.map(({ id, name, surname }) => {
-			return `
-				<option value="${id}">${name} ${surname}</option>
-			`;
-		}).join('');
+			document.querySelector('#select-box.movieActors').innerHTML += actors.data.map(({ id, name, surname }) => {
+				return `
+					<option value="${id}">${name} ${surname}</option>
+				`;
+			}).join('');
 
-		MultiselectDropdown(window.MultiselectDropdownOptions);
+			MultiselectDropdown(window.MultiselectDropdownOptions);
+		}
 
 	} catch (error) {
 		console.error('An error occurred while fetching data:', error);
@@ -225,13 +227,13 @@ function modalShow(type) {
 			</div>
 		`;
 
+		fetchCategoriesAndActors();
+		
 		document.querySelector(".submit").className = "submit CreateMovie";
 		document.querySelector('#modal button.CreateMovie').addEventListener('click', createMovie);
 	}
 
-
 	document.querySelector('.movieCoverUrl').addEventListener('input', checkImageUrl);
-	fetchCategoriesAndActors();
 	categoryaAndActorControl(isCategories, isActors);
 }
 
@@ -269,6 +271,8 @@ function checkImageUrl() {
 
 //EDIT MODAL #################################
 function editMovieRow(movieId) {
+	fetchCategoriesAndActors('EDIT');
+	
 	const editModal = document.querySelector("#modal.modal");
 
 	fetch(`https://api.sarkhanrahimli.dev/api/filmalisa/admin/movies/${movieId}`, {
@@ -343,6 +347,7 @@ function editMovieRow(movieId) {
 		`;
 
 			modalShow('EDIT');
+			MultiselectDropdown(window.MultiselectDropdownOptions);
 		})
 		.catch(error => {
 			console.error('Fetch error:', error);
