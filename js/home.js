@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   <span>${movie.category.name}</span>
                   <p class="imdb-rating">${starIcon}</p>
                   <h1>${movie.title}</h1>
-                  <p>${movie.overview || "No description available."}</p>
+                  <p>${movie.overview.slice(0,200) || "No description available."}</p>
                   <button class="watch-now" data-id="${
                     movie.id
                   }">Watch Now</button>
@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = `../pages/detail.htm?id=${movieId}`;
       });
     });
-    
+
     // "Watch Now" düyməsinə klik hadisəsi əlavə et
     document.querySelectorAll(".watch-now").forEach((button) => {
       button.addEventListener("click", (event) => {

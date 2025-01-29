@@ -8,13 +8,59 @@ document.addEventListener("DOMContentLoaded", async () => {
   const playButton = document.querySelector(".play-btn");
   const modalImageElement = modal.querySelector("#modal img");
   const modalContent = modal.querySelector(".modal-content");
-  
+  const urlParams = new URLSearchParams(window.location.search);
+  const movieId = urlParams.get("id");
+
+  if (!movieId) {
+    console.error("Film ID tapılmadı.");
+    return;
+  }
 
   if (!modal || !closeModal || !modalImage || !modalTitle || !playButton) {
     console.error(
       "Bəzi vacib elementlər tapılmadı. Zəhmət olmasamodal HTML-ni yoxlayın."
     );
     return;
+  }
+
+  // Filmin favorit olub-olmamasını yoxlayıb düyməni yeniləyirik
+  updateFavoriteButton(movieId);
+
+  function updateFavoriteButton(movieId) {
+    const button = document.querySelector(".plus-button");
+
+    if (isFavorite(movieId)) {
+      button.classList.add("favorited");
+      button.innerHTML = "➖";
+    } else {
+      button.classList.remove("favorited");
+      button.innerHTML = "➕";
+    }
+
+    button.addEventListener("click", (e) => {
+      e.preventDefault();
+      toggleFavorite(movieId);
+      updateFavoriteButton(movieId);
+    });
+  }
+
+  function toggleFavorite(movieId) {
+    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    if (favorites.includes(movieId)) {
+      favorites = favorites.filter((fav) => fav !== movieId);
+      alert("Film favorilərdən çıxarıldı!");
+    } else {
+      favorites.push(movieId);
+      alert("Film favorilərə əlavə edildi!");
+    }
+
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }
+
+  function isFavorite(movieId) {
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    return favorites.includes(movieId);
   }
 
   // Fraqment üçün video elementi modal içində yaradılır
@@ -58,19 +104,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
-  // Mətn limit funksiyası öncədən tanımlandı
   const limitText = (text, limit) =>
     text.length > limit ? text.slice(0, limit) + "..." : text;
 
   // Film məlumatlarını API-dən almaq
   async function fetchMovieDetails() {
-    const movieId = new URLSearchParams(window.location.search).get("id");
-
-    if (!movieId) {
-      console.error("Film ID tapılmadı.");
-      return;
-    }
-
     try {
       const response = await fetch(`${API_URL}/${movieId}`, {
         headers: {
@@ -155,6 +193,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     updateOverview();
+
     const movieTrailerIframe = document.createElement("iframe");
     movieTrailerIframe.setAttribute("width", "100%");
     movieTrailerIframe.setAttribute("height", "100%");
@@ -229,43 +268,35 @@ document.addEventListener("DOMContentLoaded", async () => {
         } ${actor.surname}">
           <span>${actor.name} ${actor.surname}</span>
           <span>${actor.role || "Unknown Role"}</span>
-        </div>
-      `
+        </div>`
       )
       .join("");
   }
 
   // Şərhləri göstərmək üçün funksiya
   function renderComments(comments) {
+    const commentList = document.querySelector(".sec2-commet");
+
     if (!comments || comments.length === 0) {
       commentList.innerHTML = "<p>Şərhlər tapılmadı.</p>";
       return;
     }
 
-    // Undefined və ya boş olan şərhləri süzgəcdən keçirmək
-    const validComments = comments.filter(
-      (comment) => comment.comment && comment.comment.trim() !== ""
-    );
-
-    if (!validComments.length) {
-      commentList.innerHTML = "<p>Şərhlər tapılmadı.</p>";
-      return;
-    }
-
-    commentList.innerHTML = validComments
+    commentList.innerHTML = comments
       .map(
-        (comment) => `
-    <div class="commet-heading">
-      <div class="commet-img">
-        <img src="${comment.user_image || "../images/default.jpg"}" alt="User" class="inp-img">
-        <h4>${comment.user_name || "Admin"}</h4>
-      </div>
-      <div>
-        <span>${new Date(comment.created_at).toLocaleString()}</span>
-      </div>
-    </div>
-    <p>${comment.comment}</p> <!-- Düzgün sahə -->
-  `
+        (comment) => ` 
+        <div class="commet-heading">
+          <div class="commet-img">
+            <img src="${
+              comment.user_image || "../images/default.jpg"
+            }" alt="User" class="inp-img">
+            <h4>${comment.user_name || "Admin"}</h4>
+          </div>
+          <div>
+            <span>${new Date(comment.created_at).toLocaleString()}</span>
+          </div>
+        </div>
+        <p>${comment.comment}</p>`
       )
       .join("");
   }
@@ -307,14 +338,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     swiperWrapper.innerHTML = movies
       .map(
         (movie) => `
-          <div class="swiper-slide">
-              <img src="${movie.cover_url}" alt="${movie.title}" />
-              <div class="box">
-                  <span>${movie.category?.name || "Unknown"}</span>
-                  <p>${movie.title}</p>
-              </div>
+        <div class="swiper-slide">
+          <img src="${movie.cover_url}" alt="${movie.title}" />
+          <div class="box">
+            <span>${movie.category?.name || "Unknown"}</span>
+            <p>${movie.title}</p>
           </div>
-      `
+        </div>`
       )
       .join("");
 
@@ -358,57 +388,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     }
   });
-
-  document
-    .querySelector(".plus-button")
-    .addEventListener("click", async (e) => {
-      e.preventDefault();
-      const button = e.currentTarget;
-      const movieId = new URLSearchParams(window.location.search).get("id");
-
-      if (!movieId) return;
-
-      try {
-        const isFavorite = button.classList.contains("favorited");
-
-        const response = await fetch(
-          `https://api.sarkhanrahimli.dev/api/filmalisa/movie/${movieId}/favorite`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-            },
-          }
-        );
-
-        if (response.ok) {
-          if (isFavorite) {
-            alert("Film favorilərdən çıxarıldı!");
-            button.classList.remove("favorited");
-            button.innerHTML = "➕";
-
-            // localStorage-dan favoriləri silmək
-            let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-            favorites = favorites.filter((fav) => fav !== movieId);
-            localStorage.setItem("favorites", JSON.stringify(favorites));
-          } else {
-            alert("Film favorilərə əlavə edildi!");
-            button.classList.add("favorited");
-            button.innerHTML = "➖";
-
-            // localStorage-a yeni film əlavə etmək
-            let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-            favorites.push(movieId);
-            localStorage.setItem("favorites", JSON.stringify(favorites));
-          }
-        } else {
-          alert("Əməliyyat zamanı xəta baş verdi!");
-        }
-      } catch (error) {
-        console.error("Xəta baş verdi:", error);
-      }
-    });
 
   window.addEventListener("click", (e) => {
     if (e.target === modal) {
