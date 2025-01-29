@@ -9,6 +9,7 @@ function showRowDetails({ movieId, comment }) {
 	const cancelBtn = document.querySelector("#detailsModal .cancelBtn");
 
 	removeModal.classList.add("modal-hidden");
+	removeModal.style.visibility = "visible";
 	modalOverlay.style.visibility = "visible";
 	pageRight.style.backgroundColor = "#090909";
 
@@ -99,6 +100,7 @@ function modalDetailsHide() {
 	const modalOverlay = document.querySelector(".modal-details-overlay");
 
 	removeModal.classList.remove("modal-hidden");
+	removeModal.style.visibility = "hidden";
 	modalOverlay.style.visibility = "hidden";
 	pageRight.style.backgroundColor = "#171616";
 }

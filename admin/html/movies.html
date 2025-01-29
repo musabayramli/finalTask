@@ -74,84 +74,13 @@
                <h2 class="title2">Movies</h2>
             </div>
             <div class="profile">
-               <button id="createBtn" onclick="showModal()">Create</button>
+               <button id="createBtn" onclick="modalShow()">Create</button>
             </div>
             <!-- MODAL -->
             <!-- Overlay əlavə edilir -->
             <div class="modal-overlay"></div>
             <div id="modal" class="modal">
-               <div class="modal-content">
-                  <!-- LEFT -->
-                  <div class="modal-left">
-                     <input
-                        type="text"
-                        placeholder="title"
-                        class="movieTitle"
-                     />
-                     <textarea
-                        placeholder="overview"
-                        class="movieOverview"
-                     ></textarea>
-                     <input
-                        type="url"
-                        placeholder="cover url"
-                        class="movieCoverUrl"
-                     />
-                     <input
-                        type="url"
-                        placeholder="fragman(youtube embed url)"
-                        class="movieFragman"
-                     />
-                     <input
-                        type="url"
-                        placeholder="watch url"
-                        class="movieWatchUrl"
-                     />
-                     <input
-                        type="number"
-                        placeholder="imdb"
-                        class="movieImdb"
-                     />
-                     <input
-                        type="number"
-                        placeholder="run time minute"
-                        class="movieRunTimeMin"
-                     />
-                     <label for="select-box" class="category">
-                        <select id="select-box" class="movieCategory">
-                           <option value="" disabled selected hidden>
-                              Category
-                           </option>
-                        </select>
-                        <i class="down fa-solid fa-chevron-down"></i>
-                     </label>
-                     <label for="select-box" class="category">
-                        <select id="select-box" multiple class="movieActors">
-                           <optgroup label="Actors"></optgroup>
-                        </select>
-                        <i class="down fa-solid fa-chevron-down"></i>
-                     </label>
-                     <div class="form">
-                        <div class="checkbox">
-                           <label for="check">Adult</label>
-                           <input
-                              id="check"
-                              type="checkbox"
-                              class="movieAdult"
-                           />
-                        </div>
-                        <button class="submit">Create</button>
-                     </div>
-                  </div>
-                  <!-- RIGHT -->
-                  <figure class="modal-image movieCoverImage">
-                     <img
-                        src="https://fitowatt.ru/assets/static/noimage.jpg"
-                        alt="poster"
-                        style="object-fit: cover"
-                     />
-                  </figure>
-               </div>
+               <!-- div.modal-content -->
             </div>
          </header>
 
@@ -217,7 +146,7 @@
          src="https://cdn.jsdelivr.net/npm/toastify-js"
       ></script>
       <script src="../js/loginskelton.js"></script>
-      <script src="../js/multi-select-dropdown.js"></script>
+      <script src="../js/multi-select-dropdown.js" defer></script>
       <script src="../js/movies.js"></script>
    </body>
 </html>

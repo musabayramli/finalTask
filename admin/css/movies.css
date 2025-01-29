@@ -108,6 +108,27 @@ td img {
    color: red;
 }
 /* MODAL */
+#modal {
+   z-index: 102;
+   visibility: hidden;
+   transition: visibility 1s;
+
+   & * {
+      *::-webkit-scrollbar {
+         width: 12px; /* Scrollbar genişliği */
+      }
+
+      *::-webkit-scrollbar-track {
+         background: #171616; /* Track rengi */
+      }
+
+      *::-webkit-scrollbar-thumb {
+         background-color: #171616; /* Scrollbar rengi */
+         border-radius: 10px; /* Kenarların yuvarlatılması */
+         border: 3px solid #ffffff; /* İsteğe bağlı olarak border */
+      }
+   }
+}
 #modal::-webkit-scrollbar {
    width: 12px; /* Scrollbar genişliği */
 }
@@ -121,33 +142,19 @@ td img {
    border-radius: 10px; /* Kenarların yuvarlatılması */
    border: 3px solid #ffffff; /* İsteğe bağlı olarak border */
 }
-#modal * {
-   *::-webkit-scrollbar {
-      width: 12px; /* Scrollbar genişliği */
-   }
 
-   *::-webkit-scrollbar-track {
-      background: #171616; /* Track rengi */
-   }
-
-   *::-webkit-scrollbar-thumb {
-      background-color: #171616; /* Scrollbar rengi */
-      border-radius: 10px; /* Kenarların yuvarlatılması */
-      border: 3px solid #ffffff; /* İsteğe bağlı olarak border */
-   }
-}
 /* ------------------------------- */
 .modal-overlay {
-   position: fixed;
+   position: absolute;
    top: 0;
    left: 0;
-   width: 100%;
-   height: 100%;
-   background: rgba(0, 0, 0, 0.5);
-   z-index: 999;
+   bottom: 0;
+   right: 0;
+   background: rgba(0, 0, 0, 0.8);
    visibility: hidden;
    opacity: 1;
-   transition: opacity 0.2s ease, visibility 0.2s ease;
+   z-index: 101;
+   transition: visibility ease 1s;
 }
 /* REMOVEMODAL */
 .removeModal {
@@ -169,11 +176,12 @@ td img {
    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 .modal {
-   height: 584px;
    position: absolute;
    overflow-y: auto;
    top: 45%;
    left: 50%;
+   height: 90vh;
+   margin-top: 39px;
 }
 .removeModal p {
    text-align: center;
