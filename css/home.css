@@ -56,10 +56,9 @@ nav ul li a:hover {
    top: 0;
    left: 0;
    z-index: 1;
+   background: rgba(0, 0, 0, 0.603);
 }
-.swiper-slide:not(.movie-card)::before {
-   background: rgba(0, 0, 0, 0.803);
-}
+
 
 .header-content h1 {
    font-size: 4rem;
