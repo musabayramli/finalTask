@@ -12,9 +12,8 @@ header {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 70px;
-      height: 70px;
-      margin-bottom: 40px;
+      width: 85px;
+      height: 85px;
 
       img {
          width: 100%;

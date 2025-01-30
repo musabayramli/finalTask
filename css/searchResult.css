@@ -43,12 +43,12 @@ header {
 
             a {
                color: white;
-               padding: 10px;
+               padding: 15px;
 
                &:hover {
                   color: #0feffd;
-                  background-color: grey;
-                  border-radius: 10px;
+                  background-color: rgba(255, 255, 255, 0.1);
+                  border-radius: 8px;
                }
 
                &.active {

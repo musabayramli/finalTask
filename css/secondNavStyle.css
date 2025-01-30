@@ -19,12 +19,12 @@ nav {
    flex-direction: column;
    align-items: center;
    gap: 50px;
+	margin-top: 40px;
 
    .logo {
       display: flex;
       justify-content: center;
       margin-top: 30px;
-      margin-bottom: 40px;
 
       img {
          width: 50px;
@@ -45,14 +45,13 @@ ul li {
 }
 a {
    color: white;
-   padding: 10px;
+   padding: 17px;
    display: flex;
    justify-content: center;
    align-items: center;
 }
 a:hover {
    color: #0feffd;
-   background-color: grey;
-
-   border-radius: 10px;
+   background-color: rgba(255, 255, 255, 0.1);
+   border-radius: 8px;
 }
