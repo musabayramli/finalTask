@@ -1,5 +1,7 @@
 const getStartedBtn = document.querySelector('#sec1 button');
-let getStarted = false;
+let isGetStartedBtnClick = false;
+let isGuestName = '';
+
 
 document.addEventListener("DOMContentLoaded", () => {
 	const signInButton = document.querySelector(".btn");
@@ -10,7 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	dropdownfaq();
 	updateAuthUI();
-	getStartedBtn.addEventListener('click', getStartedBtnFx);
+	getStartedBtn.addEventListener('click', () => {
+		getStartedBtnFx(isGetStartedBtnClick, isGuestName);
+	});
 });
 
 const dropdownfaq = () => {
@@ -89,7 +93,9 @@ const updateAuthUI = async () => {
 			if (data.result && data.data.img_url && data.data.full_name) {
 				apiProfileImg = data.data.img_url;
 				fullName = data.data.full_name;
-				getStarted = true;
+
+				isGetStartedBtnClick = true;
+				isGuestName = fullName;
 			}
 		} catch (error) {
 			console.error('API error:', error);
@@ -170,20 +176,53 @@ const updateAuthUI = async () => {
 	});
 }
 
-const getStartedBtnFx = () => {
+const getStartedBtnFx = (status, user) => {
 	const emailAdress = document.querySelector('#sec1 input');
+	const inputMsg = document.querySelector('.inputmsg');
 
-	if (emailAdress.value == '') {
-		alert('Please add your email first!')
-		return;
+	let inputMsgText = '';
+
+	if (user) {
+		inputMsgText = `
+			<p>
+				Thank you, <span id="userName">${user}</span>!
+				We are redirecting you to the <span id="redirectpage"></span> page.
+			</p>
+		`;
 	} else {
+		inputMsgText = `
+			<p>
+				Thank you, <span id="userName">guest</span>!
+				We are redirecting you to the <span id="redirectpage"></span> page.
+			</p>
+		`;
+	}
 
-		const inputmsg = document.querySelector('.inputmsg');
-		inputmsg.querySelector('#redirectpage').innerText = getStarted ? 'home' : 'loqin';
-		inputmsg.style.display = 'block';
+	inputMsg.style.display = 'block';
+
+	if (emailAdress.value.trim() == '') {
+
+		inputMsg.className = 'inputmsg errors-text';
+		inputMsg.innerHTML = `
+			<p>Please enter your email address to proceed.</p>
+		`;
 
 		setTimeout(() => {
-			getStarted ? location.href = "../pages/home.htm" : location.href = "../pages/login.html";
-		}, 2100);
+			inputMsg.style.display = 'none';
+		}, 3000);
+
+		return;
+
+	} else {
+		inputMsg.className = 'inputmsg success-text';
+		inputMsg.innerHTML = inputMsgText;
+
+		inputMsg.querySelector('#redirectpage').innerText = status ? 'home' : 'loqin';
+
+		setTimeout(() => {
+			status ? location.href = "../pages/home.htm" : location.href = "../pages/login.html";
+			inputMsg.style.display = 'none';
+		}, 3000);
 	}
+
 }

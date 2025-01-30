@@ -1,299 +1,295 @@
 /* Ümumi Düzəlişlər */
 body {
-    background-color: black;
+   background-color: black;
 }
 
 /* Header */
 header {
-    height: 100vh;
-    display: flex;
-    position: relative;
-    overflow: hidden;
+   height: 100vh;
+   display: flex;
+   position: relative;
+   overflow: hidden;
 }
 
 nav {
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.6);
+   padding: 20px;
+   background: rgba(0, 0, 0, 0.6);
 }
 
 nav .logo {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 50px;
+   width: 60px;
+   height: 60px;
+   margin-bottom: 50px;
 }
 nav .logo img {
-    height: 100%;
-    width: 100%;
+   height: 100%;
+   width: 100%;
 }
 
 nav ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 50px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 50px;
 }
 
 nav ul li a:hover {
-    color: #0feffd;
+   color: #0feffd;
 }
 
 .header-content {
-    width: 900px;
-    padding-left: 120px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: start;
-   
+   width: 900px;
+   padding-left: 120px;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   align-items: start;
 }
-.swiper-slide{
-    position: relative;
+.swiper-slide {
+   position: relative;
 }
-.swiper-slide::before{
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.503);
-    z-index: 1;
+.swiper-slide::before {
+   content: "";
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+   z-index: 1;
+}
+.swiper-slide:not(.movie-card)::before {
+   background: rgba(0, 0, 0, 0.803);
 }
 
 .header-content h1 {
-    font-size: 4rem;
-    margin-bottom: 10px;
+   font-size: 4rem;
+   margin-bottom: 10px;
 }
-.header-content{
-z-index: 8;
+.header-content {
+   z-index: 8;
 }
-
-
 
 .header-content button {
-    display: inline-block;
-    padding: 15px 30px;
-    font-size: 18px;
-    color: white;
-    background: transparent;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: bold;
-    position: relative;
+   display: inline-block;
+   padding: 15px 30px;
+   font-size: 18px;
+   color: white;
+   background: transparent;
+   border: none;
+   border-radius: 30px;
+   cursor: pointer;
+   font-weight: bold;
+   position: relative;
 }
 .header-content button::before {
-    content: "";
-    position: absolute;
-    top: -3px;
-    left: -3px;
-    right: -3px;
-    bottom: -3px;
-    background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff00ff);
-    border-radius: 33px;
-    z-index: -1;
-    mask:
-        linear-gradient(white 0 0) content-box,
-        linear-gradient(white 0 0);
-    -webkit-mask:
-        linear-gradient(white 0 0) content-box,
-        linear-gradient(white 0 0);
-    mask-composite: exclude;
-    -webkit-mask-composite: xor;
-    padding: 3px;
+   content: "";
+   position: absolute;
+   top: -3px;
+   left: -3px;
+   right: -3px;
+   bottom: -3px;
+   background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff00ff);
+   border-radius: 33px;
+   z-index: -1;
+   mask: linear-gradient(white 0 0) content-box, linear-gradient(white 0 0);
+   -webkit-mask: linear-gradient(white 0 0) content-box,
+      linear-gradient(white 0 0);
+   mask-composite: exclude;
+   -webkit-mask-composite: xor;
+   padding: 3px;
 }
 
 .header-content button:hover {
-    color: black;
-    background: rgba(255, 255, 255, 0.1);
-    border-image-source: linear-gradient(90deg, #ff6600, #ff00ff);
+   color: black;
+   background: rgba(255, 255, 255, 0.1);
+   border-image-source: linear-gradient(90deg, #ff6600, #ff00ff);
 }
 .header-content span {
-    display: inline-block;
-    margin-bottom: 10px;
-    font: 400 2rem Roboto;
-    color: #0feffd;
-    background: #00000086;
-    padding: 6px 14px;
-    border-radius: 10px;
+   display: inline-block;
+   margin-bottom: 10px;
+   font: 400 2rem Roboto;
+   color: #0feffd;
+   background: #00000086;
+   padding: 6px 14px;
+   border-radius: 10px;
 }
 .header-content p {
-    font: 400 2rem Roboto;
-    text-align: justify;
-    color: #aebdbe;
-    margin-bottom: 30px;
+   font: 400 2rem Roboto;
+   text-align: justify;
+   color: #aebdbe;
+   margin-bottom: 30px;
 }
 .imdb-rating {
-    margin-bottom: 10px;
+   margin-bottom: 10px;
 }
 /* Header Swiper */
 header {
-    width: 100%;
-    height: 100vh;
+   width: 100%;
+   height: 100vh;
 }
 
 header .swiper-slide {
-    position: relative;
-    color: white;
+   position: relative;
+   color: white;
 }
 header .swiper-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 10;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   z-index: 10;
 }
 header .swiper-slide .header-content {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
+   position: absolute;
+   left: 0;
+   top: 50%;
+   transform: translateY(-50%);
 }
 /* Film Karuselləri */
 .movie-carousel {
-    padding: 30px;
-    margin-bottom: 40px;
+   padding: 30px;
+   margin-bottom: 40px;
 }
 
 .movie-carousel h2 {
-    font: 500 35px Roboto;
-    color: #fff;
-    padding-left: 50px;
-    margin-bottom: 20px;
+   font: 500 35px Roboto;
+   color: #fff;
+   padding-left: 50px;
+   margin-bottom: 20px;
 }
 
 .mySwiperMovies,
 .mySwiperComedy {
-    padding: 20px;
+   padding: 20px;
 }
 
 .swiper .swiper-slide {
-    width: 150px;
-    border-radius: 10px;
-    position: relative;
-    overflow: hidden;
+   width: 150px;
+   border-radius: 10px;
+   position: relative;
+   overflow: hidden;
 }
 .movie-card {
-    height: 520px;
+   height: 520px;
 }
 
 .swiper-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    overflow: hidden;
-    border-radius: 10px;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   overflow: hidden;
+   border-radius: 10px;
 }
 
 .box {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    top: 0;
-    background: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    padding: 10px 15px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    gap: 5px;
-    align-items: start;
-    pointer-events: none;
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   bottom: 10px;
+   left: 0;
+   top: 0;
+   background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 1));
+   color: #fff;
+   padding: 10px 15px;
+   border-radius: 5px;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-end;
+   gap: 5px;
+   align-items: start;
+   pointer-events: none;
 }
 
 .box p {
-    font: 500 24px Roboto;
+   font: 500 24px Roboto;
 }
 
 .box span {
-    font: 400 14px Roboto;
-    color: #0feffd;
-    background: #00000033;
-    padding: 2px 8px;
-    border-radius: 4px;
+   font: 400 14px Roboto;
+   color: #0feffd;
+   background: #00000033;
+   padding: 2px 8px;
+   border-radius: 4px;
 }
 .swiper-slide:hover {
-    cursor: pointer;
+   cursor: pointer;
 }
 
 .mySwiperMovies .swiper-button-next,
 .mySwiperMovies .swiper-button-prev,
 .mySwiperComedy .swiper-button-next,
 .mySwiperComedy .swiper-button-prev {
-    display: none;
+   display: none;
 }
 
 /* Media Queries */
 
 @media (max-width: 768px) {
-    .header-content {
-        padding-left: 20px;
-        text-align: center;
-    }
+   .header-content {
+      padding-left: 20px;
+      text-align: center;
+   }
 
-    .header-content h1 {
-        font-size: 2.5rem;
-    }
+   .header-content h1 {
+      font-size: 2.5rem;
+   }
 
-    .header-content p {
-        font-size: 1rem;
-    }
+   .header-content p {
+      font-size: 1rem;
+   }
 
-    .header-content button {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-    }
+   .header-content button {
+      padding: 10px 20px;
+      font-size: 0.9rem;
+   }
 
-    nav ul {
-        flex-direction: row;
-        justify-content: space-around;
-        gap: 10px;
-    }
+   nav ul {
+      flex-direction: row;
+      justify-content: space-around;
+      gap: 10px;
+   }
 
-    nav ul li a i {
-        font-size: 1.8rem;
-    }
+   nav ul li a i {
+      font-size: 1.8rem;
+   }
 
-    nav .logo img {
-        height: 40px;
-    }
+   nav .logo img {
+      height: 40px;
+   }
 
-    .movie-carousel h2 {
-        font-size: 1.8rem;
-        padding-left: 20px;
-    }
+   .movie-carousel h2 {
+      font-size: 1.8rem;
+      padding-left: 20px;
+   }
 
-    .mySwiperMovies .swiper-slide,
-    .mySwiperComedy .swiper-slide {
-        width: 130px;
-    }
+   .mySwiperMovies .swiper-slide,
+   .mySwiperComedy .swiper-slide {
+      width: 130px;
+   }
 }
 
 @media (max-width: 480px) {
-    .header-content h1 {
-        font-size: 1.8rem;
-    }
+   .header-content h1 {
+      font-size: 1.8rem;
+   }
 
-    .header-content p {
-        font-size: 0.9rem;
-    }
+   .header-content p {
+      font-size: 0.9rem;
+   }
 
-    .header-content button {
-        padding: 8px 16px;
-        font-size: 0.8rem;
-    }
+   .header-content button {
+      padding: 8px 16px;
+      font-size: 0.8rem;
+   }
 
-    .mySwiperMovies .swiper-slide,
-    .mySwiperComedy .swiper-slide {
-        width: 100px;
-    }
+   .mySwiperMovies .swiper-slide,
+   .mySwiperComedy .swiper-slide {
+      width: 100px;
+   }
 
-    .mySwiperMovies .swiper-button-next,
-    .mySwiperMovies .swiper-button-prev,
-    .mySwiperComedy .swiper-button-next,
-    .mySwiperComedy .swiper-button-prev {
-        display: none;
-    }
+   .mySwiperMovies .swiper-button-next,
+   .mySwiperMovies .swiper-button-prev,
+   .mySwiperComedy .swiper-button-next,
+   .mySwiperComedy .swiper-button-prev {
+      display: none;
+   }
 }
