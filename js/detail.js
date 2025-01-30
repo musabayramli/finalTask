@@ -341,7 +341,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         <div class="swiper-slide">
           <img src="${movie.cover_url}" alt="${movie.title}" />
           <div class="box">
-            <span>${movie.category?.name || "Unknown"}</span>
+            <!--<span>${movie.category?.name || "Unknown"}</span>-->
             <p>${movie.title}</p>
           </div>
         </div>`
