@@ -308,7 +308,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 			});
 
 			if (!response.ok) {
-				console.error("Similar filmlər tapılmadı.");
+				console.error("Bənzər filmlər tapılmadı.");
 				return;
 			}
 
@@ -320,7 +320,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 			renderSimilarMovies(similarMovies);
 		} catch (error) {
-			console.error("Similar filmləri yükləyərkən xəta baş verdi:", error);
+			console.error("Bənzər filmləri yükləyərkən xəta baş verdi:", error);
 		}
 	}
 
@@ -330,22 +330,24 @@ document.addEventListener("DOMContentLoaded", async () => {
 		);
 
 		if (movies.length === 0) {
-			swiperWrapper.innerHTML = "<p>Similar Movies tapılmadı.</p>";
+			swiperWrapper.innerHTML = "<p>Bənzər filmlər tapılmadı.</p>";
 			return;
 		}
 
 		swiperWrapper.innerHTML = movies
-			.map(
-				(movie) => `
-        <div class="swiper-slide">
-          <img src="${movie.cover_url}" alt="${movie.title}" />
-          <div class="box">
-            <!--<span>${movie.category?.name || "Unknown"}</span>-->
-            <p>${movie.title}</p>
-          </div>
-        </div>`
-			)
-			.join("");
+		.map(
+		  (movie) => `
+		  <div class="swiper-slide" onclick="window.location.href='${window.location.origin}/pages/detail.htm?id=${movie.id}'" style="cursor: pointer;">
+			 <img src="${movie.cover_url}" alt="${movie.title}" />
+			 <div class="box">
+				<!--<span>${movie.category?.name || "Unknown"}</span>-->
+				<p>${movie.title}</p>
+			 </div>
+		  </div>`
+		)
+		.join("");
+	 
+
 
 		new Swiper(".mySwiperSimilar", {
 			slidesPerView: 1,
