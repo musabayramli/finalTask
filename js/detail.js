@@ -313,10 +313,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 			}
 
 			const { data } = await response.json();
-			console.log(data);
-			console.log(categoryId);
-			console.log(movieId);
-			console.log(urlParams);
 
 			let similarMovies = data.filter(
 				(movie) => movie.category.id === categoryId
