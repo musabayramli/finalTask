@@ -112,6 +112,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 		if (!movieId) return;
 
+		commentList.innerHTML = '<p>Şərhlər yüklənir..</p>';
+
 		try {
 			const response = await fetch(`${API_URL}/${movieId}/comments`, {
 				headers: {
@@ -122,6 +124,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 			if (response.ok) {
 				const { data } = await response.json();
 
+				commentList.innerHTML = '';
 				renderComments(data);
 			} else {
 				commentList.innerHTML = "<p>Şərhlər tapılmadı.</p>";
@@ -178,9 +181,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 				if (!response.ok) {
 					throw new Error('Network response was not ok: ' + response.statusText);
 				}
+
 				return response.json();
 			})
 			.then(users => {
+
 				const allComments = [...comments]
 					.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
@@ -368,6 +373,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 			return;
 		}
 
+		console.log(actors);
 		castContainer.innerHTML = actors
 			.map(
 				(actor) => ` 
@@ -375,7 +381,6 @@ document.addEventListener("DOMContentLoaded", async () => {
           <img src="${actor.img_url || "../images/default.jpg"}" alt="${actor.name
 					} ${actor.surname}">
           <span>${actor.name} ${actor.surname}</span>
-          <span>${actor.role || "Unknown Role"}</span>
         </div>`
 			)
 			.join("");
