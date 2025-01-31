@@ -98,7 +98,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 		})
 			.then(response => response.json())
 			.then(result => {
-				window.location.reload();
+				fetchComments();
+				commentInput.value = '';
 			})
 			.catch(error => {
 				console.error('Error:', error);
