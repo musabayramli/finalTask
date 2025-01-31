@@ -71,43 +71,177 @@ document.addEventListener("DOMContentLoaded", async () => {
 	movieTrailer.style.display = "none";
 	modal.appendChild(movieTrailer);
 
+
+
 	// Şərh bölməsi üçün elementlər
-	const commentInput = document.querySelector(".inp-bar input");
+	
 	const submitComment = document.querySelector(".sec2-btn");
 	const commentList = document.querySelector(".sec2-commet");
 
 	submitComment.addEventListener("click", (e) => {
 		e.preventDefault();
+
+		const commentInput = document.querySelector(".inp-bar input");
 		const commentText = commentInput.value.trim();
 
-		if (commentText) {
-			const now = new Date();
-			const formattedDate = `${now.getHours()}:${now.getMinutes()} ${now.toLocaleDateString()}`;
-
-			// Yeni şərh elementini yaradın
-			const newComment = `
-        <div class="commet-heading">
-          <div class="commet-img">
-            <img src="../images/default.jpg" alt="User" class="inp-img">
-            <h4>Admin</h4>
-          </div>
-          <div>
-            <span>${formattedDate}</span>
-          </div>
-        </div>
-        <p>${commentText}</p>
-      `;
-
-			commentList.innerHTML += newComment;
-
-			commentInput.value = "";
-		}
+		if(commentText.length<1) return;
+		
+		fetch(`https://api.sarkhanrahimli.dev/api/filmalisa/movies/${movieId}/comment`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${authToken}`
+			},
+			body: JSON.stringify({
+				comment: commentText
+			})
+		})
+			.then(response => response.json())
+			.then(result => {
+				window.location.reload();
+			})
+			.catch(error => {
+				console.error('Error:', error);
+				
+			});
 	});
+
+	// Şərhləri API-dən almaq üçün funksiya
+	async function fetchComments() {
+		const movieId = new URLSearchParams(window.location.search).get("id");
+
+		if (!movieId) return;
+
+		try {
+			const response = await fetch(`${API_URL}/${movieId}/comments`, {
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+				},
+			});
+
+			if (response.ok) {
+				const { data } = await response.json();
+
+				renderComments(data);
+			} else {
+				commentList.innerHTML = "<p>Şərhlər tapılmadı.</p>";
+			}
+		} catch (error) {
+			console.error("Şərhlər yüklənərkən xəta baş verdi:", error);
+		}
+	}
+
+	// Şərhləri göstərmək üçün funksiya
+	function renderComments(comments) {
+		const commentList = document.querySelector(".sec2-commet");
+
+		if (!comments || comments.length === 0) {
+			commentList.innerHTML = "<p>Şərhlər tapılmadı.</p>";
+
+			return;
+		}
+
+		function formatDateAgo(formattedDate) {
+			const gettingdate = new Date(formattedDate);
+			const now = new Date();
+			const diffInSeconds = Math.floor((now - gettingdate) / 1000);
+
+			const intervals = {
+				year: 31536000,
+				month: 2592000,
+				week: 604800,
+				day: 86400,
+				hour: 3600,
+				minute: 60,
+				second: 1
+			};
+
+			for (const [unit, secondsInUnit] of Object.entries(intervals)) {
+				if (diffInSeconds >= secondsInUnit) {
+					const diff = Math.floor(diffInSeconds / secondsInUnit);
+					const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
+					return rtf.format(-diff, unit); // Negatif değer, geçmiş zamanı ifade eder
+				}
+			}
+
+			return "Just now"; // Eğer fark çok küçükse
+		}
+
+		fetch('https://api.sarkhanrahimli.dev/api/filmalisa/admin/users', {
+			method: "Get",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+			}
+		})
+			.then(response => {
+				if (!response.ok) {
+					throw new Error('Network response was not ok: ' + response.statusText);
+				}
+				return response.json();
+			})
+			.then(users => {
+				const allComments = [...comments]
+					.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+				const commentSection = document.querySelector('.sec2-commet');
+				const loadMoreBtn = document.querySelector('#sec2 .loadMoreComments');
+				loadMoreBtn.style.display = 'none';
+				const commentsPerPage = 3;
+				let currentPage = 0;
+
+				function displayFilms(allComments) {
+					const start = currentPage * commentsPerPage;
+					const end = start + commentsPerPage;
+
+					const commentsCards = allComments.slice(start, end).map(
+						(comment) => {
+							const commentedUser = users.data.find(user => user.id == comment.user.id);
+							return ` 
+								<div class="commet-heading">
+									<div class="commet-img">
+										<img src="${commentedUser?.img_url || 'https://img.freepik.com/premium-vector/social-media-logo_1305298-29989.jpg?semt=ais_hybrid'}" alt="User" class="inp-img">
+										<h4>${commentedUser?.full_name || "Old user's comment:"}</h4>
+									</div>
+									<div>
+										<span>${formatDateAgo(comment.created_at)}</span>
+									</div>
+								</div>
+								<p>${comment.comment}</p>
+							`
+						}).join("");
+
+					commentList.innerHTML += commentsCards;
+					currentPage++;
+
+					if (currentPage > 0) {
+						commentSection.style.maxHeight = '500px';
+						commentSection.style.overflowY = 'auto';
+						commentSection.style.overflowX = 'hidden'
+					};
+
+					if (currentPage * commentsPerPage >= allComments.length) {
+						loadMoreBtn.style.display = 'none';
+					} else {
+						loadMoreBtn.style.display = 'block';
+					}
+				}
+
+				loadMoreBtn.addEventListener('click', () => {
+					displayFilms(allComments);
+				});
+
+				displayFilms(allComments);
+			})
+			.catch(error => {
+				console.error('İstek sırasında hata oluştu:', error);
+			});
+	}
 
 	const limitText = (text, limit) =>
 		text.length > limit ? text.slice(0, limit) + "..." : text;
 
-	// Film məlumatlarını API-dən almaq
+	// **Film məlumatlarını API-dən almaq**
 	async function fetchMovieDetails() {
 		try {
 			const response = await fetch(`${API_URL}/${movieId}`, {
@@ -133,31 +267,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 			videoUrl = data.fragman || "";
 		} catch (error) {
 			console.error("Xəta baş verdi:", error);
-		}
-	}
-
-	// Şərhləri API-dən almaq üçün funksiya
-	async function fetchComments() {
-		const movieId = new URLSearchParams(window.location.search).get("id");
-
-		if (!movieId) return;
-
-		try {
-			const response = await fetch(`${API_URL}/${movieId}/comments`, {
-				headers: {
-					Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-				},
-			});
-
-			if (response.ok) {
-				const { data } = await response.json();
-
-				renderComments(data);
-			} else {
-				commentList.innerHTML = "<p>Şərhlər tapılmadı.</p>";
-			}
-		} catch (error) {
-			console.error("Şərhlər yüklənərkən xəta baş verdi:", error);
 		}
 	}
 
@@ -272,33 +381,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 			.join("");
 	}
 
-	// Şərhləri göstərmək üçün funksiya
-	function renderComments(comments) {
-		const commentList = document.querySelector(".sec2-commet");
-
-		if (!comments || comments.length === 0) {
-			commentList.innerHTML = "<p>Şərhlər tapılmadı.</p>";
-			return;
-		}
-
-		commentList.innerHTML = comments
-			.map(
-				(comment) => ` 
-        <div class="commet-heading">
-          <div class="commet-img">
-            <img src="${comment.user_image || "../images/default.jpg"
-					}" alt="User" class="inp-img">
-            <h4>${comment.user_name || "Admin"}</h4>
-          </div>
-          <div>
-            <span>${new Date(comment.created_at).toLocaleString()}</span>
-          </div>
-        </div>
-        <p>${comment.comment}</p>`
-			)
-			.join("");
-	}
-
 	async function fetchSimilarMovies(categoryId) {
 		try {
 			const response = await fetch(API_URL, {
@@ -335,8 +417,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 		}
 
 		swiperWrapper.innerHTML = movies
-		.map(
-		  (movie) => `
+			.map(
+				(movie) => `
 		  <div class="swiper-slide" onclick="window.location.href='${window.location.origin}/pages/detail.htm?id=${movie.id}'" style="cursor: pointer;">
 			 <img src="${movie.cover_url}" alt="${movie.title}" />
 			 <div class="box">
@@ -344,9 +426,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 				<p>${movie.title}</p>
 			 </div>
 		  </div>`
-		)
-		.join("");
-	 
+			)
+			.join("");
+
 
 
 		new Swiper(".mySwiperSimilar", {
@@ -362,34 +444,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 		});
 	}
 
-	submitComment.addEventListener("click", async (e) => {
-		e.preventDefault();
-		const commentText = commentInput.value.trim();
-		const movieId = new URLSearchParams(window.location.search).get("id");
-
-		if (commentText && movieId) {
-			try {
-				const response = await fetch(`${API_URL}/${movieId}/comment`, {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-						Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-					},
-					body: JSON.stringify({ comment: commentText }),
-				});
-
-				if (response.ok) {
-					commentInput.value = "";
-					await fetchComments();
-				} else {
-					alert("Şərh əlavə olunarkən xəta baş verdi!");
-				}
-			} catch (error) {
-				console.error("Xəta baş verdi:", error);
-			}
-		}
-	});
-
 	window.addEventListener("click", (e) => {
 		if (e.target === modal) {
 			modal.classList.remove("active");
@@ -397,5 +451,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 		}
 	});
 
-	await fetchMovieDetails();
+	fetchMovieDetails();
+	updateAuthUI();
 });

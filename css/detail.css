@@ -445,16 +445,39 @@ nav ul li a:hover {
     align-items: center;
     gap: 10px;
 }
+.sec2-commet::-webkit-scrollbar {
+   width: 12px; 
+}
+
+.sec2-commet::-webkit-scrollbar-track {
+   background: #171616;
+}
+
+.sec2-commet::-webkit-scrollbar-thumb {
+   background-color: #171616; 
+   border-radius: 10px; 
+   border: 3px solid #ffffff; 
+}
+
 .sec2-commet {
     margin: 40px 0;
-    padding: 10px 14px;
+    padding: 15px 20px;
     width: 583px;
     border-radius: 8px;
     border: 2px solid #475069;
+	 padding-bottom: 20px;
 }
 .sec2-commet p {
     color: #c3c8d4;
     font: 400 16px Rubik;
+	 padding-bottom: 20px;
+	 margin-top: 20px;
+	 
+}
+.sec2-commet p:not(.sec2-commet p:last-child) {
+	border-bottom: 2px solid #1E1E1E;
+	margin-bottom: 50px;
+	 
 }
 .commet-heading {
     display: flex;
@@ -462,6 +485,20 @@ nav ul li a:hover {
     justify-content: space-between;
     margin: 10px 0;
 }
+.loadMoreComments {
+	background-color: #9b51e0;
+	color: white;
+	padding: 10px 20px;
+	border-radius: 12px;
+	border: 0;
+	outline: 0;
+
+	&:hover {
+		background-color: white;
+		color: #9b51e0;
+	}
+}
+
 
 .details {
     margin-bottom: 15px;

@@ -15,7 +15,7 @@ function showRowDetails({ movieId, comment }) {
 
 
 	let innerHTMLData = "";
-	fetch(`https://api.sarkhanrahimli.dev/api/filmalisa/admin/movies/${movieId}`, {
+	fetch(`https://api.sarkhanrahimli.dev/api/filmalisa/movies/${movieId}`, {
 		method: 'GET',
 		headers: {
 			'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
