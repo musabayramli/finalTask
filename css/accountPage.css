@@ -99,3 +99,33 @@ header {
 .toggleIcon {
    cursor: pointer;
 }
+
+
+@media only screen and (max-width:768px) {
+   body{
+      height: 100vh;
+      flex-direction: column;
+   }
+   header{
+     
+      background-color: #2e3131;
+   }
+   .mobil{
+   flex-direction: row !important;
+   position: relative;
+   width: 100%;
+   height: 100px;
+   left: 0;
+   top: 0;
+
+
+   }
+   .logo{
+      display: none;
+   }
+   a img{
+      width: 50px;
+      height: 50px;
+   }
+ 
+}

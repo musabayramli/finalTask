@@ -244,7 +244,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 			const match = url.match(regExp);
 			return match && match[1] ? match[1] : null;
 		}
-
+		
+		console.log(data);
+		
 		document.querySelector(".detail-bg img").src = data.cover_url;
 		document.querySelector(".image-section img").src = data.cover_url;
 		document.querySelector(".content-link h1").textContent = data.title;

@@ -1,8 +1,7 @@
-
 body {
     background-color: #121212;
     color: white;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     overflow-x: hidden;
 }
 
@@ -96,17 +95,17 @@ header {
 }
 
 .mySwiperComedy .swiper-slide {
-    width: auto; 
-    max-width: 300px; 
+    width: auto;
+    max-width: 300px;
     height: 350px;
     background: #1e1e1e;
     border-radius: 8px;
     overflow: hidden;
     position: relative;
     flex-shrink: 0;
-    margin: 0  5px!important;
+    margin: 0 5px !important;
 }
-.swiper-slide:hover{
+.swiper-slide:hover {
     cursor: pointer;
 }
 .mySwiperComedy .swiper-slide img {
@@ -148,7 +147,7 @@ header {
 /* Swiper Navigation Buttons */
 .swiper-button-next,
 .swiper-button-prev {
-/*     color: white;
+    /*     color: white;
     background: rgba(0, 0, 0, 0.6);
     border-radius: 50%;
     width: 40px;
@@ -160,27 +159,61 @@ header {
     display: none;
 }
 
-/* .swiper-button-next:hover,
+.swiper-button-next:hover,
 .swiper-button-prev:hover {
     background: rgba(255, 255, 255, 0.8);
     color: black;
 
-} */
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 80px;
+        background-color: #2e3131;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 0;
+    }
+
+    nav ul {
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+        padding: 0;
+        margin: 0;
+    }
+
+    nav ul li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    nav ul li a {
+        font-size: 20px;
+        width: 50px;
+        height: 50px;
+    }
+.movie-carousel{
+    padding-top: 100px;
+}
     .mySwiperComedy .swiper-slide {
         width: 100%;
+        height: 60vh;
     }
 
     .movie-carousel h2 {
         font-size: 20px;
     }
 
-    nav {
-        width: 60px;
-    }
-
+ 
     nav ul li a {
         font-size: 20px;
         width: 40px;
@@ -188,7 +221,7 @@ header {
     }
 
     header {
-        margin-left: 80px;
+        margin-left: 20px;
     }
 }
 
@@ -207,10 +240,6 @@ header {
         font-size: 18px;
     }
 
-    nav {
-        width: 50px;
-    }
-
     nav ul li a {
         font-size: 18px;
         width: 35px;
@@ -218,6 +247,6 @@ header {
     }
 
     header {
-        margin-left: 70px;
+        margin-left: 10px;
     }
 }
