@@ -60,7 +60,7 @@ style.textContent = `
 		width: 40px;
 		height: 40px;
 		border-radius: 50%;
-		background: rgba(44, 62, 80, 0.85); 
+		background: rgba(30, 30, 30, 0.85); 
 		position: relative;
 		overflow: hidden;
 	}
@@ -68,7 +68,7 @@ style.textContent = `
 	header .profile .skeleton-text {
 		width: 100px;
 		height: 20px;
-		background: rgba(44, 62, 80, 0.85); 
+		background: rgba(30, 30, 30, 0.85); 
 		position: relative;
 		overflow: hidden;
 		border-radius: 3px;

@@ -22,58 +22,51 @@
 <body>
    <header>
       <a href="../index.htm" class="logo"><img class="leftLogo" src="../images/logo.png" alt="logo" /></a>
-      <nav class="mobil">
+      <nav>
          <a href="./home.htm" data-page="home">
             <img src="../images/Home.svg" alt="home" />
          </a>
-         <a href="../pages/searchResult.htm"  data-page="search">
+         <a href="../pages/searchResult.htm" data-page="search">
             <img src="../images/Group.svg" alt="search" />
          </a>
-         <a href="../pages/account.htm"  data-page="account">
+         <a href="../pages/account.htm" data-page="account">
             <img src="../images/TV.svg" alt="Account" />
          </a>
-         <a href="../pages/favoritePage.htm"  data-page="favorits">
+         <a href="../pages/favoritePage.htm" data-page="favorits">
             <img src="../images/Star Stroke.svg" alt="Favorits" />
          </a>
       </nav>
    </header>
 
-   <section class="profile">
-      <div class="profile_container">
-         <div class="profile_pic">
-            <img id="display_img" src="" alt="" />
-         </div>
-
-         <div class="profile_details">
-            <div class="profile_img_url">
-               <img src="../images/icons/profile/leftIcon.png" alt="" />
-               <input id="img_url" type="text" class="img_url" placeholder="profile image url" />
-            </div>
-
-            <div class="profile_fullname">
-               <img src="../images/icons/profile/leftIcon.png" alt="" />
-               <input id="fullname" type="text" class="fullname" placeholder="fullname" />
-            </div>
-
-            <div class="profile_mail">
-               <img src="../images/icons/profile/emailIcon.png" alt="" />
-               <input id="email" type="email" class="mail" disabled placeholder="rahimlisarkhan@gmail.com" readonly />
-               />
-            </div>
-
-            <div class="profile_pass">
-               <img src="../images/icons/profile/leftIcon.png" alt="" />
-               <input id="password" type="password" class="pass" placeholder="password" />
-               <img src="../images/icons/profile/eyeIcon.png" class="toggleIcon" alt="" />
-            </div>
-         </div>
-
-         <button id="savbtn">save</button>
+   <div class="profile_details">
+      <div class="profile_img_url">
+         <img src="../images/icons/profile/leftIcon.png" alt="" />
+         <input id="img_url" type="text" class="img_url" placeholder="profile image url" />
       </div>
+
+      <div class="profile_fullname">
+         <img src="../images/icons/profile/leftIcon.png" alt="" />
+         <input id="fullname" type="text" class="fullname" placeholder="fullname" />
+      </div>
+
+      <div class="profile_mail">
+         <img src="../images/icons/profile/emailIcon.png" alt="" />
+         <input id="email" type="email" class="mail" disabled placeholder="rahimlisarkhan@gmail.com" readonly />
+         />
+      </div>
+
+      <div class="profile_pass">
+         <img src="../images/icons/profile/leftIcon.png" alt="" />
+         <input id="password" type="password" class="pass" placeholder="password" />
+         <img src="../images/icons/profile/eyeIcon.png" class="toggleIcon" alt="" />
+      </div>
+   </div>
+
+   <button id="savbtn">save</button>
+   </div>
    </section>
    <script>
       const currentPage = window.location.pathname.split("/").pop();
-
 
       const links = document.querySelectorAll("header  nav a");
 
@@ -83,12 +76,9 @@
             link.querySelector("img").classList.add("active");
          }
       });
-
-
    </script>
 
    <script src="../js/accountJS.js"></script>
-
 </body>
 
 </html>

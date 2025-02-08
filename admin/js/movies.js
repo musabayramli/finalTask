@@ -275,7 +275,7 @@ function editMovieRow(movieId) {
 
 	const editModal = document.querySelector("#modal.modal");
 
-	fetch(`https://api.sarkhanrahimli.dev/api/filmalisa/admin/movies/${movieId}`, {
+	fetch(`https://api.sarkhanrahimli.dev/api/filmalisa/movies/${movieId}`, {
 		method: 'GET',
 		headers: {
 			'Authorization': `Bearer ${localStorage.getItem('authToken')}`,

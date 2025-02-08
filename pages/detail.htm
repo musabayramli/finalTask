@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="../css/reset.css" />
     <!-- Qlobal CSS -->
     <link rel="stylesheet" href="../css/qlobal.css">
+    <!-- Skelton CSS -->
+    <link rel="stylesheet" href="../css/detailCommentSkelton.css">
     <!-- Style CSS -->
     <link rel="stylesheet" href="../css/detail.css">
 </head>
@@ -212,6 +214,8 @@
                     Thanks!
                 </p> -->
             </div>
+
+				<button class="loadMoreComments" style="display: none;">Load comments..</button>
         </section>
 
 
@@ -332,7 +336,6 @@
     <script>
         const currentPage = window.location.pathname.split("/").pop();
 
-
         const links = document.querySelectorAll("header ul li a");
 
         links.forEach((link) => {
@@ -343,6 +346,8 @@
         });
 
     </script>
+    <script src="../js/detailCommentSkelton.js"></script>
+    <script src="../js/auth.js"></script>
     <script src="../js/detail.js"></script>
 </body>
 
