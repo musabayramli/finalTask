@@ -2,28 +2,28 @@
 
 body {
    background-color: #1d1d1d;
-   display: flex;
+
 }
 
 header {
    margin-top: 30px;
+}
 
-   & > a {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 85px;
-      height: 85px;
+header > a {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 85px;
+   height: 85px;
+}
 
-      img {
-         width: 100%;
-         height: 100%;
-      }
+header > a img {
+   width: 100%;
+   height: 100%;
+}
 
-      &:hover {
-         background-color: transparent;
-      }
-   }
+header > a:hover {
+   background-color: transparent;
 }
 
 .profile {
@@ -31,100 +31,121 @@ header {
    width: 100%;
    justify-content: center;
    padding-top: 50px;
+}
 
-   .profile_pic {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 190px;
-      height: 190px;
-      overflow: hidden;
-      margin: auto;
-      border-radius: 50%;
-      background: linear-gradient(180deg, #72f435 0%, #027981 100%);
+.profile .profile_pic {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 190px;
+   height: 190px;
+   overflow: hidden;
+   margin: auto;
+   border-radius: 50%;
+   background: linear-gradient(180deg, #72f435 0%, #027981 100%);
+}
 
-      & > img {
-         width: 180px;
-         height: 180px;
-         object-fit: cover;
-         border-radius: 50%;
-      }
-   }
+.profile .profile_pic img {
+   width: 180px;
+   height: 180px;
+   object-fit: cover;
+   border-radius: 50%;
+}
 
-   .profile_details {
-      margin: 20px 0;
+.profile .profile_details {
+   margin: 20px 0;
+}
 
-      & > div {
-         display: flex;
-         margin: 10px 0;
-         justify-content: space-between;
-         padding: 16px 20px;
-         border-radius: 10px;
-         border: 1px solid #323b54;
-         background-color: #1a1a1a;
+.profile .profile_details > div {
+   display: flex;
+   margin: 10px 0;
+   justify-content: space-between;
+   padding: 16px 20px;
+   border-radius: 10px;
+   border: 1px solid #323b54;
+   background-color: #1a1a1a;
+}
 
-         input {
-            width: 100%;
-            margin-left: 20px;
-            background-color: transparent;
-            border: 0;
-            outline: 0;
-            color: #ffff;
-            font: 400 20px arial;
+.profile .profile_details > div input {
+   width: 100%;
+   margin-left: 20px;
+   background-color: transparent;
+   border: 0;
+   outline: 0;
+   color: #ffff;
+   font: 400 20px arial;
+}
 
-            &::placeholder {
-               color: #475069;
-            }
-         }
-      }
-   }
+.profile .profile_details > div input::placeholder {
+   color: #475069;
+}
 
-   #savbtn {
-      padding: 16px 20px;
-      width: 100%;
-      background-color: #9b51e0;
-      border-radius: 12px;
-      border: 0;
-      color: white;
-      font: 400 16px arial;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      &:hover {
-         background-color: #7b38b5;
-      }
-   }
+#savbtn {
+   padding: 16px 20px;
+   width: 100%;
+   background-color: #9b51e0;
+   border-radius: 12px;
+   border: 0;
+   color: white;
+   font: 400 16px arial;
+   cursor: pointer;
+   transition: all 0.3s ease;
+}
+
+#savbtn:hover {
+   background-color: #7b38b5;
 }
 
 .toggleIcon {
    cursor: pointer;
 }
 
-
-@media only screen and (max-width:768px) {
-   body{
-      height: 100vh;
-      flex-direction: column;
+@media only screen and (max-width: 768px) {
+   body {
+      position: relative;
    }
-   header{
-     
+
+   header {
+      width: 100%;
+      height: 70px;
       background-color: #2e3131;
+      margin: 0 !important;
+      box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.2);
    }
-   .mobil{
-   flex-direction: row !important;
-   position: relative;
-   width: 100%;
-   height: 100px;
-   left: 0;
-   top: 0;
 
-
+   nav {
+      flex-direction: row; 
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 0;
    }
-   .logo{
+
+   .mobil {
+      flex-direction: row !important;
+      width: 100%;
+      height: 100%;
+   }
+
+   .logo {
       display: none;
    }
-   a img{
-      width: 50px;
-      height: 50px;
+
+   ul {
+      flex-direction: row;
+      justify-content: center;
+      gap: 20px;
    }
- 
+
+   ul li {
+      display: inline-block;
+   }
+
+   a img {
+      width: 30px;
+      height: 30px;
+   }
+   .profile{
+  padding-top: 90px;
+   }
 }
+

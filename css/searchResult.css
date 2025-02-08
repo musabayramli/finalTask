@@ -298,8 +298,8 @@ main {
       display: none;
    }
    li img{
-      width: 50px;
-      height: 50px;
+      width: 30px;
+      height: 30px;
    }
    ul{
       flex-direction: row !important;

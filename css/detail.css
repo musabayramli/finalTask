@@ -10,7 +10,7 @@ body {
     color: white;
     font-family: "Roboto", sans-serif;
     overflow-x: hidden;
-	 margin-bottom: 40px;
+    margin-bottom: 40px;
 }
 
 header {
@@ -29,7 +29,7 @@ nav {
 nav .logo {
     width: 60px;
     height: 60px;
-    margin-bottom: 50px
+    margin-bottom: 50px;
 }
 nav .logo img {
     width: 100%;
@@ -62,10 +62,6 @@ nav ul li a:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* header {
-    margin-left: 100px;
-    padding: 20px;
-} */
 .detail-bg img {
     width: 100%;
     height: 100%;
@@ -95,26 +91,7 @@ nav ul li a:hover {
     color: #00c6d1;
 }
 
-.mySwiperComedy {
-    padding: 20px;
-}
 
-.mySwiperComedy .swiper-slide {
-    width: auto;
-    max-width: 300px;
-    background: #1e1e1e;
-    border-radius: 8px;
-    overflow: hidden;
-    position: relative;
-    flex-shrink: 0;
-    margin: 0 !important;
-}
-
-.mySwiperComedy .swiper-slide img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-}
 
 /* Movie Info Box */
 .box {
@@ -295,64 +272,63 @@ nav ul li a:hover {
     border-radius: 8px;
 }
 .image-section {
-	position: relative;
-	width: 100%;
-	max-width: 573px;
-	height: 586px;
-	max-width: 578px;
-	border-radius: 10px; /* Kenarların yuvarlatılması */
-	overflow: hidden; /* Kenarlardan taşmayı önler */
+    position: relative;
+    width: 100%;
+    max-width: 573px;
+    height: 586px;
+    max-width: 578px;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .image-section img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	border-radius: 10px;
-	transition: filter 0.3s ease; /* Geçiş animasyonu */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: filter 0.3s ease;
 }
 
 .image-section::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	/* height: 100%;
-	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));  */
-	z-index: 100;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    z-index: 100;
 }
 
 .image-section::after {
-	content: "";
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 220px;
-	height: 220px;
-	background-image: url("../images/play-button.png");
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	z-index: 102;
-	transition: width 0.3s ease, height 0.3s ease; /* Boyut geçişi için animasyon */
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: 220px;
+    background-image: url("../images/play-button.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 102;
+    transition:
+        width 0.3s ease,
+        height 0.3s ease;
 }
 
 .image-section:hover img {
-	filter: brightness(1.5); /* Hover üzerinde parlaklık efekti */
+    filter: brightness(1.5);
 }
 
 .image-section:hover::before {
-	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)); /* Hover üzerindeki gradient */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
 }
 
 .image-section:hover::after {
-	width: 230px; /* Büyüme boyutu */
-	height: 230px; /* Büyüme boyutu */
+    width: 230px;
+    height: 230px;
 }
-
-
 
 .content-section {
     max-width: 700px;
@@ -412,7 +388,8 @@ nav ul li a:hover {
     gap: 20px;
 }
 .inp-bar {
-    width: 750px;
+    max-width: 700px;
+    width: 100%;
     display: flex;
     align-items: center;
     padding: 10px 12px;
@@ -446,38 +423,37 @@ nav ul li a:hover {
     gap: 10px;
 }
 .sec2-commet::-webkit-scrollbar {
-   width: 12px; 
+    width: 12px;
 }
 
 .sec2-commet::-webkit-scrollbar-track {
-   background: #171616;
+    background: #171616;
 }
 
 .sec2-commet::-webkit-scrollbar-thumb {
-   background-color: #171616; 
-   border-radius: 10px; 
-   border: 3px solid #ffffff; 
+    background-color: #171616;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
 }
 
 .sec2-commet {
     margin: 40px 0;
     padding: 15px 20px;
-    width: 583px;
+    max-width: 583px;
+    width: 100%;
     border-radius: 8px;
     border: 2px solid #475069;
-	 padding-bottom: 20px;
+    padding-bottom: 20px;
 }
 .sec2-commet p {
     color: #c3c8d4;
     font: 400 16px Rubik;
-	 padding-bottom: 20px;
-	 margin-top: 20px;
-	 
+    padding-bottom: 20px;
+    margin-top: 20px;
 }
 .sec2-commet p:not(.sec2-commet p:last-child) {
-	border-bottom: 2px solid #1E1E1E;
-	margin-bottom: 50px;
-	 
+    border-bottom: 2px solid #1e1e1e;
+    margin-bottom: 50px;
 }
 .commet-heading {
     display: flex;
@@ -485,19 +461,18 @@ nav ul li a:hover {
     justify-content: space-between;
 }
 .loadMoreComments {
-	background-color: #9b51e0;
-	color: white;
-	padding: 10px 20px;
-	border-radius: 12px;
-	border: 0;
-	outline: 0;
+    background-color: #9b51e0;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 12px;
+    border: 0;
+    outline: 0;
 
-	&:hover {
-		background-color: white;
-		color: #9b51e0;
-	}
+    &:hover {
+        background-color: white;
+        color: #9b51e0;
+    }
 }
-
 
 .details {
     margin-bottom: 15px;
@@ -543,9 +518,8 @@ nav ul li a:hover {
     top: -10px;
 }
 .actor span {
-    font: 400 1rem Roboto !important; 
+    font: 400 1rem Roboto !important;
     line-height: 2;
-
 }
 
 .genres {
@@ -627,8 +601,6 @@ nav ul li a:hover {
 }
 
 .mySwiperSimilar .swiper-slide {
-    width: auto;
-    max-width: 300px;
     height: 300px;
     background: #1e1e1e;
     border-radius: 8px;
@@ -674,10 +646,19 @@ nav ul li a:hover {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    header{
+    .container {
+        width: 90%;
+    }
+    body {
+        overflow-x: hidden;
+        padding-bottom: 100px;
+    }
+    header {
+        background: transparent;
         position: relative;
-     }
-     .mobil{
+        width: 100%;
+    }
+    .mobil {
         position: fixed;
         width: 100%;
         height: 90px;
@@ -685,16 +666,27 @@ nav ul li a:hover {
         bottom: 0;
         background-color: #2e3131;
         z-index: 1000;
-     }
-     .logo{
-        display: none;
-     }
-     li img{
-        width: 50px;
-        height: 50px;
-     }
-    .mySwiperComedy .swiper-slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .mobil ul{
+        padding: 0 20px;
         width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .logo {
+        display: none;
+    }
+    li img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .mySwiperSimilar .swiper-slide {
+        height: 80vh;
     }
 
     .movie-carousel h2 {
@@ -711,33 +703,21 @@ nav ul li a:hover {
         height: 40px;
     }
 
-    header {
-        margin-left: 80px;
-    }
-}
 
-@media (max-width: 480px) {
-    .mySwiperComedy .swiper-slide {
+    .detail-position {
         width: 100%;
+        left: 0 !important;
+    }
+    .detail-bg {
+        width: 100% !important;
+        left: 0;
+        top: 0;
+    }
+    .sec1-content {
+        flex-direction: column;
     }
 
-
-
-    .movie-carousel h2 {
-        font-size: 18px;
-    }
-
-    nav {
-        width: 50px;
-    }
-
-    nav ul li a {
-        font-size: 18px;
-        width: 35px;
-        height: 35px;
-    }
-
-    header {
-        margin-left: 70px;
+    .image-section {
+        width: 90%;
     }
 }

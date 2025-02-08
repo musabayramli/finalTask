@@ -207,6 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
         prevEl: prevButtonClass,
       },
       breakpoints: {
+        300: { slidesPerView: 1, spaceBetween: 5 },
         480: { slidesPerView: 1, spaceBetween: 10 },
         768: { slidesPerView: 2, spaceBetween: 15 },
         1024: { slidesPerView: 4, spaceBetween: 20 },

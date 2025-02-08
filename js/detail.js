@@ -226,16 +226,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 						commentSection.style.overflowX = 'hidden'
 					};
 
-					if (currentPage * commentsPerPage >= allComments.length) {
-						loadMoreBtn.style.display = 'none';
-					} else {
-						loadMoreBtn.style.display = 'block';
-					}
+					
 				}
 
-				loadMoreBtn.addEventListener('click', () => {
-					displayFilms(allComments);
-				});
 
 				displayFilms(allComments);
 			})
@@ -444,8 +437,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 			loop: movies.length > 1,
 			breakpoints: {
 				320: { slidesPerView: 1, spaceBetween: 10 },
-				480: { slidesPerView: 2, spaceBetween: 15 },
-				768: { slidesPerView: 3, spaceBetween: 20 },
+				480: { slidesPerView: 1, spaceBetween: 15 },
+				768: { slidesPerView: 1, spaceBetween: 20 },
 				1024: { slidesPerView: 5, spaceBetween: 25 },
 				1440: { slidesPerView: 6, spaceBetween: 30 },
 			},
