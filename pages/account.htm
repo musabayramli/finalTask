@@ -22,7 +22,7 @@
 <body>
    <header>
       <a href="../index.htm" class="logo"><img class="leftLogo" src="../images/logo.png" alt="logo" /></a>
-      <nav>
+      <nav class="mobil">
          <a href="./home.htm" data-page="home">
             <img src="../images/Home.svg" alt="home" />
          </a>
@@ -37,33 +37,37 @@
          </a>
       </nav>
    </header>
+   <section class="profile">
+      <div class="profile_container">
+         <div class="profile_pic">
+            <img id="display_img" src="" alt="" />
+         </div>
+         <div class="profile_details">
+            <div class="profile_img_url">
+               <img src="../images/icons/profile/leftIcon.png" alt="" />
+               <input id="img_url" type="text" class="img_url" placeholder="profile image url" />
+            </div>
 
-   <div class="profile_details">
-      <div class="profile_img_url">
-         <img src="../images/icons/profile/leftIcon.png" alt="" />
-         <input id="img_url" type="text" class="img_url" placeholder="profile image url" />
+            <div class="profile_fullname">
+               <img src="../images/icons/profile/leftIcon.png" alt="" />
+               <input id="fullname" type="text" class="fullname" placeholder="fullname" />
+            </div>
+
+            <div class="profile_mail">
+               <img src="../images/icons/profile/emailIcon.png" alt="" />
+               <input id="email" type="email" class="mail" disabled placeholder="rahimlisarkhan@gmail.com" readonly />
+               />
+            </div>
+
+            <div class="profile_pass">
+               <img src="../images/icons/profile/leftIcon.png" alt="" />
+               <input id="password" type="password" class="pass" placeholder="password" />
+               <img src="../images/icons/profile/eyeIcon.png" class="toggleIcon" alt="" />
+            </div>
+         </div>
+
+         <button id="savbtn">save</button>
       </div>
-
-      <div class="profile_fullname">
-         <img src="../images/icons/profile/leftIcon.png" alt="" />
-         <input id="fullname" type="text" class="fullname" placeholder="fullname" />
-      </div>
-
-      <div class="profile_mail">
-         <img src="../images/icons/profile/emailIcon.png" alt="" />
-         <input id="email" type="email" class="mail" disabled placeholder="rahimlisarkhan@gmail.com" readonly />
-         />
-      </div>
-
-      <div class="profile_pass">
-         <img src="../images/icons/profile/leftIcon.png" alt="" />
-         <input id="password" type="password" class="pass" placeholder="password" />
-         <img src="../images/icons/profile/eyeIcon.png" class="toggleIcon" alt="" />
-      </div>
-   </div>
-
-   <button id="savbtn">save</button>
-   </div>
    </section>
    <script>
       const currentPage = window.location.pathname.split("/").pop();
