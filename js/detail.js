@@ -200,7 +200,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 					const start = currentPage * commentsPerPage;
 					const end = start + commentsPerPage;
 
-					const commentsCards = allComments.slice(start, end).map(
+					const commentsCards = allComments.map(
 						(comment) => {
 							const commentedUser = users.data.find(user => user.id == comment.user.id);
 							return ` 
@@ -267,7 +267,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 			renderTopCast(data.actors);
 			await fetchComments();
 
-			// Similar Movies üçün uyğun kategoriya ilə çağırış
+		
 			fetchSimilarMovies(data.category.id);
 
 			videoUrl = data.fragman || "";
